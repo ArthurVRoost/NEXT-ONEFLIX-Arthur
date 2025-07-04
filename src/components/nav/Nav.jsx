@@ -5,22 +5,32 @@ import Image from 'next/image'
 export default function Nav() {
   return (
     <div className={styleNav.divPNav}>
-        <Image src='/img/logo.png'width={230} height={80} alt='logo oneflix'/>
-        <p>Home</p>
-        <p>Collection</p>
-        <p>Favoris</p>
-        <div>
+        <div className={styleNav.navDiv0}>
+            <Image className={styleNav.navImg} src='/img/logo.png'width={230} height={80} alt='logo oneflix'/>
+        </div>
+        
+        <div className={styleNav.navDiv1}>   
+            <p className={styleNav.navText}>Home</p>
+            <p className={styleNav.navText}>Collection</p>
+            <p className={styleNav.navText}>Favoris</p>
+        
             <select className={styleNav.selectNav} name="Category" defaultValue="">
-                <option value=""hidden disabled >Category</option>
-                <option value="action">Action</option>
-                <option value="adventure">Adventure</option>
-                <option value="romantic">Romantic</option>
-                <option value="comedy">Comedy</option>
+                <option className={styleNav.navText} value=""hidden disabled >Category</option>
+                <option className={styleNav.navText} value="action">Action</option>
+                <option className={styleNav.navText} value="adventure">Adventure</option>
+                <option className={styleNav.navText} value="romantic">Romantic</option>
+                <option className={styleNav.navText} value="comedy">Comedy</option>
             </select>
         </div>
-
-        <i className="fa-solid fa-cart-shopping"></i>
-        <i className="fa-solid fa-user-plus"></i>
+        <div className={styleNav.navDiv2}>
+            <input type="search" placeholder='Search...' className={styleNav.navInput} />
+            <div className={styleNav.navDiv3}>   
+                <i id={styleNav.navI} className="fa-solid fa-cart-shopping"></i>
+                <i id={styleNav.navI} className="fa-solid fa-user-plus"></i>
+            </div>
+           
+        </div>
+        
     </div>
   )
 }

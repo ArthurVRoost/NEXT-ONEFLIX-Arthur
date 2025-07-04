@@ -1,12 +1,64 @@
 .divPNav{
-    color: white;
+    color: #4F518C;
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 .selectNav{
     background-color:#2C2A4A ;
     border: none;
     outline: none;
+    color: #4F518C;
+}
+.navDiv1{
+    display: flex;
+    flex-basis: 30%;
+    margin-top: 2%;
+    gap: 40px;
+    margin-left: 5%;
+}
+
+.navDiv0{
+    flex-basis: 25%;
+    padding-left: 10%;
+    margin-top: 2%;
+}
+.navImg{
+    cursor: pointer;
+}
+.navDiv2{
+    flex-basis: 30% ;
+    margin-left: 8%;
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+}
+.navText{
+    cursor: pointer;
+}
+.navInput{
+    outline: none;
+    border: #4F518C;
+    border-radius: 25px;
+    padding: 10px 20px;
+    width: 200px;
     color: white;
+    background-color: #907AD6;
+    cursor: pointer;
+    box-shadow:0px 0px 10px 0px #4F518C;
+}
+
+.navInput::placeholder{
+    color: white;
+}
+.fa-solid{
+    cursor: pointer;
+}
+#navI{
+    cursor: pointer;
+    padding-right: 15%;
+    font-size: 20px;
+}
+.navDiv3{
+    margin-left: 5%;
+    width: 100px;
 }
