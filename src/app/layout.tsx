@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import Script from "next/script";
+import Nav from '../components/nav/Nav'
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -24,7 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script src="https://kit.fontawesome.com/0241eb844d.js" crossOrigin="anonymous"/>
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <Nav/>
         {children}
       </body>
     </html>
