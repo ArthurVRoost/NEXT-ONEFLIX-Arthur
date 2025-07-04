@@ -1,0 +1,12 @@
+.divPNav{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.selectNav{
+    background-color:#2C2A4A ;
+    border: none;
+    outline: none;
+    color: white;
+}
