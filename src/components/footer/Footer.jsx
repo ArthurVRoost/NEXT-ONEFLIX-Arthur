@@ -1,7 +1,7 @@
 import React from 'react'
 import styleFooter from './footer.module.css'
 import Link from 'next/link'
-
+import Image from 'next/image'
 export default function Footer() {
   return (
     <div className={styleFooter.footerDivP}>
@@ -18,12 +18,14 @@ export default function Footer() {
             <div className={styleFooter.footerDiv2Div1}>
                 <h2 className={styleFooter.footerDiv2Div1H2} >Genres:</h2>
                 <ul className={styleFooter.footerDiv2Div1Ul}>
-                    <li className={styleFooter.footerDiv2Div1Li}>Action</li>
-                    <li className={styleFooter.footerDiv2Div1Li}>Adventure</li>
-                    <li className={styleFooter.footerDiv2Div1Li}>Romantic</li>
-                    <li className={styleFooter.footerDiv2Div1Li}>Comedy</li>
+                    <Link href="/" className={`${styleFooter.footerDiv2Div1Li} ${styleFooter.Link}`}>Action</Link>
+                    <Link href="/" className={`${styleFooter.footerDiv2Div1Li} ${styleFooter.Link}`}>Adventure</Link>
+                    <Link href="/" className={`${styleFooter.footerDiv2Div1Li} ${styleFooter.Link}`}>Romance</Link>
+                    <Link href="/" className={`${styleFooter.footerDiv2Div1Li} ${styleFooter.Link}`}>Comedy</Link>
                 </ul>
             </div>
+            <Image className={styleFooter.footerImg} src='/img/luffy.png'width={120} height={180} alt='luffy'/>
+            <Image className={styleFooter.footerImg2} src='/img/naruto.png'width={180} height={140} alt='luffy'/>
             <div className={styleFooter.footerDiv2Div2}>
                 <h2 className={styleFooter.footerDiv2Div2H2}>Newsletter:</h2>
                 <input className={styleFooter.footerDiv2Div2Input} type="email" name="" id="" placeholder='Your e-mail...' />
@@ -32,16 +34,16 @@ export default function Footer() {
         </div>
         <div className={styleFooter.footerDiv3}>
             <h2 className={styleFooter.footerDiv3H2}>Social Media:</h2>
-            <div>
-                <Link href="https://github.com/ArthurVRoost">My Github</Link>
+            <div className={styleFooter.footerDivI}>
+                <Link className={styleFooter.Link} href="https://github.com/ArthurVRoost">My Github</Link>
                 <i className={`${styleFooter.footerDiv3I} fa-brands fa-square-github`}></i>
             </div>
-            <div>
-                <Link href="https://www.linkedin.com/in/arthur-van-roost-79a9a8180/">My LinkedIn</Link>
-                <i className={`${styleFooter.footerDiv3I2} fa-brands fa-linkedin`}></i>
+            <div className={styleFooter.footerDivI}>
+                <Link className={styleFooter.Link} href="https://www.linkedin.com/in/arthur-van-roost-79a9a8180/">My LinkedIn</Link>
+                <i className={`${styleFooter.footerDiv3I} fa-brands fa-linkedin`}></i>
             </div>
             <div>
-                <Link href="https://arthurvroost.github.io/Portfolio/">My Portfolio </Link>
+                <Link className={styleFooter.Link} href="https://arthurvroost.github.io/Portfolio/">My Portfolio </Link>
             </div>
         </div>
     </div>

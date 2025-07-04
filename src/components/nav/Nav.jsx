@@ -18,7 +18,7 @@ export default function Nav() {
                 <option className={styleNav.navText} value=""hidden disabled >Category</option>
                 <option className={styleNav.navText} value="action">Action</option>
                 <option className={styleNav.navText} value="adventure">Adventure</option>
-                <option className={styleNav.navText} value="romantic">Romantic</option>
+                <option className={styleNav.navText} value="romantic">Romance</option>
                 <option className={styleNav.navText} value="comedy">Comedy</option>
             </select>
         </div>
