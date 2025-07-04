@@ -8,10 +8,10 @@ export default function Footer() {
         <div className={styleFooter.footerDiv1}>
             <h2 className={styleFooter.footerDiv1H2}>Usefull Links: </h2>
             <ul className={styleFooter.footerDiv1Ul}>
-                <li className={styleFooter.footerDiv1Li}>Home</li>
-                <li className={styleFooter.footerDiv1Li}>Collection</li>
-                <li className={styleFooter.footerDiv1Li}>Cart</li>
-                <li className={styleFooter.footerDiv1Li}>My Account</li>
+                <Link href="/" className={`${styleFooter.footerDiv1Li} ${styleFooter.Link} `}>Home</Link>
+                <Link href="/" className={`${styleFooter.footerDiv1Li} ${styleFooter.Link} `}>Collection</Link>
+                <Link href="/" className={`${styleFooter.footerDiv1Li} ${styleFooter.Link} `}>Cart</Link>
+                <Link href="/" className={`${styleFooter.footerDiv1Li} ${styleFooter.Link} `}>My Account</Link>
             </ul>
         </div>
         <div className={styleFooter.footerDiv2}>
