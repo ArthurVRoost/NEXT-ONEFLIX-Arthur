@@ -4,7 +4,7 @@ import styleNav from './nav.module.css'
 import Image from 'next/image'
 export default function Nav() {
   return (
-    <div className={styleNav.divPNav}>
+    <div  className={`${styleNav.divPNav}`}>
         <div className={styleNav.navDiv0}>
             <Image className={styleNav.navImg} src='/img/logo.png'width={230} height={80} alt='logo oneflix'/>
         </div>
