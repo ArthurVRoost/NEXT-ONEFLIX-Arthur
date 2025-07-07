@@ -6,7 +6,7 @@ export default function Nav() {
   return (
     <div  className={`${styleNav.divPNav}`}>
         <div className={styleNav.navDiv0}>
-            <Image className={styleNav.navImg} src='/img/logo.png'width={230} height={80} alt='logo oneflix'/>
+            <Image className={styleNav.navImg} src='/img/ONEFLIX.png'width={230} height={80} alt='logo oneflix'/>
         </div>
         
         <div className={styleNav.navDiv1}>   

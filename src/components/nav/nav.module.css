@@ -6,6 +6,7 @@
     top: 1.5%;
     left: 5%;
     height: 100px;
+    z-index: 2;
 }
 .selectNav{
     background-color:#2C2A4A ;
@@ -68,4 +69,7 @@
 }
 .mainContent{
     padding-top: 100px
+}
+.navText:hover{
+    color: white;
 }
