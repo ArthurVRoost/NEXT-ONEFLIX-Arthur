@@ -8,8 +8,14 @@
     list-style: none;
     text-decoration: none;
     color: white;
-    margin-left: 2%;
+    margin-left: 1%;
     font-size: 15px;
+}
+.homeSection1{
+    margin-bottom: 5%;
+}
+.homeSection2{
+    margin-bottom: 5%;
 }
 .cardWrapper {
   width: 280px;
@@ -62,7 +68,7 @@
     display: flex;
     justify-content: center;
     gap: 30px;
-    margin-bottom: 2%;
+    margin-bottom: 3%;
 }
 .divRow2{
     display: flex;
@@ -72,4 +78,18 @@
 .section1CardP{
     margin: 0;
     padding: 0;
+}
+.divNarutoRow1{
+    display: flex;
+    margin-left: 9%;
+    gap: 30px;
+    margin-bottom: 3%;
+}
+.homeDivColumn{
+    width: 380px;
+    height: 570px;
+    background-color: red;
+    position: absolute;
+    right: 20;
+    top: 1476;
 }
