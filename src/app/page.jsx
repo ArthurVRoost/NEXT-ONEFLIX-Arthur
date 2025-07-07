@@ -355,18 +355,92 @@ export default function Home() {
     </div>
     <div className={styles.homeDivColumn}>
       <h2 className={styles.homeDivColumnH2}>TOP ANIME</h2>
-      <div className={styles.homeDivColumnDivP}>
-        <p>1.</p>
+      {/* 1 */}
+      <Link className={styles.Link2} href="/">
+          <div className={styles.homeDivColumnDivP}>
+        <p className={styles.homeDivColumnNumero}>1.</p>
         <div className={styles.homeDivColumnImg} >
           <Image  className={styles.cardImg} src="/img/FMAB.jpg" width={80} height={100} alt="image de l'anime"/>
         </div>
         
         <div className={styles.homeDivColumnText}>
           <p className={styles.homeDivColumnP1}>Full Metal Alchemist Brotherhood</p>
-          <p className={styles.homeDivColumnP2}><i className="fa-solid fa-star"></i></p>
+          <p className={styles.homeDivColumnP2}>4.8/5<i className="fa-solid fa-star"></i></p>
+          <p className={styles.homeDivColumnP1}>Episodes: 64</p>
         </div>
         
       </div>
+      </Link>
+      
+      {/* 2 */}
+      <Link className={styles.Link2} href="/">
+           <div className={styles.homeDivColumnDivP}>
+        <p className={styles.homeDivColumnNumero}>2.</p>
+        <div className={styles.homeDivColumnImg} >
+          <Image  className={styles.cardImg} src="/img/OP.jpg" width={80} height={100} alt="image de l'anime"/>
+        </div>
+        
+        <div className={styles.homeDivColumnText}>
+          <p className={styles.homeDivColumnP1}>One Piece</p>
+          <p className={styles.homeDivColumnP2}>4.7/5<i className="fa-solid fa-star"></i></p>
+          <p className={styles.homeDivColumnP1}>Episodes: 1100+ <span>still airing</span></p>
+        </div>
+        
+      </div>
+      </Link>
+     
+      {/* 3 */}
+      <Link className={styles.Link2} href="/">
+        <div className={styles.homeDivColumnDivP}>
+        <p className={styles.homeDivColumnNumero}>3.</p>
+        <div className={styles.homeDivColumnImg} >
+          <Image  className={styles.cardImg} src="/img/BLEACH.jpg" width={80} height={100} alt="image de l'anime"/>
+        </div>
+        
+        <div className={styles.homeDivColumnText}>
+          <p className={styles.homeDivColumnP1}>Bleach</p>
+          <p className={styles.homeDivColumnP2}>4.7/5<i className="fa-solid fa-star"></i></p>
+          <p className={styles.homeDivColumnP1}>Episodes: 366</p>
+        </div>
+        
+      </div>
+      </Link>
+      
+    {/* 4 */}
+    <Link className={styles.Link2} href="/">
+        <div className={styles.homeDivColumnDivP}>
+        <p className={styles.homeDivColumnNumero}>4.</p>
+        <div className={styles.homeDivColumnImg} >
+          <Image  className={styles.cardImg} src="/img/SNK.jpg" width={80} height={100} alt="image de l'anime"/>
+        </div>
+        
+        <div className={styles.homeDivColumnText}>
+          <p className={styles.homeDivColumnP1}>Attack On Titans</p>
+          <p className={styles.homeDivColumnP2}>4.5/5<i className="fa-solid fa-star"></i></p>
+          <p className={styles.homeDivColumnP1}>Episodes: 94</p>
+        </div>
+        
+      </div>
+    </Link>
+    
+
+    {/* 5 */}
+    <Link className={styles.Link2} href="/">
+        <div className={styles.homeDivColumnDivP}>
+        <p className={styles.homeDivColumnNumero}>5.</p>
+        <div className={styles.homeDivColumnImg} >
+          <Image  className={styles.cardImg} src="/img/JJK.jpg" width={80} height={100} alt="image de l'anime"/>
+        </div>
+        
+        <div className={styles.homeDivColumnText}>
+          <p className={styles.homeDivColumnP1}>Jujutsu Kaisen</p>
+          <p className={styles.homeDivColumnP2}>4.4/5<i className="fa-solid fa-star"></i></p>
+          <p className={styles.homeDivColumnP1}>Episodes: 47+ <span>still airing</span></p>
+        </div>
+        
+      </div>
+    </Link>
+      
     </div>
     </>
   );
