@@ -3,10 +3,12 @@
     display: flex;
     align-items: center;
     position: fixed;
-    top: 1.5%;
+    top: 0%;
     left: 5%;
     height: 100px;
     z-index: 2;
+    background-color:#2F2A45 ;
+    width: 100%;
 }
 .selectNav{
     background-color:#2F2A45 ;
@@ -21,12 +23,10 @@
     flex-basis: 30%;
     margin-top: 2%;
     gap: 40px;
-    margin-left: 13%;
 }
 
 .navDiv0{
     flex-basis: 25%;
-    padding-left: 10%;
     margin-top: 2%;
 }
 .navImg{
@@ -34,7 +34,7 @@
 }
 .navDiv2{
     flex-basis: 30% ;
-    margin-left: 20%;
+    margin-left: 15%;
     margin-top: 2%;
     display: flex;
     align-items: center;
@@ -70,7 +70,7 @@
     width: 100px;
 }
 .mainContent{
-    padding-top: 100px
+    padding-top: 140px
 }
 .navText:hover{
     color: white;

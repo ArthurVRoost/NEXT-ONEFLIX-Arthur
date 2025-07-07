@@ -354,7 +354,19 @@ export default function Home() {
       </section>
     </div>
     <div className={styles.homeDivColumn}>
-      <h1>COLUMN</h1>
+      <h2 className={styles.homeDivColumnH2}>TOP ANIME</h2>
+      <div className={styles.homeDivColumnDivP}>
+        <p>1.</p>
+        <div className={styles.homeDivColumnImg} >
+          <Image  className={styles.cardImg} src="/img/FMAB.jpg" width={80} height={100} alt="image de l'anime"/>
+        </div>
+        
+        <div className={styles.homeDivColumnText}>
+          <p className={styles.homeDivColumnP1}>Full Metal Alchemist Brotherhood</p>
+          <p className={styles.homeDivColumnP2}><i className="fa-solid fa-star"></i></p>
+        </div>
+        
+      </div>
     </div>
     </>
   );

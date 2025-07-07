@@ -88,8 +88,24 @@
 .homeDivColumn{
     width: 380px;
     height: 570px;
-    background-color: red;
+    background-color: #907AD6;
     position: absolute;
     right: 20;
-    top: 1476;
+    top: 1515;
+    border-radius: 15px;
+}
+.homeDivColumnH2{
+  color: white;
+  margin-left: 5%;
+}
+.homeDivColumnDivP{
+  display: flex;
+}
+.homeDivColumnImg{
+  height: 100px;
+  position: relative;
+  width: 60px;
+}
+.homeDivColumnP2{
+  color: yellow;
 }
