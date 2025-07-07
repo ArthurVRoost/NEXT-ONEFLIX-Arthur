@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 .footerDivP{
     display: flex;
     color: #4c51ac;
     justify-content: space-around;
     background-color: #907AD6;
     position: relative;
-    height: 53vh;
+    height: 60vh;
+    margin-top: 3%;
 }
 .Link{
     list-style: none;
@@ -17,7 +19,7 @@
     align-items: center;
 }
 .footerDiv3I{
-    margin-left: 5%;
+    margin-left: 40%;
     font-size: 20px;
     margin-bottom: 3%;
 }
@@ -34,15 +36,37 @@
 .footerDiv1{
     margin-top: 3%;
 }
+.footerDiv1Li{
+    transition: transform 0.5s ease;
+}
+.footerDiv1Li:hover{
+    color: white;
+    transform: scale(1.1);
+}
 .footerDiv2{
     margin-top: 3%;
 }
+.footerDiv2Div1Li{
+    transition: transform 0.5s ease;
+}
+.footerDiv2Div1Li:hover{
+    color: white;
+    transform: scale(1.1);
+}
 .footerDiv3{
     margin-top: 3%;
+    line-height: 2;
+}
+.LinkAnim{
+    transition: transform 0.5s ease;
+}
+.LinkAnim:hover{
+    color: white;
+    transform: scale(1.1);
 }
 .footerDiv2Div2{
-    margin-top: 33%;
-
+    margin-top: 23%;
+    text-align: center;
 }
 .footerDiv2Div2Input{
     outline: none;
@@ -58,6 +82,9 @@
 .footerDiv2Div2Input::placeholder{
     color: white;
 }
+.footerDiv2Div2Input:hover{
+    box-shadow:0px 0px 10px 0px #eaeaeb;
+}
 .footerDiv2Div2Btn{
     background-color: #4F518C;
     border-radius: 25px;
@@ -65,12 +92,50 @@
     border: none;
     color: white;
     padding: 10px 15px;
+    margin-left: 3%;
+    margin-top: 2%;
+    cursor: pointer;
+    box-shadow:0px 0px 10px 0px #4F518C;
+}
+.footerDiv2Div2Btn:hover{
+    background-color: #907AD6;
+    color: white;
+    box-shadow:0px 0px 10px 0px #eaeaeb;
+}
+.footerDiv2Div1{
+    margin-left: 20%;
 }
 .footerDiv2Div1Ul{
     display: flex;
     flex-direction: column;
+    margin-left: -13%;
+    line-height: 2;
 }
 .footerDiv1Ul{
     display: flex;
     flex-direction: column;
+    margin-left: -26%;
+    line-height: 2;
+}
+.divCopy{
+    background-color: #907AD6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.divCopyP{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 3%;
+    padding-top: 1%;
+    color: #4F518C;
+    font-family: "Nono Sans";
+    font-weight: 100;
+}
+.divCopySpan{
+    color: #eaeaeb;
+    font-weight: bold;
+    font-family: "Nono Sans";
 }
