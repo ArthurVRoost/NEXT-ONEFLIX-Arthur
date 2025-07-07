@@ -41,6 +41,7 @@
 }
 .navText{
     cursor: pointer;
+    font-size: 20px;
 }
 .navInput{
     outline: none;
