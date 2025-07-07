@@ -75,3 +75,8 @@
 .navText:hover{
     color: white;
 }
+.Link{
+    text-decoration: none;
+    list-style: none;
+    color: #4F518C;
+}

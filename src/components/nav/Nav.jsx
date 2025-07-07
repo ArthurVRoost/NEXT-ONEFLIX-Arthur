@@ -2,6 +2,8 @@
 import React from 'react'
 import styleNav from './nav.module.css'
 import Image from 'next/image'
+import Link from 'next/link'
+
 export default function Nav() {
   return (
     <div  className={`${styleNav.divPNav}`}>
@@ -10,9 +12,9 @@ export default function Nav() {
         </div>
         
         <div className={styleNav.navDiv1}>   
-            <p className={styleNav.navText}>Home</p>
-            <p className={styleNav.navText}>Collection</p>
-            <p className={styleNav.navText}>Favoris</p>
+            <Link className={styleNav.Link} href="/"><p className={styleNav.navText}>Home</p></Link>
+            <Link className={styleNav.Link} href="/collection"><p className={styleNav.navText}>Collection</p></Link>
+           <a href="#top" className={styleNav.Link}><p className={styleNav.navText}>Top</p></a>
         
             <select className={styleNav.selectNav} name="Category" defaultValue="">
                 <option className={styleNav.navText} value=""hidden disabled >Category</option>

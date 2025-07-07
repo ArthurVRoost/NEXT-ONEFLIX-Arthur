@@ -173,7 +173,7 @@ export default function Home() {
           </div>
         </div>
 
-          <div className={styles.divRow2}>
+          <div id="top" className={styles.divRow2}>
 
           <div className={styles.cardWrapper}>
           <div className={styles.card}>
@@ -227,7 +227,7 @@ export default function Home() {
 
       <section className={styles.homeSection3}>
         <div className={styles.homeSection1Div1}>
-          <h2>NARUTO</h2>
+          <h2 >NARUTO</h2>
           <Link href="/" className={styles.Link}>See more &rarr;</Link>
         </div>
         <div className={styles.divNarutoRow1}>
@@ -354,7 +354,7 @@ export default function Home() {
       </section>
     </div>
     <div className={styles.homeDivColumn}>
-      <h2 className={styles.homeDivColumnH2}>TOP ANIME</h2>
+      <h2  className={styles.homeDivColumnH2}>TOP ANIME</h2>
       {/* 1 */}
       <Link className={styles.Link2} href="/">
           <div className={styles.homeDivColumnDivP}>
