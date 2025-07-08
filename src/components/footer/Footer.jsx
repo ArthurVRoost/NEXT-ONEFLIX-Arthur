@@ -10,7 +10,7 @@ export default function Footer() {
             <h2 className={styleFooter.footerDiv1H2}>Usefull Links </h2>
             <ul className={styleFooter.footerDiv1Ul}>
                 <Link href="/" className={`${styleFooter.footerDiv1Li} ${styleFooter.Link} `}>Home</Link>
-                <Link href="/" className={`${styleFooter.footerDiv1Li} ${styleFooter.Link} `}>Collection</Link>
+                <Link href="/collection" className={`${styleFooter.footerDiv1Li} ${styleFooter.Link} `}>Collection</Link>
                 <Link href="/" className={`${styleFooter.footerDiv1Li} ${styleFooter.Link} `}>Cart</Link>
                 <Link href="/" className={`${styleFooter.footerDiv1Li} ${styleFooter.Link} `}>My Account</Link>
             </ul>
