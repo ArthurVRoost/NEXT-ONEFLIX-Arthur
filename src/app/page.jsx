@@ -407,7 +407,7 @@ export default function Home() {
       </Link>
       
     {/* 4 */}
-    <Link className={styles.Link2} href="/">
+    <Link className={styles.Link2} href="/snk">
         <div className={styles.homeDivColumnDivP}>
         <p className={styles.homeDivColumnNumero}>4.</p>
         <div className={styles.homeDivColumnImg} >
@@ -425,7 +425,7 @@ export default function Home() {
     
 
     {/* 5 */}
-    <Link className={styles.Link2} href="/">
+    <Link className={styles.Link2} href="/jjk">
         <div className={styles.homeDivColumnDivP}>
         <p className={styles.homeDivColumnNumero}>5.</p>
         <div className={styles.homeDivColumnImg} >
