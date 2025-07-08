@@ -5,7 +5,7 @@ export default function JJK() {
   return (
     <div className={styleJJk.fmabDivP}>
         <div className={styleJJk.topDivImg}>
-            <Image  className={styleJJk.topImg} src="/img/OP.jpg" width={300} height={500} alt="image de l'anime"/>
+            <Image  className={styleJJk.topImg} src="/img/JJK.jpg" width={300} height={500} alt="image de l'anime"/>
         </div>
         <div className={styleJJk.topDivText}>
             <h2>Jujutsu Kaisen</h2>
