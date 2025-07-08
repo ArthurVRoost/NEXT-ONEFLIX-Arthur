@@ -1,0 +1,141 @@
+.payeDivP{
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    width: 90vw;
+    margin-left: 5%;
+    height: auto;
+    padding: 1%;
+    display: flex;
+}
+.spanDiv1{
+    font-weight: bold;
+}
+.payeDiv1{
+    flex-basis: 50%;
+    border-right: 1px solid black;
+}
+.payeDiv2{
+    flex-basis: 50%;
+    border-left: 1px solid black;
+}
+.payeDiv1Titre{
+    text-align: center;
+}
+.payeDiv1Box{
+    width: 80%;
+    border: 1px solid black;
+    margin-left: 10%;
+    align-items: center;
+    border-radius: 5px;
+    padding: 15px 10px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10%;
+}
+.payeDiv1Btn{
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 5px 20px;
+    transition: transform 0.5s ease;
+}
+.payeDiv1Btn:hover{
+    transform: scale(1.1);
+}
+.divMC{
+    background-color: black;
+    position: relative;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    border-radius: 20px;
+    justify-content: center;
+    margin-left: 20%;
+    margin-top: 5%;
+    height: 180px;
+}
+.divMCLogo{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3%;
+    margin-top: -5%;
+}
+.divMC input::placeholder{
+    background-color: black;
+}
+.divMC input {
+  border: none ;
+  outline: none ;
+  box-shadow: none ; 
+  background-color: transparent; 
+  color: white; 
+  font-size: 16px;
+  margin-top: 1%;
+}
+
+.divVisa{
+    background-color: #a2c7f2;
+    position: relative;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    border-radius: 20px;
+    justify-content: center;
+    margin-left: 20%;
+    margin-top: 5%;
+    height: 180px;
+}
+.divVisaLogo{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3%;
+    margin-top: -5%;
+}
+.divVisa input {
+  border: none ;
+  outline: none ;
+  box-shadow: none ; 
+  background-color: transparent; 
+  color: white; 
+  font-size: 16px;
+  margin-top: 1%;
+}
+.divVisa input::placeholder{
+    background-color: #a2c7f2;
+}
+
+.divCoins{
+    background-color: #ed4646;
+    position: relative;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    border-radius: 20px;
+    justify-content: center;
+    margin-left: 20%;
+    margin-top: 5%;
+    height: 180px;
+}
+.divCoinsLogo{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3%;
+    margin-top: -15%;
+}
+.LogoCoins{
+    margin-left: -5%;
+    margin-top: -5%;
+}
+.divTextCoins h3{
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+.activeBtn {
+  border: 2px solid #fff;
+  background-color: #444; 
+}
