@@ -12,7 +12,6 @@ export default function Home() {
       <section className={styles.homeSection1} >
         <div className={styles.homeSection1Div1}>
           <h2>TOP RANKED</h2>
-          <Link href="/" className={styles.Link}>See more &rarr;</Link>
         </div>
         
         <div className={styles.divRow1}>
@@ -123,7 +122,6 @@ export default function Home() {
       <section className={styles.homeSection2}>
         <div className={styles.homeSection1Div1}>
           <h2>LATEST ANIME</h2>
-          <Link href="/" className={styles.Link}>See more &rarr;</Link>
         </div>
         <div className={styles.divRow1}>
 
