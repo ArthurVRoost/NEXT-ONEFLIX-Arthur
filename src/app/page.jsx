@@ -356,7 +356,7 @@ export default function Home() {
     <div className={styles.homeDivColumn}>
       <h2  className={styles.homeDivColumnH2}>TOP ANIME</h2>
       {/* 1 */}
-      <Link className={styles.Link2} href="/">
+      <Link className={styles.Link2} href="/fmab">
           <div className={styles.homeDivColumnDivP}>
         <p className={styles.homeDivColumnNumero}>1.</p>
         <div className={styles.homeDivColumnImg} >
