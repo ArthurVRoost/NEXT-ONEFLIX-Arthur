@@ -22,6 +22,7 @@ export default function FMAB() {
                 <p><span>Aired:</span> Apr 5, 2009 to Jul 4, 2010</p>
                 <p><span>Studios:</span> Bones</p>
                 <p><span>Theme:</span> Military</p>
+                <p><span>Type:</span>Shonen</p>
            </div>
         </div>
     </div> 

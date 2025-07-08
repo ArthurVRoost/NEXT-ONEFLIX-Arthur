@@ -373,7 +373,7 @@ export default function Home() {
       </Link>
       
       {/* 2 */}
-      <Link className={styles.Link2} href="/">
+      <Link className={styles.Link2} href="/onepiece">
            <div className={styles.homeDivColumnDivP}>
         <p className={styles.homeDivColumnNumero}>2.</p>
         <div className={styles.homeDivColumnImg} >
