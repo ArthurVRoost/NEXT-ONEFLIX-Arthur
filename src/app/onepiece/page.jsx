@@ -10,7 +10,7 @@ export default function OnePiece() {
         </div>
         <div className={styleOP.topDivText}>
             <h2>One Piece</h2>
-            <p className={styleOP.topDivRating}><span>Rating:</span> 4.8/5 <i className="fa-solid fa-star"></i></p>
+            <p className={styleOP.topDivRating}><span>Rating:</span> 4.7/5 <i className="fa-solid fa-star"></i></p>
             <div className={styleOP.topDivSynop}>
                 <h3>Synopsis</h3>
                 <p>Monkey D. Luffy, a carefree yet powerful teen with a superhuman ability, dreams of finding the legendary One Piece and becoming King of the Pirates. Inspired by Gol D. Roger’s final words, he sets sail alone but soon gathers a unique crew. Together, they face dangers and wonders on an epic journey across the seas.</p>
