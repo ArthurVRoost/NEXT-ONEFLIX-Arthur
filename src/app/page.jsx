@@ -14,9 +14,10 @@ export default function Home() {
           <h2>TOP RANKED</h2>
           <Link href="/" className={styles.Link}>See more &rarr;</Link>
         </div>
+        
         <div className={styles.divRow1}>
-
-          <div className={styles.cardWrapper}>
+        <Link href='/details'>
+         <div className={styles.cardWrapper}>
           <div className={styles.card}>
             <Image  className={styles.cardImg} src="/img/CAROU1.webp" width={280} height={160} alt="image de l'anime"/>
             <div className={styles.cardOverlay}>
@@ -27,6 +28,8 @@ export default function Home() {
             </div>
           </div>
         </div>
+        </Link>
+         
 
         <div className={styles.cardWrapper}>
           <div className={styles.card}>
