@@ -3,7 +3,7 @@ body{
     margin: 0;
     padding: 0;
     background-color:#2F2A45 ;
-    
+    font-family: "Roboto";
 }
 .loading, .error {
   text-align: center;

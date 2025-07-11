@@ -74,7 +74,11 @@ export default function Details() {
                 <p><span>Studio:</span> {anime.studios?.[0]?.name || 'N/A'}</p>
                 <p><span>Genres:</span> {anime.genres?.map(g => g.name).join(', ') || 'N/A'}</p>
            </div>
-           <Link href={`/details/${params.id}/episodes`}><button className={styleDetails.button}>Voir tous les episodes</button></Link>
+           <div className={styleDetails.divBtnDetails}>
+              <Link href={`/details/${params.id}/episodes`}><button className={`${styleDetails.button} ${styleDetails.btn1}`}>Voir tous les episodes</button></Link>
+              <Link href="/"><button className={styleDetails.button}>Tout acheter</button></Link>
+           </div>
+           
            
         </div>
         

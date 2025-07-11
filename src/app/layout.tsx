@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {  Open_Sans, Roboto } from "next/font/google";
 
 import "./globals.css";
 import Script from "next/script";
 import Nav from '../components/nav/Nav'
 import Footer from '../components/footer/Footer'
 import styleNav from '../components/nav/nav.module.css'
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+
+const geistOpen_Sans = Open_Sans({
+  variable: "--font-open-Sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const geistRoboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin"],
 });
 
@@ -31,7 +32,7 @@ export default function RootLayout({
       <head>
         <Script src="https://kit.fontawesome.com/0241eb844d.js" crossOrigin="anonymous"/>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistOpen_Sans.variable} ${geistRoboto.variable}`}>
         <Nav/>
         <main className={styleNav.mainContent}>
           {children}
