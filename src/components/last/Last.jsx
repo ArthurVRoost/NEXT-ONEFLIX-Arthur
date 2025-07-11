@@ -50,7 +50,6 @@ export default function Last() {
                 <Image   className={stylesLast.cardImg}  src={episode.entry.images.jpg.large_image_url }  width={280}  height={160}  alt={`image de l'anime ${episode.entry.title}`}/>
                 <div className={stylesLast.cardOverlay}>
                   <h3 className={stylesLast.section1CardH3}>{episode.entry.title}</h3>
-                  <p className={stylesLast.section1CardP}>Prix: {episode.entry.score ? `${episode.entry.score * 10}€` : 'N/A'}</p>
                   <p className={stylesLast.section1CardP}>
                     Description: {episode.entry.synopsis ? episode.entry.synopsis.slice(0, 50) + '...' : 'Pas de description'}
                   </p>

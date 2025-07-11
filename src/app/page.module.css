@@ -137,3 +137,10 @@
 .homeDivColumnP1 span{
   font-size: 12px;
 }
+.divNarutoRow1{
+  display: flex;
+  flex-basis: 60%;
+  width: 65%;
+  flex-wrap: wrap;
+  margin-bottom: 10%;
+}
