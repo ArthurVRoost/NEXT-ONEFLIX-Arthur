@@ -5,6 +5,7 @@ import styleDetails from './details.module.css'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import axios from 'axios'
+import Link from 'next/link'
 
 export default function Details() {
   const params = useParams()
@@ -49,7 +50,7 @@ export default function Details() {
         <div className={styleDetails.topDivImg}>
             <Image  
               className={styleDetails.topImg} 
-              src={anime.images.jpg.large_image_url || "/img/OP.jpg"} 
+              src={anime.images.jpg.large_image_url} 
               width={300} 
               height={500} 
               alt={`image de l'anime ${anime.title}`}
@@ -73,7 +74,10 @@ export default function Details() {
                 <p><span>Studio:</span> {anime.studios?.[0]?.name || 'N/A'}</p>
                 <p><span>Genres:</span> {anime.genres?.map(g => g.name).join(', ') || 'N/A'}</p>
            </div>
+           <Link href={`/details/${params.id}/episodes`}><button className={styleDetails.button}>Voir tous les episodes</button></Link>
+           
         </div>
+        
     </div> 
   )
 }
