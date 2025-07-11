@@ -15,14 +15,8 @@ export default function Nav() {
             <Link className={styleNav.Link} href="/"><p className={styleNav.navText}>Home</p></Link>
             <Link className={styleNav.Link} href="/collection"><p className={styleNav.navText}>Collection</p></Link>
            <a href="#top" className={styleNav.Link}><p className={styleNav.navText}>Top</p></a>
-        
-            <select className={styleNav.selectNav} name="Category" defaultValue="">
-                <option className={styleNav.navText} value=""hidden disabled >Category</option>
-                <option className={styleNav.navText} value="action">Action</option>
-                <option className={styleNav.navText} value="adventure">Adventure</option>
-                <option className={styleNav.navText} value="romantic">Romance</option>
-                <option className={styleNav.navText} value="comedy">Comedy</option>
-            </select>
+            <Link className={styleNav.Link} href="/category"><p className={styleNav.navText}>Category</p></Link>
+            
         </div>
         <div className={styleNav.navDiv2}>
             <input type="search" placeholder='Search...' className={styleNav.navInput} />

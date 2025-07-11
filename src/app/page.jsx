@@ -1,11 +1,47 @@
+'use client'
 import styles from "./page.module.css";
 import AutoCarousel from '../components/carousel/Carousel'
 import Image from 'next/image'
 import Link from "next/link";
+import Last from '../components/last/Last'
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Home() {
+  const [animes, setAnimes] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchAnimes = async () => {
+      try {
+        setLoading(true)
+        const response = await axios.get('https://api.jikan.moe/v4/top/anime')
+        
+        
+        const topAnimes = response.data.data.slice(0, 8)
+        setAnimes(topAnimes)
+        setError(null)
+      } catch (err) {
+        console.error('Erreur lors du fetch des animes:', err)
+        setError('Impossible de charger les animes. Veuillez réessayer plus tard.')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchAnimes()
+  }, [])
+
+  if (loading) {
+    return <div className={styles.loading}>Chargement des animes...</div>
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>
+  }
   return (
-    
+  
     <>
     <AutoCarousel/>
     <div className={styles.homeDivP}>
@@ -13,218 +49,38 @@ export default function Home() {
         <div className={styles.homeSection1Div1}>
           <h2>TOP RANKED</h2>
         </div>
+        <div  className={styles.divRow1}>
+        {animes.map((anime) => (
         
-        <div className={styles.divRow1}>
-        <Link href='/details'>
-         <div className={styles.cardWrapper}>
-          <div className={styles.card}>
-            <Image  className={styles.cardImg} src="/img/CAROU1.webp" width={280} height={160} alt="image de l'anime"/>
-            <div className={styles.cardOverlay}>
-              <h3 className={styles.section1CardH3}>One Piece</h3>
-              <p className={styles.section1CardP}>Prix: X</p>
-              <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-              <p className={styles.section1CardP}>Rating: 4/5</p>
-            </div>
-          </div>
-        </div>
-        </Link>
-         
-
-        <div className={styles.cardWrapper}>
-          <div className={styles.card}>
-            <Image  className={styles.cardImg} src="/img/CAROU1.webp" width={280} height={160} alt="image de l'anime"/>
-            <div className={styles.cardOverlay}>
-              <h3 className={styles.section1CardH3}>One Piece</h3>
-              <p className={styles.section1CardP}>Prix: X</p>
-              <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-              <p className={styles.section1CardP}>Rating: 4/5</p>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.cardWrapper}>
-          <div className={styles.card}>
-            <Image  className={styles.cardImg} src="/img/CAROU1.webp" width={280} height={160} alt="image de l'anime"/>
-            <div className={styles.cardOverlay}>
-              <h3 className={styles.section1CardH3}>One Piece</h3>
-              <p className={styles.section1CardP}>Prix: X</p>
-              <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-              <p className={styles.section1CardP}>Rating: 4/5</p>
-            </div>
-          </div>
-        </div>
-
-          <div className={styles.cardWrapper}>
-            <div className={styles.card}>
-              <Image  className={styles.cardImg} src="/img/CAROU1.webp" width={280} height={160} alt="image de l'anime"/>
-              <div className={styles.cardOverlay}>
-                <h3 className={styles.section1CardH3}>One Piece</h3>
-                <p className={styles.section1CardP}>Prix: X</p>
-                <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-                <p className={styles.section1CardP}>Rating: 4/5</p>
+          <Link href={`/details/${anime.mal_id}`}>
+            <div key={anime.mal_id} className={styles.cardWrapper}>
+              <div className={styles.card}>
+                <Image 
+                  className={styles.cardImg} 
+                  src={anime.images.jpg.large_image_url || "/img/CAROU1.webp"} 
+                  width={280} 
+                  height={160} 
+                  alt={`Image de l'anime ${anime.title}`}
+                />
+                <div className={styles.cardOverlay}>
+                  <h3 className={styles.section1CardH3}>{anime.title}</h3>
+                  <p className={styles.section1CardP}>Prix: {anime.score ? `${anime.score * 1.3}€` : 'N/A'}</p>
+                  <p className={styles.section1CardP}>
+                    Description: {anime.synopsis ? anime.synopsis.slice(0, 40) + '...' : 'Pas de description'}
+                  </p>
+                  <p className={styles.section1CardP}>Rating: {anime.score || 'N/A'}/10</p>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          </Link>
        
-
-       <div className={styles.divRow2}>
-          <div className={styles.cardWrapper}>
-          <div className={styles.card}>
-            <Image  className={styles.cardImg} src="/img/CAROU1.webp" width={280} height={160} alt="image de l'anime"/>
-            <div className={styles.cardOverlay}>
-              <h3 className={styles.section1CardH3}>One Piece</h3>
-              <p className={styles.section1CardP}>Prix: X</p>
-              <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-              <p className={styles.section1CardP}>Rating: 4/5</p>
-            </div>
-          </div>
+      ))}
         </div>
 
-        <div className={styles.cardWrapper}>
-          <div className={styles.card}>
-            <Image  className={styles.cardImg} src="/img/CAROU1.webp" width={280} height={160} alt="image de l'anime"/>
-            <div className={styles.cardOverlay}>
-              <h3 className={styles.section1CardH3}>One Piece</h3>
-              <p className={styles.section1CardP}>Prix: X</p>
-              <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-              <p className={styles.section1CardP}>Rating: 4/5</p>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.cardWrapper}>
-          <div className={styles.card}>
-            <Image  className={styles.cardImg} src="/img/CAROU1.webp" width={280} height={160} alt="image de l'anime"/>
-            <div className={styles.cardOverlay}>
-              <h3 className={styles.section1CardH3}>One Piece</h3>
-              <p className={styles.section1CardP}>Prix: X</p>
-              <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-              <p className={styles.section1CardP}>Rating: 4/5</p>
-            </div>
-          </div>
-        </div>
-
-          <div className={styles.cardWrapper}>
-            <div className={styles.card}>
-              <Image  className={styles.cardImg} src="/img/CAROU1.webp" width={280} height={160} alt="image de l'anime"/>
-              <div className={styles.cardOverlay}>
-                <h3 className={styles.section1CardH3}>One Piece</h3>
-                <p className={styles.section1CardP}>Prix: X</p>
-                <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-                <p className={styles.section1CardP}>Rating: 4/5</p>
-              </div>
-            </div>
-          </div>
-        </div>
+       
       </section>
-
-      <section className={styles.homeSection2}>
-        <div className={styles.homeSection1Div1}>
-          <h2>LATEST ANIME</h2>
-        </div>
-        <div className={styles.divRow1}>
-
-          <div className={styles.cardWrapper}>
-          <div className={styles.card}>
-            <Image  className={styles.cardImg} src="/img/CAROU 2.webp" width={280} height={160} alt="image de l'anime"/>
-            <div className={styles.cardOverlay}>
-              <h3 className={styles.section1CardH3}>One Piece</h3>
-              <p className={styles.section1CardP}>Prix: X</p>
-              <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-              <p className={styles.section1CardP}>Rating: 4/5</p>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.cardWrapper}>
-          <div className={styles.card}>
-            <Image  className={styles.cardImg} src="/img/CAROU 2.webp" width={280} height={160} alt="image de l'anime"/>
-            <div className={styles.cardOverlay}>
-              <h3 className={styles.section1CardH3}>One Piece</h3>
-              <p className={styles.section1CardP}>Prix: X</p>
-              <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-              <p className={styles.section1CardP}>Rating: 4/5</p>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.cardWrapper}>
-          <div className={styles.card}>
-            <Image  className={styles.cardImg} src="/img/CAROU 2.webp" width={280} height={160} alt="image de l'anime"/>
-            <div className={styles.cardOverlay}>
-              <h3 className={styles.section1CardH3}>One Piece</h3>
-              <p className={styles.section1CardP}>Prix: X</p>
-              <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-              <p className={styles.section1CardP}>Rating: 4/5</p>
-            </div>
-          </div>
-        </div>
-
-          <div className={styles.cardWrapper}>
-            <div className={styles.card}>
-              <Image  className={styles.cardImg} src="/img/CAROU 2.webp" width={280} height={160} alt="image de l'anime"/>
-              <div className={styles.cardOverlay}>
-                <h3 className={styles.section1CardH3}>One Piece</h3>
-                <p className={styles.section1CardP}>Prix: X</p>
-                <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-                <p className={styles.section1CardP}>Rating: 4/5</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-          <div id="top" className={styles.divRow2}>
-
-          <div className={styles.cardWrapper}>
-          <div className={styles.card}>
-            <Image  className={styles.cardImg} src="/img/CAROU 2.webp" width={280} height={160} alt="image de l'anime"/>
-            <div className={styles.cardOverlay}>
-              <h3 className={styles.section1CardH3}>One Piece</h3>
-              <p className={styles.section1CardP}>Prix: X</p>
-              <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-              <p className={styles.section1CardP}>Rating: 4/5</p>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.cardWrapper}>
-          <div className={styles.card}>
-            <Image  className={styles.cardImg} src="/img/CAROU 2.webp" width={280} height={160} alt="image de l'anime"/>
-            <div className={styles.cardOverlay}>
-              <h3 className={styles.section1CardH3}>One Piece</h3>
-              <p className={styles.section1CardP}>Prix: X</p>
-              <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-              <p className={styles.section1CardP}>Rating: 4/5</p>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.cardWrapper}>
-          <div className={styles.card}>
-            <Image  className={styles.cardImg} src="/img/CAROU 2.webp" width={280} height={160} alt="image de l'anime"/>
-            <div className={styles.cardOverlay}>
-              <h3 className={styles.section1CardH3}>One Piece</h3>
-              <p className={styles.section1CardP}>Prix: X</p>
-              <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-              <p className={styles.section1CardP}>Rating: 4/5</p>
-            </div>
-          </div>
-        </div>
-
-          <div className={styles.cardWrapper}>
-            <div className={styles.card}>
-              <Image  className={styles.cardImg} src="/img/CAROU 2.webp" width={280} height={160} alt="image de l'anime"/>
-              <div className={styles.cardOverlay}>
-                <h3 className={styles.section1CardH3}>One Piece</h3>
-                <p className={styles.section1CardP}>Prix: X</p>
-                <p className={styles.section1CardP}>Description: Luffy et sa bande à la conquête des océans</p>
-                <p className={styles.section1CardP}>Rating: 4/5</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Last/>
+      
 
       <section className={styles.homeSection3}>
         <div className={styles.homeSection1Div1}>

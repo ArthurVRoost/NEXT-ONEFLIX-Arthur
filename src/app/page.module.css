@@ -44,6 +44,7 @@
   object-fit: cover;
   transition: filter 0.3s ease;
   display: block;
+  object-fit: cover;
 }
 
 .cardOverlay {
@@ -74,6 +75,7 @@
     justify-content: center;
     gap: 30px;
     margin-bottom: 3%;
+    flex-wrap: wrap;
 }
 .divRow2{
     display: flex;

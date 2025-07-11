@@ -5,3 +5,12 @@ body{
     background-color:#2F2A45 ;
     
 }
+.loading, .error {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+}
+
+.error {
+  color: #e74c3c;
+}
