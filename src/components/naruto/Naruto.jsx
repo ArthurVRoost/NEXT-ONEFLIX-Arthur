@@ -55,11 +55,8 @@ export default function Naruto() {
                 alt={`image de l'épisode ${episode.title}`}
               />
               <div className={styleNaruto.cardOverlay}>
-                <h3 className={styleNaruto.section1CardH3}>{episode.title}</h3>
-                <p className={styleNaruto.section1CardP}>Episodes: {episode.mal_id}</p>
-                <p className={styleNaruto.section1CardP}>
-                  Description: {episode.synopsis ? episode.synopsis.slice(0, 60) + '...' : 'Pas de description'}
-                </p>
+                <h3 className={styleNaruto.section3CardH3}>{episode.title}</h3>
+                <p className={styleNaruto.section3CardP}>Episodes: {episode.mal_id}</p>
               </div>
             </div>
           </Link>

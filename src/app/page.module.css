@@ -143,4 +143,12 @@
   width: 65%;
   flex-wrap: wrap;
   margin-bottom: 10%;
+  text-align: center;
+}
+.section3CardH3{
+  margin-left: -15%;
+  font-size: 15px;
+}
+.section3CardP{
+  margin-left: -15%;
 }
