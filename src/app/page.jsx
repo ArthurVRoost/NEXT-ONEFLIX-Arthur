@@ -52,8 +52,8 @@ export default function Home() {
         <div  className={styles.divRow1}>
         {animes.map((anime) => (
         
-          <Link href={`/details/${anime.mal_id}`}>
-            <div key={anime.mal_id} className={styles.cardWrapper}>
+          <Link key={anime.mal_id} href={`/details/${anime.mal_id}`}>
+            <div  className={styles.cardWrapper}>
               <div className={styles.card}>
                 <Image 
                   className={styles.cardImg} 
