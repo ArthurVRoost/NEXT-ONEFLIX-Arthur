@@ -47,6 +47,7 @@ export default function Details() {
 
   return (
     <div className={styleDetails.fmabDivP}>
+      <div className={styleDetails.fmabDivTop}>
         <div className={styleDetails.topDivImg}>
             <Image  
               className={styleDetails.topImg} 
@@ -61,10 +62,7 @@ export default function Details() {
             <p className={styleDetails.topDivRating}>
               <span>Rating:</span> {anime.score || 'N/A'}/10 <i className="fa-solid fa-star"></i>
             </p>
-            <div className={styleDetails.topDivSynop}>
-                <h3>Synopsis</h3>
-                <p>{anime.synopsis || 'Pas de synopsis disponible'}</p>
-            </div>
+            
            <div className={styleDetails.topDivInfo}>
                 <h3>Information</h3>
                 <p><span>Type:</span> {anime.type || 'N/A'}</p>
@@ -81,7 +79,13 @@ export default function Details() {
            
            
         </div>
+        <Image className={styleDetails.detailsImg} src='/img/luffy.png'width={320} height={480} alt='luffy'/>
+      </div>
         
+        <div className={styleDetails.topDivSynop}>
+                <h3>Synopsis</h3>
+                <p>{anime.synopsis || 'Pas de synopsis disponible'}</p>
+        </div>
     </div> 
   )
 }
