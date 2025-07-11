@@ -34,7 +34,7 @@ export default function Details() {
   }, [params.id])
 
   if (loading) {
-    return <div className={styleDetails.loading}>Chargement...</div>
+    return <div className={styleDetails.loading}>Loading...</div>
   }
 
   if (error) {
@@ -42,7 +42,7 @@ export default function Details() {
   }
 
   if (!anime) {
-    return <div className={styleDetails.error}>Anime non trouvé</div>
+    return <div className={styleDetails.error}>Anime not found</div>
   }
 
   return (
@@ -75,8 +75,8 @@ export default function Details() {
                 <p><span>Genres:</span> {anime.genres?.map(g => g.name).join(', ') || 'N/A'}</p>
            </div>
            <div className={styleDetails.divBtnDetails}>
-              <Link href={`/details/${params.id}/episodes`}><button className={`${styleDetails.button} ${styleDetails.btn1}`}>Voir tous les episodes</button></Link>
-              <Link href="/"><button className={styleDetails.button}>Tout acheter</button></Link>
+              <Link href={`/details/${params.id}/episodes`}><button className={`${styleDetails.button} ${styleDetails.btn1}`}>See all episodes</button></Link>
+              <Link href="/"><button className={styleDetails.button}>Buy all</button></Link>
            </div>
            
            

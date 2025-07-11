@@ -39,7 +39,7 @@ export default function Episodes() {
   }, [params.id])
 
   if (loading) {
-    return <div className={styleEpisodes.loading}>Chargement des épisodes...</div>
+    return <div className={styleEpisodes.loading}>Loading...</div>
   }
 
   if (error) {
@@ -60,7 +60,7 @@ export default function Episodes() {
             />
             <div className={styleEpisodes.cardOverlay}>
               <h3 className={styleEpisodes.section1CardH3}>Episode: {episode.mal_id}</h3>
-              <p className={styleEpisodes.section1CardP}>Titre: {episode.title}</p>
+              <p className={styleEpisodes.section1CardP}>Title: {episode.title}</p>
             </div>
           </div>
         </div>

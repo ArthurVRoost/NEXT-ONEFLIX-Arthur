@@ -1,0 +1,235 @@
+.animesGrid{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #907AD6;
+    margin-left: 5%;
+    width: 85%;
+    border-radius: 20px;
+    padding: 3%;
+
+}
+.cardImg{
+    object-fit: cover;
+}
+.title{
+    text-align: center;
+    color: white;
+}
+.filters{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    color: white;
+}
+.resultsCount{
+    text-align: center;
+    color: white;
+}
+.cardWrapper{
+    width: 300px;
+    margin-left: 10%;
+}
+
+.animesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 20px;
+}
+
+.cardWrapper {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cardWrapper:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cardWrapper:hover .cardImg {
+  transform: scale(1.05);
+}
+
+.cardOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    transparent,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.9)
+  );
+  color: white;
+  padding: 30px 20px 20px;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+
+.cardWrapper:hover .cardOverlay {
+  transform: translateY(0);
+}
+
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+}
+
+
+.cardInfo {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #e0e0e0;
+  line-height: 1.3;
+}
+
+.cardInfo:last-child {
+  margin-bottom: 0;
+}
+
+.cardWrapper:hover .cardOverlayFade {
+  opacity: 1;
+}
+
+.filtersSection {
+  margin-bottom: 40px;
+  padding: 20px;
+  background: #8469db;
+  border-radius: 10px;
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
+  color: white;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.filters {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.filterLabel {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.searchInput, .genreSelect {
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.searchInput:focus, .genreSelect:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.clearButton, .loadMoreButton {
+  padding: 12px 24px;
+  background: linear-gradient(to top, #6c52c4 0%, #b474dc 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clearButton:hover, .loadMoreButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.resultsCount {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.loadMoreSection {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.loading, .error, .endMessage {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.loading {
+  color: #007bff;
+}
+
+.error {
+  color: #dc3545;
+}
+
+.endMessage {
+  color: #28a745;
+}
+
+@media (max-width: 768px) {
+  .animesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cardTitle {
+    font-size: 18px;
+  }
+  
+  .cardInfo {
+    font-size: 12px;
+  }
+}
