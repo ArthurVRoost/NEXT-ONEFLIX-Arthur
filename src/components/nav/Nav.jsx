@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Nav() {
+    
   return (
     <div  className={`${styleNav.divPNav}`}>
         <div className={styleNav.navDiv0}>
@@ -19,10 +20,9 @@ export default function Nav() {
             
         </div>
         <div className={styleNav.navDiv2}>
-            <input type="search" placeholder='Search...' className={styleNav.navInput} />
             <div className={styleNav.navDiv3}>   
-                <i id={styleNav.navI} className="fa-solid fa-cart-shopping"></i>
                 <i id={styleNav.navI} className="fa-solid fa-user-plus"></i>
+                <i id={styleNav.navI} className="fa-solid fa-cart-shopping"></i>
             </div>
            
         </div>

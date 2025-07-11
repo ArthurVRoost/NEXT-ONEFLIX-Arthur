@@ -12,7 +12,6 @@ export default function Home() {
   const [animes, setAnimes] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-
   useEffect(() => {
     const fetchAnimes = async () => {
       try {

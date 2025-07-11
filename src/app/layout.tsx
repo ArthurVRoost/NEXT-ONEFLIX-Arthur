@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import {  Open_Sans, Roboto } from "next/font/google";
-
+import { Open_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
-import Nav from '../components/nav/Nav'
-import Footer from '../components/footer/Footer'
-import styleNav from '../components/nav/nav.module.css'
+import Nav from '../components/nav/Nav';
+import Footer from '../components/footer/Footer';
+import styleNav from '../components/nav/nav.module.css';
 
 const geistOpen_Sans = Open_Sans({
   variable: "--font-open-Sans",
@@ -30,14 +29,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <Script src="https://kit.fontawesome.com/0241eb844d.js" crossOrigin="anonymous"/>
+        <Script src="https://kit.fontawesome.com/0241eb844d.js" crossOrigin="anonymous" />
       </head>
       <body className={`${geistOpen_Sans.variable} ${geistRoboto.variable}`}>
-        <Nav/>
+        <Nav />
         <main className={styleNav.mainContent}>
           {children}
         </main>
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

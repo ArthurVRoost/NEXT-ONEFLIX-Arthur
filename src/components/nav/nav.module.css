@@ -23,7 +23,7 @@
     flex-basis: 30%;
     margin-top: 2%;
     gap: 40px;
-    margin-left: 10%;
+    margin-left: 15%;
 }
 
 .navDiv0{
@@ -35,10 +35,13 @@
 }
 .navDiv2{
     flex-basis: 30% ;
-    margin-left: 10%;
+    margin-left: 20%;
     margin-top: 2%;
     display: flex;
     align-items: center;
+}
+.navDiv2 i:hover{
+    color: white;
 }
 .navText{
     cursor: pointer;

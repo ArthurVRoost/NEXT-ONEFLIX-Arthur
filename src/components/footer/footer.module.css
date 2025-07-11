@@ -124,6 +124,7 @@
     display: flex;
     justify-content: center;
     gap: 30px;
+    padding-top: 3%;
 }
 .divCopyP{
     margin: 0;
@@ -138,4 +139,16 @@
     color: #eaeaeb;
     font-weight: bold;
     font-family: "Nono Sans";
+}
+
+.confirmMessage {
+  margin-top: 10px;
+  color: #4F518C;
+  font-weight: bold;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

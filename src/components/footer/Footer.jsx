@@ -1,8 +1,20 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import styleFooter from './footer.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
+
 export default function Footer() {
+    const [isSubscribed, setIsSubscribed] = useState(false)
+    const [email, setEmail] = useState('')
+  const handleSubscribe = () => {
+    setIsSubscribed(true)
+    setEmail('')
+
+    setTimeout(() => {
+      setIsSubscribed(false)
+    }, 5000)
+  }
   return (
     <>
     <div className={styleFooter.footerDivP}>
@@ -29,8 +41,20 @@ export default function Footer() {
             <Image className={styleFooter.footerImg2} src='/img/naruto.png'width={180} height={140} alt='luffy'/>
             <div className={styleFooter.footerDiv2Div2}>
                 <h2 className={styleFooter.footerDiv2Div2H2}>Newsletter</h2>
-                <input className={styleFooter.footerDiv2Div2Input} type="email" name="" id="" placeholder='Your e-mail...' />
-                <button className={styleFooter.footerDiv2Div2Btn}>SEND</button>
+                {isSubscribed && (
+              <p className={styleFooter.confirmMessage}>
+                Thanks for subscribing to our newsletter!
+              </p>
+            )}
+                <input
+              className={styleFooter.footerDiv2Div2Input}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Your e-mail..."
+            />
+                <button className={styleFooter.footerDiv2Div2Btn} onClick={handleSubscribe}>SEND</button>
+                
             </div>
         </div>
         <div className={styleFooter.footerDiv3}>
