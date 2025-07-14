@@ -87,7 +87,7 @@ export default function Home() {
     <div className={styles.homeDivColumn}>
       <h2  className={styles.homeDivColumnH2}>TOP ANIME</h2>
       {/* 1 */}
-      <Link className={styles.Link2} href="/fmab">
+      <Link className={styles.Link2} href={`/details/5114`}>
           <div className={styles.homeDivColumnDivP}>
         <p className={styles.homeDivColumnNumero}>1.</p>
         <div className={styles.homeDivColumnImg} >
@@ -104,7 +104,7 @@ export default function Home() {
       </Link>
       
       {/* 2 */}
-      <Link className={styles.Link2} href="/onepiece">
+      <Link className={styles.Link2} href={`/details/21`}>
            <div className={styles.homeDivColumnDivP}>
         <p className={styles.homeDivColumnNumero}>2.</p>
         <div className={styles.homeDivColumnImg} >
@@ -138,7 +138,7 @@ export default function Home() {
       </Link>
       
     {/* 4 */}
-    <Link className={styles.Link2} href="/snk">
+    <Link className={styles.Link2} href={`/details/38524`}>
         <div className={styles.homeDivColumnDivP}>
         <p className={styles.homeDivColumnNumero}>4.</p>
         <div className={styles.homeDivColumnImg} >
