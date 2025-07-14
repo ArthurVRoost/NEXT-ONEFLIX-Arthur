@@ -40,7 +40,7 @@ export default function Nav() {
           <i id={styleNav.navI} className="fa-solid fa-user-plus" onClick={handleOpenAuthModal} style={{ cursor: 'pointer' }}></i>
 
           <Link href="/panier" style={{ position: 'relative', textDecoration: 'none' }}>
-            <i id={styleNav.navI} className="fa-solid fa-cart-shopping" style={{ cursor: 'pointer' }}></i>
+            <i id={styleNav.navI} className="fa-solid fa-cart-shopping" style={{ cursor: 'pointer', listStyle:'none', color:'#4F518C' }}></i>
             {itemsCount > 0 && (
               <span style={{ position: 'absolute', top: '-8px', right: '-8px', background: '#ff4444', color: 'white', borderRadius: '50%', width: '20px', height: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 'bold', }}>
                 {itemsCount}
