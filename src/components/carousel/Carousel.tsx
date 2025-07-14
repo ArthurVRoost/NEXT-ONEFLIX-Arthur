@@ -49,7 +49,7 @@ export default function AutoCarousel() {
       >
         {images.map((src, i) => (
           <div className={stylesCarou.slide} key={i}>
-            <img src={src} alt={`Slide ${i}`} />
+            <img className={stylesCarou.ImgCarou} src={src} alt={`Slide ${i}`} />
           </div>
         ))}
       </div>

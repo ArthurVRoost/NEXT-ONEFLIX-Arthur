@@ -4,11 +4,14 @@ import React, { useState, useEffect } from 'react'
 import styleDetails from './details.module.css'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
+import { useDispatch } from 'react-redux'
+import { addAllEpisodes } from '../../../store/slices/cartSlice' // Ajustez le chemin selon votre structure
 import axios from 'axios'
 import Link from 'next/link'
 
 export default function Details() {
   const params = useParams()
+  const dispatch = useDispatch()
   const [anime, setAnime] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -21,7 +24,6 @@ export default function Details() {
         setAnime(response.data.data)
         setError(null)
       } catch (err) {
-        console.error('Erreur lors du fetch des détails:', err)
         setError('Impossible de charger les détails de l\'anime.')
       } finally {
         setLoading(false)
@@ -32,6 +34,17 @@ export default function Details() {
       fetchAnimeDetails()
     }
   }, [params.id])
+
+  const handleBuyAll = () => {
+    if (anime) {
+      dispatch(addAllEpisodes({
+        animeId: anime.mal_id,
+        animeTitle: anime.title,
+        animeImage: anime.images.jpg.large_image_url,
+        episodeCount: anime.episodes || 1
+      }))
+    }
+  }
 
   if (loading) {
     return <div className={styleDetails.loading}>Loading...</div>
@@ -73,8 +86,17 @@ export default function Details() {
                 <p><span>Genres:</span> {anime.genres?.map(g => g.name).join(', ') || 'N/A'}</p>
            </div>
            <div className={styleDetails.divBtnDetails}>
-              <Link href={`/details/${params.id}/episodes`}><button className={`${styleDetails.button} ${styleDetails.btn1}`}>See all episodes</button></Link>
-              <Link href="/"><button className={styleDetails.button}>Buy all</button></Link>
+              <Link href={`/details/${params.id}/episodes`}>
+                <button className={`${styleDetails.button} ${styleDetails.btn1}`}>
+                  See all episodes
+                </button>
+              </Link>
+              <button 
+                className={styleDetails.button} 
+                onClick={handleBuyAll}
+              >
+                Buy all ({anime.episodes || 1} episodes)
+              </button>
            </div>
            
            

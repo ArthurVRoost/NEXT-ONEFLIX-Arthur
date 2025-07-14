@@ -66,9 +66,9 @@ export default function Home() {
                 <div className={styles.cardOverlay}>
                   <h3 className={styles.section1CardH3}>{anime.title}</h3>
                   <p className={styles.section1CardP}>
-                    Description: {anime.synopsis ? anime.synopsis.slice(0, 40) + '...' : 'Pas de description'}
+                    <span>Description:</span> {anime.synopsis ? anime.synopsis.slice(0, 40) + '...' : 'Pas de description'}
                   </p>
-                  <p className={styles.section1CardP}>Rating: {anime.score || 'N/A'}/10</p>
+                  <p className={styles.section1CardP}><span>Rating:</span> {anime.score || 'N/A'}/10</p>
                 </div>
               </div>
             </div>

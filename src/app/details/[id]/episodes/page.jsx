@@ -49,7 +49,7 @@ export default function Episodes() {
     const product = {
       id: `episode-${episode.mal_id}`, 
       title: `Episode ${episode.mal_id}: ${episode.title}`,
-      price: 2.99, 
+      price: 1.99, 
       image: defaultImages[episode.mal_id % defaultImages.length],
       type: 'episode',
       animeId: params.id,
@@ -74,20 +74,11 @@ export default function Episodes() {
       {episodes.map((episode) => (
         <div key={episode.mal_id} className={styleEpisodes.cardWrapper}>
           <div className={styleEpisodes.card}>
-            <Image
-              className={styleEpisodes.cardImg}
-              src={defaultImages[episode.mal_id % defaultImages.length]}
-              width={280}
-              height={160}
-              alt={`image de l'épisode ${episode.title}`}
-            />
+            <Image className={styleEpisodes.cardImg} src={defaultImages[episode.mal_id % defaultImages.length]} width={280} height={160} alt={`image de l'épisode ${episode.title}`}/>
             <div className={styleEpisodes.cardOverlay}>
               <h3 className={styleEpisodes.section1CardH3}>Episode: {episode.mal_id}</h3>
-              <p className={styleEpisodes.section1CardP}>Title: {episode.title}</p>
-              <button 
-                className={styleEpisodes.section1CardBtn}
-                onClick={() => handleAddToCart(episode)}
-              >
+              <p className={styleEpisodes.section1CardP}> <span>Title:</span> {episode.title}</p>
+              <button  className={styleEpisodes.section1CardBtn} onClick={() => handleAddToCart(episode)}>
                 Ajouter au panier
               </button>
             </div>

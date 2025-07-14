@@ -38,6 +38,49 @@ const cartSlice = createSlice({
         total + (item.isFree ? 0 : item.price * item.quantity), 0
       );
     },
+    addAllEpisodes: (state, action) => {
+  const { animeId, animeTitle, animeImage, episodeCount } = action.payload;
+  
+  // Générer un prix aléatoire entre 10 et 15
+  const randomPrice = Math.floor(Math.random() * 6) + 10; // 10 à 15
+  
+  // Créer un item spécial pour "tous les épisodes"
+  const allEpisodesItem = {
+    id: `all-episodes-${animeId}`,
+    title: `${animeTitle} - All Episodes (${episodeCount} episodes)`,
+    price: randomPrice,
+    image: animeImage,
+    quantity: 1,
+    isFree: false,
+    isAllEpisodes: true, // Flag pour identifier cet item
+    animeId: animeId,
+    episodeCount: episodeCount
+  };
+  
+  // Vérifier si cet anime n'est pas déjà dans le panier
+  const existingItem = state.items.find(item => item.id === allEpisodesItem.id);
+  
+  if (!existingItem) {
+    state.items.push(allEpisodesItem);
+  }
+  
+  state.itemsCount = state.items.reduce((total, item) => total + item.quantity, 0);
+
+
+  if (state.items.length >= 5) {
+    const cheapestItem = state.items.reduce((min, item) => 
+      item.price < min.price ? item : min
+    );
+    state.items = state.items.map(item => ({
+      ...item,
+      isFree: item.id === cheapestItem.id
+    }));
+  }
+  
+  state.total = state.items.reduce((total, item) => 
+    total + (item.isFree ? 0 : item.price * item.quantity), 0
+  );
+},
     
     removeFromCart: (state, action) => {
       const itemId = action.payload;
@@ -109,7 +152,8 @@ export const {
   removeFromCart, 
   decreaseQuantity, 
   clearCart, 
-  toggleCart 
+  toggleCart,
+  addAllEpisodes 
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

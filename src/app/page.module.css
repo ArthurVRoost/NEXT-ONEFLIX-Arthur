@@ -50,7 +50,7 @@
 .cardOverlay {
   position: absolute;
   bottom: -100%;
-  left: 0;
+  left: -10;
   width: 100%;
   height: 100%;
   background: rgba(10, 10, 10, 0.6);
@@ -61,7 +61,16 @@
   justify-content: center;
   padding-left: 10%
 }
-
+.cardOverlay h3{
+  font-size: 17px;
+}
+.cardOverlay p{
+  font-size: 13px;
+}
+.cardOverlay span{
+  font-size: 15px;
+  font-weight: bold;
+}
 .card:hover .cardImg {
   filter: blur(3px);
 }
@@ -151,4 +160,7 @@
 }
 .section3CardP{
   margin-left: -15%;
+}
+.section12CardH3{
+  font-size: 14px;
 }

@@ -49,11 +49,7 @@ export default function Last() {
               <div className={stylesLast.card}>
                 <Image   className={stylesLast.cardImg}  src={episode.entry.images.jpg.large_image_url }  width={280}  height={160}  alt={`image de l'anime ${episode.entry.title}`}/>
                 <div className={stylesLast.cardOverlay}>
-                  <h3 className={stylesLast.section1CardH3}>{episode.entry.title}</h3>
-                  <p className={stylesLast.section1CardP}>
-                    Description: {episode.entry.synopsis ? episode.entry.synopsis.slice(0, 50) + '...' : 'Pas de description'}
-                  </p>
-                  <p className={stylesLast.section1CardP}>Rating: {episode.entry.score || 'N/A'}/10</p>
+                  <h3 className={stylesLast.section12CardH3}>{episode.entry.title}</h3>
                 </div>
               </div>
             </div>
