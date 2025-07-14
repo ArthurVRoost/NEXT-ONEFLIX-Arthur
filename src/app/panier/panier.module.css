@@ -1,23 +1,69 @@
+.divP{
+    display: flex;
+    gap: 32px;
+    background-color: #907AD6;
+    border-radius: 20px;
+    padding: 3%;
+}
+.divCard{
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+.divTout{
+    width: 90%;
+    margin-left: 5%;
+}
+.divTop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3%;
+}
+.titrePanier{
+    color: white;
+}
+.btnVider{
+    background-color: #907AD6;
+    color: white;
+    border: none;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.btnVider:hover{
+    box-shadow: 0px 0px 10px 0px white ;
+}
 .btnContinue{
     width: 100%;
     background: transparent;
     color: #666;
     border: 1px solid #ddd;
     padding: 0.5rem;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     margin-top: 1rem;
 }
+.btnContinue:hover{
+    background-color: #666;
+    color: white;
+}
 .btnPaiement{
     width: 100%;
-    background-color: #4CAF50 ;
+    background-color: #907AD6;
     color: white;
     border: none;
     padding: 1rem;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 1.1rem;
     font-weight: bold;
+}
+.btnPaiement:hover{
+    box-shadow: 0px 0px 10px 0px #2F2A45;
 }
 .divTotal{
     display: flex;
@@ -29,8 +75,11 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 0.5rem;
-    color: #4CAF50;
+    color: #907AD6;
     font-weight: bold;
+}
+.spanReduc{
+    color: #907AD6;
 }
 .divSousTotal{
     display: flex;
@@ -50,22 +99,25 @@
     min-width: 80px;
 }
 .btnSupp{
-    background-color: #f44336;
+    background-color: #2F2A45;
     color: white;
     border: none;
-    padding: 0.5rem;
-    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
     cursor: pointer;
+}
+.btnSupp:hover{
+    box-shadow: 0px 0px 10px 0px #907AD6;
 }
 .divQuantite{
     text-align: center;
     min-width: 100px;
 }
 .btnQuantite{
-    background-color: #ff9800;
+    background-color: #907AD6;
     color: white;
     border: none;
-    padding: 0.25rem 0.5rem;
+    padding: 0.15rem 0.5rem;
     border-radius: 4px;
     cursor: pointer;
     margin: 0.5rem;
@@ -82,4 +134,32 @@
     font-size: 0.9rem;
     text-decoration: line-through;
     color: #999;
+}
+.divNom{
+    flex: 1;
+}
+.divTitre{
+    font-size: 20px;
+}
+.imgAnime{
+    border-radius: 10px;
+}
+.divRienH1{
+    color: white;
+}
+.divRienP{
+    color: white;
+}
+.divRienBtn{
+    background-color: #907AD6;
+    border: none;
+    border-radius: 10px;
+    padding: 16px 20px;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 2%;
+}
+.divRienBtn:hover{
+    box-shadow: 0px 0px 10px 0px white;
 }

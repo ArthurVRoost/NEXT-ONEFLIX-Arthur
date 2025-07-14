@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { removeFromCart, decreaseQuantity, clearCart } from '../../store/slices/cartSlice'
 import Image from 'next/image'
 import stylePanier from './panier.module.css'
+import Link from 'next/link'
 
 export default function Panier() {
   const dispatch = useDispatch()
@@ -22,17 +23,13 @@ export default function Panier() {
     dispatch(clearCart())
   }
   
-  const handleCheckout = () => {
-    alert('Fonction de paiement à implémenter')
-    console.log('Checkout with items:', items)
-  }
   
   if (items.length === 0) {
     return (
-      <div style={{ padding: '2rem', textAlign: 'center' }}>
-        <h1>Votre panier est vide</h1>
-        <p>Découvrez nos anime et ajoutez des épisodes à votre panier !</p>
-        <button onClick={() => window.history.back()}>
+      <div className={stylePanier.divRien} style={{ padding: '2rem', textAlign: 'center' }}>
+        <h1 className={stylePanier.divRienH1}>Your cart is empty</h1>
+        <p className={stylePanier.divRienP}>Discover our other animes and add them to your cart!</p>
+        <button className={stylePanier.divRienBtn} onClick={() => window.history.back()}>
           Continuer mes achats
         </button>
       </div>
@@ -40,71 +37,32 @@ export default function Panier() {
   }
   
   return (
-    <div style={{ padding: '2rem' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <h1>Mon Panier ({itemsCount} article{itemsCount > 1 ? 's' : ''})</h1>
-        <button 
-          onClick={handleClearCart}
-          style={{ 
-            background: '#ff4444', 
-            color: 'white', 
-            border: 'none', 
-            padding: '0.5rem 1rem',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}
-        >
-          Vider le panier
+    <div className={stylePanier.divTout} >
+      <div className={stylePanier.divTop}>
+        <h1 className={stylePanier.titrePanier}>My Cart ({itemsCount} article{itemsCount > 1 ? 's' : ''})</h1>
+        <button className={stylePanier.btnVider} onClick={handleClearCart}>
+          Empty Cart
         </button>
       </div>
       
-      <div style={{ display: 'flex', gap: '2rem' }}>
-        <div style={{ flex: 2 }}>
+      <div className={stylePanier.divP}>
+        <div className={stylePanier.divGauche} style={{ flex: 2 }}>
           {items.map(item => (
-            <div 
-              key={item.id} 
-              style={{ 
-                display: 'flex', 
-                gap: '1rem', 
-                padding: '1rem', 
-                border: '1px solid #ddd', 
-                borderRadius: '8px',
-                marginBottom: '1rem',
-                backgroundColor: item.isFree ? '#e8f5e8' : 'white'
-              }}
-            >
+            <div className={stylePanier.divCard} key={item.id} 
+              style={{ backgroundColor: item.isFree ? '#d7f3d7ff' : 'white'}}>
               {/* Image */}
-              <div style={{ flexShrink: 0 }}>
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={120}
-                  height={80}
-                  style={{ borderRadius: '4px' }}
-                />
+              <div className={stylePanier.divImg}>
+                <Image className={stylePanier.imgAnime} src={item.image} alt={item.title} width={120} height={80}  />
               </div>
               
               {/* Détails */}
-              <div style={{ flex: 1 }}>
-                <h3>{item.title}</h3>
-                <p style={{ color: '#666', fontSize: '0.9rem' }}>{item.description}</p>
-                {item.isFree && (
-                  <span style={{ 
-                    background: '#4CAF50', 
-                    color: 'white', 
-                    padding: '0.25rem 0.5rem',
-                    borderRadius: '12px',
-                    fontSize: '0.8rem',
-                    fontWeight: 'bold'
-                  }}>
-                    GRATUIT! 🎉
-                  </span>
-                )}
+              <div className={stylePanier.divNom} >
+                <h3 className={stylePanier.divTitre}>{item.title}</h3>
               </div>
               
               {/* Prix */}
               <div className={stylePanier.divPrix}>
-                <div className={stylePanier.divGratuit} style={{color: item.isFree ? '#4CAF50' : '#333'}}>
+                <div className={stylePanier.divGratuit} style={{color: item.isFree ? '#907AD6' : '#333'}}>
                   {item.isFree ? 'GRATUIT' : `${item.price.toFixed(2)}€`}
                 </div>
                 {item.isFree && (
@@ -116,7 +74,7 @@ export default function Panier() {
               
               {/* Quantité */}
               <div className={stylePanier.divQuantite}>
-                <div>Quantité: {item.quantity}</div>
+                <div>Quantity: {item.quantity}</div>
                 <button className={stylePanier.btnQuantite}  onClick={() => handleDecreaseQuantity(item.id)}>
                   -
                 </button>
@@ -125,7 +83,7 @@ export default function Panier() {
               {/* Actions */}
               <div className={stylePanier.divSupp}>
                 <button className={stylePanier.btnSupp} onClick={() => handleRemoveItem(item.id)}>
-                  Supprimer
+                  Delete
                 </button>
               </div>
             </div>
@@ -134,17 +92,17 @@ export default function Panier() {
         
         {/* Résumé de commande */}
         <div className={stylePanier.divResumeCommande}>
-          <h3>Résumé de commande</h3>
+          <h3>Order Summary</h3>
           <div style={{ marginBottom: '1rem' }}>
             <div className={stylePanier.divSousTotal}>
-              <span>Sous-total:</span>
+              <span>Subtotal:</span>
               <span>{(total + (items.find(item => item.isFree)?.price || 0)).toFixed(2)}€</span>
             </div>
             
             {items.length >= 5 && (
               <div className={stylePanier.divReduc}>
-                <span>Réduction (5ème article):</span>
-                <span>-{items.find(item => item.isFree)?.price.toFixed(2)}€</span>
+                <span className={stylePanier.spanReduc}>Discount (5th article):</span>
+                <span className={stylePanier.spanReduc}>-{items.find(item => item.isFree)?.price.toFixed(2)}€</span>
               </div>
             )}
             
@@ -155,13 +113,15 @@ export default function Panier() {
               <span>{total.toFixed(2)}€</span>
             </div>
           </div>
-          
-          <button onClick={handleCheckout} className={stylePanier.btnPaiement}>
-            Procéder au paiement
+          <Link href="/paiements">
+          <button  className={stylePanier.btnPaiement}>
+            Proceed to payement
           </button>
+          </Link>
+          
           
           <button className={stylePanier.btnContinue}  onClick={() => window.history.back()} >
-            Continuer mes achats
+            Continue Shopping
           </button>
         </div>
       </div>
