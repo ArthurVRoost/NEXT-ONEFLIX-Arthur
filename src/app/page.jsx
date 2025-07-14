@@ -7,7 +7,7 @@ import Last from '../components/last/Last'
 import Naruto from '../components/naruto/Naruto'
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import LoadUserFromStorage from '../components/LoadUserFromStorage'
 export default function Home() {
   const [animes, setAnimes] = useState([])
   const [loading, setLoading] = useState(true)
@@ -43,6 +43,7 @@ export default function Home() {
   return (
   
     <>
+    <LoadUserFromStorage/>
     <AutoCarousel/>
     <div className={styles.homeDivP}>
       <section className={styles.homeSection1} >

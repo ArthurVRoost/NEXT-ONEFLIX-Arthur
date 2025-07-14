@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { closeAuthModal, switchAuthMode } from '../../store/slices/authSlice';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
+import styleAuth from './authModal.module.css'
 
 const AuthModal = () => {
   const dispatch = useDispatch();
-  const { isModalOpen, modalMode } = useSelector(state => state.auth);
-  
+  const { isAuthModalOpen, authModalType } = useSelector(state => state.auth);  
   const handleCloseModal = () => {
     dispatch(closeAuthModal());
   };
@@ -16,36 +16,32 @@ const AuthModal = () => {
     dispatch(switchAuthMode());
   };
   
-  if (!isModalOpen) return null;
-  
-  return (
-    <div className="auth-modal-overlay" onClick={handleCloseModal}>
-      <div className="auth-modal" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-header">
-          <h2>{modalMode === 'login' ? 'Connexion' : 'Inscription'}</h2>
-          <button onClick={handleCloseModal} className="close-btn">
-            ×
+  if (!isAuthModalOpen) return null;
+
+return (
+  <div className={styleAuth.authModalOverlay} onClick={handleCloseModal}>
+    <div className={styleAuth.authModal} onClick={(e) => e.stopPropagation()}>
+      <div className={styleAuth.modalHeader}>
+        <h2>{authModalType === 'login' ? 'Connexion' : 'Inscription'}</h2>
+        <button onClick={handleCloseModal} className={styleAuth.closeBtn}>×</button>
+      </div>
+      <div className={styleAuth.modalContent}>
+        {authModalType === 'login' ? <LoginForm /> : <RegisterForm />}
+      </div>
+      <div className={styleAuth.modalFooter}>
+        <p>
+          {authModalType === 'login' ? 
+            "Pas encore de compte ? " : 
+            "Déjà un compte ? "
+          }
+          <button onClick={handleSwitchMode} className={styleAuth.switchBtn}>
+            {authModalType === 'login' ? 'Inscrivez-vous' : 'Connectez-vous'}
           </button>
-        </div>
-        
-        <div className="modal-content">
-          {modalMode === 'login' ? <LoginForm /> : <RegisterForm />}
-        </div>
-        
-        <div className="modal-footer">
-          <p>
-            {modalMode === 'login' ? 
-              "Pas encore de compte ? " : 
-              "Déjà un compte ? "
-            }
-            <button onClick={handleSwitchMode} className="switch-btn">
-              {modalMode === 'login' ? 'Inscrivez-vous' : 'Connectez-vous'}
-            </button>
-          </p>
-        </div>
+        </p>
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default AuthModal;

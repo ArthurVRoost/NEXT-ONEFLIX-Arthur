@@ -30,7 +30,7 @@ export default function Panier() {
         <h1 className={stylePanier.divRienH1}>Your cart is empty</h1>
         <p className={stylePanier.divRienP}>Discover our other animes and add them to your cart!</p>
         <button className={stylePanier.divRienBtn} onClick={() => window.history.back()}>
-          Continuer mes achats
+          Continue Shopping
         </button>
       </div>
     )
@@ -101,7 +101,7 @@ export default function Panier() {
             
             {items.length >= 5 && (
               <div className={stylePanier.divReduc}>
-                <span className={stylePanier.spanReduc}>Discount (5th article):</span>
+                <span className={stylePanier.spanReduc}>Discount (4 and more + 1):</span>
                 <span className={stylePanier.spanReduc}>-{items.find(item => item.isFree)?.price.toFixed(2)}€</span>
               </div>
             )}

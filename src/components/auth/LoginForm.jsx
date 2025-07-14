@@ -1,78 +1,78 @@
 'use client'
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginStart, loginSuccess, loginFailure } from '../../store/slices/authSlice';
+import {
+  loginStart,
+  loginSuccess,
+  loginFailure,
+  loadUsers,
+  closeAuthModal
+} from '../../store/slices/authSlice';
+import styleAuth from './authModal.module.css';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const { isLoading, error } = useSelector(state => state.auth);
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
-  
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-  
-  const handleSubmit = async (e) => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  // Charger les utilisateurs depuis localStorage au premier rendu
+  useEffect(() => {
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+    dispatch(loadUsers(storedUsers));
+  }, [dispatch]);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginStart());
-    
-    try {
-      // Remplacez par votre logique d'authentification
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      
-      if (response.ok) {
-        const userData = await response.json();
-        dispatch(loginSuccess(userData));
-      } else {
-        const errorData = await response.json();
-        dispatch(loginFailure(errorData.message || 'Erreur de connexion'));
-      }
-    } catch (error) {
-      dispatch(loginFailure('Erreur de connexion'));
+
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+    const matchedUser = storedUsers.find(
+      user => user.email === email && user.password === password
+    );
+
+    if (matchedUser) {
+      const { password, ...userWithoutPassword } = matchedUser;
+      localStorage.setItem('currentUser', JSON.stringify(userWithoutPassword));
+      dispatch(loginSuccess(userWithoutPassword));
+      dispatch(closeAuthModal());
+    } else {
+      dispatch(loginFailure('Email ou mot de passe incorrect'));
     }
   };
-  
+
   return (
-    <form onSubmit={handleSubmit} className="auth-form">
-      {error && <div className="error-message">{error}</div>}
-      
-      <div className="form-group">
+    <form onSubmit={handleSubmit} className={styleAuth.authForm}>
+      <div className={styleAuth.formGroup}>
         <label htmlFor="email">Email</label>
         <input
-          type="email"
           id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
+          type="email"
+          placeholder="Entrez votre email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
+          className={styleAuth.input}
         />
       </div>
-      
-      <div className="form-group">
+
+      <div className={styleAuth.formGroup}>
         <label htmlFor="password">Mot de passe</label>
         <input
-          type="password"
           id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
+          type="password"
+          placeholder="Entrez votre mot de passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           required
+          className={styleAuth.input}
         />
       </div>
-      
-      <button type="submit" disabled={isLoading} className="submit-btn">
+
+      {error && <p className={styleAuth.error}>{error}</p>}
+
+      <button type="submit" disabled={isLoading} className={styleAuth.submitBtn}>
         {isLoading ? 'Connexion...' : 'Se connecter'}
       </button>
     </form>

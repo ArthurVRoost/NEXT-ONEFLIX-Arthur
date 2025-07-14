@@ -1,17 +1,41 @@
 'use client'
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styleNav from './nav.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
-import { openAuthModal } from '../../store/slices/authSlice'
+import { openAuthModal, logout } from '../../store/slices/authSlice'
 
 export default function Nav() {
   const dispatch = useDispatch()
   const { itemsCount } = useSelector(state => state.cart)
+  const { currentUser, isAuthenticated } = useSelector(state => state.auth)
+  const [showUserMenu, setShowUserMenu] = useState(false)
+  const menuRef = useRef(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowUserMenu(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   const handleOpenAuthModal = () => {
     dispatch(openAuthModal('login'))
+  }
+
+  const handleLogout = () => {
+    setShowUserMenu(false)
+    dispatch(logout())
+  }
+
+  const toggleUserMenu = () => {
+    setShowUserMenu(prev => !prev)
   }
 
   return (
@@ -37,17 +61,41 @@ export default function Nav() {
 
       <div className={styleNav.navDiv2}>
         <div className={styleNav.navDiv3}>
-          <i id={styleNav.navI} className="fa-solid fa-user-plus" onClick={handleOpenAuthModal} style={{ cursor: 'pointer' }}></i>
+  <div className={styleNav.iconWrapper}>
+    {isAuthenticated ? (
+      <div ref={menuRef}>
+        <i
+          className="fa-solid fa-user"
+          onClick={toggleUserMenu}
+          title="Compte utilisateur"
+        ></i>
+        {showUserMenu && (
+          <div className={styleNav.userMenu}>
+            <p>Bonjour {currentUser?.username}</p>
+            <Link href="/account"><p>Mon compte</p></Link>
+            <Link href="/profile"><p>Mes informations</p></Link>
+            <p onClick={handleLogout} style={{ color: 'red' }}>Se déconnecter</p>
+          </div>
+        )}
+      </div>
+    ) : (
+      <i
+        className="fa-solid fa-user-plus"
+        onClick={handleOpenAuthModal}
+        title="Se connecter / S'inscrire"
+      ></i>
+    )}
+  </div>
 
-          <Link href="/panier" style={{ position: 'relative', textDecoration: 'none' }}>
-            <i id={styleNav.navI} className="fa-solid fa-cart-shopping" style={{ cursor: 'pointer', listStyle:'none', color:'#4F518C' }}></i>
-            {itemsCount > 0 && (
-              <span style={{ position: 'absolute', top: '-8px', right: '-8px', background: '#ff4444', color: 'white', borderRadius: '50%', width: '20px', height: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 'bold', }}>
-                {itemsCount}
-              </span>
-            )}
-          </Link>
-        </div>
+  <div className={styleNav.iconWrapper}>
+    <Link  href="/panier" style={{ position: 'relative' }}>
+      <i className="fa-solid fa-cart-shopping" title="Panier" style={{color:'#4F518C'}}></i>
+      {itemsCount > 0 && (
+        <span className={styleNav.badge}>{itemsCount}</span>
+      )}
+    </Link>
+  </div>
+</div>
       </div>
     </div>
   )

@@ -7,7 +7,7 @@ import Footer from '../components/footer/Footer';
 import AuthModal from '../components/auth/authModal';
 import styleNav from '../components/nav/nav.module.css';
 import { ReduxProvider } from './ReduxProvider';
-
+import AuthInitProvider from '../app/provider/AuthProvider'
 const geistOpen_Sans = Open_Sans({
   variable: "--font-open-Sans",
   subsets: ["latin"],
@@ -35,6 +35,7 @@ export default function RootLayout({
       </head>
       <body className={`${geistOpen_Sans.variable} ${geistRoboto.variable}`}>
         <ReduxProvider>
+          <AuthInitProvider/>
           <Nav />
           <main className={styleNav.mainContent}>
             {children}

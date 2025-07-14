@@ -1,91 +1,90 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  currentUser: null,
+  users: [],
+  isAuthenticated: false,
+  isLoading: false,
+  error: null
+}
+
 const authSlice = createSlice({
   name: 'auth',
-  initialState: {
-    user: null,
-    isAuthenticated: false,
-    isLoading: false,
-    error: null,
-    isModalOpen: false,
-    modalMode: 'login', 
-  },
+  initialState,
   reducers: {
-    loginStart: (state) => {
-      state.isLoading = true;
-      state.error = null;
-    },
-    
-    loginSuccess: (state, action) => {
-      state.user = action.payload;
-      state.isAuthenticated = true;
-      state.isLoading = false;
-      state.error = null;
-      state.isModalOpen = false;
-    },
-    
-    loginFailure: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-    
     registerStart: (state) => {
       state.isLoading = true;
       state.error = null;
     },
-    
     registerSuccess: (state, action) => {
-      state.user = action.payload;
+      state.currentUser = action.payload;
       state.isAuthenticated = true;
       state.isLoading = false;
       state.error = null;
-      state.isModalOpen = false;
     },
-    
     registerFailure: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },
-    
+    openAuthModal(state, action) {
+      state.isAuthModalOpen = true;
+      state.authModalType = action.payload; // ex: 'login' ou 'register'
+    },
+    closeAuthModal(state) {
+      state.isAuthModalOpen = false;
+      state.authModalType = null;
+    },
+    switchAuthMode(state) {
+      state.authModalType = state.authModalType === 'login' ? 'register' : 'login';
+    },
+    loginStart: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    loginSuccess: (state, action) => {
+      state.isLoading = false;
+      state.currentUser = action.payload;
+      state.error = null;
+      state.isAuthenticated = true;
+    },
+    loginFailure: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    googleLoginSuccess: (state, action) => {
+      state.isLoading = false;
+      state.currentUser = action.payload;
+      state.error = null;
+    },
     logout: (state) => {
-      state.user = null;
+      state.currentUser = null;
       state.isAuthenticated = false;
-      state.error = null;
+      localStorage.removeItem('currentUser');
     },
-    
-    openAuthModal: (state, action) => {
-      state.isModalOpen = true;
-      state.modalMode = action.payload || 'login';
+    loadUsers: (state, action) => {
+      state.users = action.payload;
     },
-    
-    closeAuthModal: (state) => {
-      state.isModalOpen = false;
-      state.error = null;
-    },
-    
-    switchAuthMode: (state) => {
-      state.modalMode = state.modalMode === 'login' ? 'register' : 'login';
-      state.error = null;
-    },
-    
-    clearError: (state) => {
-      state.error = null;
-    },
-  },
+    persistUser: (state, action) => {
+      state.currentUser = action.payload;
+    }
+  }
 });
 
 export const {
-  loginStart,
-  loginSuccess,
-  loginFailure,
   registerStart,
   registerSuccess,
   registerFailure,
+  loginStart,
+  loginSuccess,
+  loginFailure,
+  googleLoginSuccess,
   logout,
+  loadUsers,
+  persistUser,
   openAuthModal,
   closeAuthModal,
-  switchAuthMode,
-  clearError,
+  switchAuthMode
+
 } = authSlice.actions;
 
 export default authSlice.reducer;
