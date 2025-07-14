@@ -56,3 +56,10 @@
 .card:hover .cardOverlay {
   bottom: 0;
 }
+.section1CardBtn{
+  width: 100px;
+  cursor: pointer;
+  background-color: #907AD6;
+  border-radius: 20px;
+  
+}

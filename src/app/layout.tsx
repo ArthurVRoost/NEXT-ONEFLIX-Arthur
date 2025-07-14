@@ -4,7 +4,9 @@ import "./globals.css";
 import Script from "next/script";
 import Nav from '../components/nav/Nav';
 import Footer from '../components/footer/Footer';
+import AuthModal from '../components/auth/authModal';
 import styleNav from '../components/nav/nav.module.css';
+import { ReduxProvider } from './ReduxProvider';
 
 const geistOpen_Sans = Open_Sans({
   variable: "--font-open-Sans",
@@ -32,11 +34,14 @@ export default function RootLayout({
         <Script src="https://kit.fontawesome.com/0241eb844d.js" crossOrigin="anonymous" />
       </head>
       <body className={`${geistOpen_Sans.variable} ${geistRoboto.variable}`}>
-        <Nav />
-        <main className={styleNav.mainContent}>
-          {children}
-        </main>
-        <Footer />
+        <ReduxProvider>
+          <Nav />
+          <main className={styleNav.mainContent}>
+            {children}
+          </main>
+          <Footer />
+          <AuthModal />
+        </ReduxProvider>
       </body>
     </html>
   );
