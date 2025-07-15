@@ -48,7 +48,6 @@ export default function All() {
       
       setError(null)
     } catch (err) {
-      console.error('Erreur lors du fetch des animes:', err)
       setError('Impossible de charger les animes. Veuillez réessayer plus tard.')
     } finally {
       setLoading(false)
