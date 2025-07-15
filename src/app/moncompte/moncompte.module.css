@@ -1,0 +1,265 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.accountCard {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.cardHeader h2 {
+  color: #333;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.editButton {
+  background: #4F518C;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.editButton:hover {
+  background: #3d3f6b;
+  transform: translateY(-2px);
+}
+
+.editButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.saveButton {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.saveButton:hover {
+  background: #218838;
+  transform: translateY(-2px);
+}
+
+.cancelButton {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.cancelButton:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  color: #555;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input {
+  padding: 1rem;
+  border: 2px solid #e1e5e9;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #4F518C;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(79, 81, 140, 0.1);
+}
+
+.displayValue {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  color: #333;
+  font-size: 1rem;
+  border: 2px solid transparent;
+}
+
+.accountInfo {
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+}
+
+.infoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.infoItem:last-child {
+  border-bottom: none;
+}
+
+.infoLabel {
+  color: #666;
+  font-weight: 600;
+}
+
+.infoValue {
+  color: #333;
+  font-weight: 500;
+}
+
+.quickActions {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.quickActions h3 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.actionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.actionButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1.5rem;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.actionButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.actionButton i {
+  font-size: 1.2rem;
+}
+
+.loadingMessage {
+  text-align: center;
+  padding: 4rem;
+  color: white;
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .accountCard {
+    padding: 1.5rem;
+  }
+  
+  .cardHeader {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .editButtons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .actionsGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -38,6 +38,10 @@ export default function Nav() {
     setShowUserMenu(prev => !prev)
   }
 
+  const handleMenuItemClick = () => {
+    setShowUserMenu(false)
+  }
+
   return (
     <div className={styleNav.divPNav}>
       <div className={styleNav.navDiv0}>
@@ -56,46 +60,53 @@ export default function Nav() {
         <Link className={styleNav.Link} href="/"><p className={styleNav.navText}>Home</p></Link>
         <Link className={styleNav.Link} href="/collection"><p className={styleNav.navText}>Collection</p></Link>
         <Link className={styleNav.Link} href="/all"><p className={styleNav.navText}>All</p></Link>
-        <Link className={styleNav.Link} href="/category"><p className={styleNav.navText}>Category</p></Link>
       </div>
 
       <div className={styleNav.navDiv2}>
         <div className={styleNav.navDiv3}>
-  <div className={styleNav.iconWrapper}>
-    {isAuthenticated ? (
-      <div ref={menuRef}>
-        <i
-          className="fa-solid fa-user"
-          onClick={toggleUserMenu}
-          title="Compte utilisateur"
-        ></i>
-        {showUserMenu && (
-          <div className={styleNav.userMenu}>
-            <p>Bonjour {currentUser?.username}</p>
-            <Link href="/account"><p>Mon compte</p></Link>
-            <Link href="/profile"><p>Mes informations</p></Link>
-            <p onClick={handleLogout} style={{ color: 'red' }}>Se déconnecter</p>
+          <div className={styleNav.iconWrapper}>
+            {isAuthenticated ? (
+              <div ref={menuRef}>
+                <i
+                  className="fa-solid fa-user"
+                  onClick={toggleUserMenu}
+                  title="Compte utilisateur"
+                ></i>
+                {showUserMenu && (
+                  <div className={styleNav.userMenu}>
+                    <p>Bonjour {currentUser?.username}</p>
+                    <div className={styleNav.menuDivider}></div>
+                    <Link href="/moncompte" onClick={handleMenuItemClick}>
+                      <p>Mon compte</p>
+                    </Link>
+                    <Link href="/macollection" onClick={handleMenuItemClick}>
+                      <p>Ma collection</p>
+                    </Link>
+                    <div className={styleNav.menuDivider}></div>
+                    <p onClick={handleLogout} style={{ color: 'red', cursor: 'pointer' }}>
+                      Se déconnecter
+                    </p>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <i
+                className="fa-solid fa-user-plus"
+                onClick={handleOpenAuthModal}
+                title="Se connecter / S'inscrire"
+              ></i>
+            )}
           </div>
-        )}
-      </div>
-    ) : (
-      <i
-        className="fa-solid fa-user-plus"
-        onClick={handleOpenAuthModal}
-        title="Se connecter / S'inscrire"
-      ></i>
-    )}
-  </div>
 
-  <div className={styleNav.iconWrapper}>
-    <Link  href="/panier" style={{ position: 'relative' }}>
-      <i className="fa-solid fa-cart-shopping" title="Panier" style={{color:'#4F518C'}}></i>
-      {itemsCount > 0 && (
-        <span className={styleNav.badge}>{itemsCount}</span>
-      )}
-    </Link>
-  </div>
-</div>
+          <div className={styleNav.iconWrapper}>
+            <Link href="/panier" style={{ position: 'relative' }}>
+              <i className="fa-solid fa-cart-shopping" title="Panier" style={{color:'#4F518C'}}></i>
+              {itemsCount > 0 && (
+                <span className={styleNav.badge}>{itemsCount}</span>
+              )}
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   )

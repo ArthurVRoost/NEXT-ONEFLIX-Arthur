@@ -23,18 +23,18 @@ export default function Footer() {
             <ul className={styleFooter.footerDiv1Ul}>
                 <Link href="/" className={`${styleFooter.footerDiv1Li} ${styleFooter.Link} `}>Home</Link>
                 <Link href="/collection" className={`${styleFooter.footerDiv1Li} ${styleFooter.Link} `}>Collection</Link>
-                <Link href="/" className={`${styleFooter.footerDiv1Li} ${styleFooter.Link} `}>Cart</Link>
-                <Link href="/" className={`${styleFooter.footerDiv1Li} ${styleFooter.Link} `}>My Account</Link>
+                <Link href="/panier" className={`${styleFooter.footerDiv1Li} ${styleFooter.Link} `}>Cart</Link>
+                <Link href="/moncompte" className={`${styleFooter.footerDiv1Li} ${styleFooter.Link} `}>My Account</Link>
             </ul>
         </div>
         <div className={styleFooter.footerDiv2}>
             <div className={styleFooter.footerDiv2Div1}>
                 <h2 className={styleFooter.footerDiv2Div1H2} >Genres</h2>
                 <ul className={styleFooter.footerDiv2Div1Ul}>
-                    <Link href="/" className={`${styleFooter.footerDiv2Div1Li} ${styleFooter.Link}`}>Action</Link>
-                    <Link href="/" className={`${styleFooter.footerDiv2Div1Li} ${styleFooter.Link}`}>Adventure</Link>
-                    <Link href="/" className={`${styleFooter.footerDiv2Div1Li} ${styleFooter.Link}`}>Romance</Link>
-                    <Link href="/" className={`${styleFooter.footerDiv2Div1Li} ${styleFooter.Link}`}>Comedy</Link>
+                    <Link href="/all" className={`${styleFooter.footerDiv2Div1Li} ${styleFooter.Link}`}>Action</Link>
+                    <Link href="/all" className={`${styleFooter.footerDiv2Div1Li} ${styleFooter.Link}`}>Adventure</Link>
+                    <Link href="/all" className={`${styleFooter.footerDiv2Div1Li} ${styleFooter.Link}`}>Romance</Link>
+                    <Link href="/all" className={`${styleFooter.footerDiv2Div1Li} ${styleFooter.Link}`}>Comedy</Link>
                 </ul>
             </div>
             <Image className={styleFooter.footerImg} src='/img/luffy.png'width={120} height={180} alt='luffy'/>
