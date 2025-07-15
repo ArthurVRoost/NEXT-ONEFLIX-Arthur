@@ -2,12 +2,14 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { persistUser } from '../../store/slices/authSlice'
+import { persistUser, addCredit } from '../../store/slices/authSlice'
 import stylesMonCompte from './moncompte.module.css'
 
 export default function MonComptePage() {
   const { currentUser, isAuthenticated } = useSelector(state => state.auth)
   const dispatch = useDispatch()
+  const [creditAmount, setCreditAmount] = useState('')
+  const [creditMessage, setCreditMessage] = useState('')
   const router = useRouter()
   const [isEditing, setIsEditing] = useState(false)
   const [formData, setFormData] = useState({
@@ -37,7 +39,20 @@ export default function MonComptePage() {
       [e.target.name]: e.target.value
     })
   }
+  const handleCredit = () => {
+  const amount = parseFloat(creditAmount)
+  if (isNaN(amount) || amount <= 0) {
+    setCreditMessage("Veuillez entrer un montant valide.")
+    return
+  }
 
+  dispatch(addCredit(amount))
+  setCreditMessage("Merci d’avoir crédité votre compte !")
+  setCreditAmount('')
+
+  // Masquer le message après 3 secondes
+  setTimeout(() => setCreditMessage(''), 3000)
+}
   const handleSave = () => {
     // Ici vous pourrez ajouter la logique pour sauvegarder les modifications
     // Pour l'instant, on simule juste
@@ -177,24 +192,42 @@ export default function MonComptePage() {
       </div>
 
       <div className={stylesMonCompte.quickActions}>
-        <h3>Actions rapides</h3>
-        <div className={stylesMonCompte.actionsGrid}>
-          <button 
-            className={stylesMonCompte.actionButton}
-            onClick={() => router.push('/ma-collection')}
-          >
-            <i className="fa-solid fa-history"></i>
-            Voir ma collection
-          </button>
-          <button 
-            className={stylesMonCompte.actionButton}
-            onClick={() => router.push('/panier')}
-          >
-            <i className="fa-solid fa-shopping-cart"></i>
-            Mon panier
-          </button>
-        </div>
-      </div>
+  <h3>Actions rapides</h3>
+  <div className={stylesMonCompte.actionsGrid}>
+    <button 
+      className={stylesMonCompte.actionButton}
+      onClick={() => router.push('/ma-collection')}
+    >
+      <i className="fa-solid fa-history"></i>
+      Voir ma collection
+    </button>
+    <button 
+      className={stylesMonCompte.actionButton}
+      onClick={() => router.push('/panier')}
+    >
+      <i className="fa-solid fa-shopping-cart"></i>
+      Mon panier
+    </button>
+  </div>
+
+  <div className={stylesMonCompte.creditSection}>
+    <h4>Créditer mon compte</h4>
+   <input
+    id="creditAmount"
+    type="number"
+    value={creditAmount}
+    onChange={(e) => setCreditAmount(Number(e.target.value))}
+    className="p-2 border border-gray-300 rounded"
+    placeholder="Entrez un montant"
+  />
+  <p className="text-sm text-gray-600 mt-2">Nombre de crédits : <strong>{currentUser?.credit ?? 0}</strong></p>
+    
+    <button className={stylesMonCompte.creditButton} onClick={handleCredit}>
+      Créditer
+    </button>
+    {creditMessage && <p className={stylesMonCompte.creditMessage}>{creditMessage}</p>}
+  </div>
+</div>
     </div>
   )
 }

@@ -66,7 +66,21 @@ const authSlice = createSlice({
     },
     persistUser: (state, action) => {
       state.currentUser = action.payload;
+    },
+    addCredit: (state, action) => {
+    const amount = action.payload
+    if (state.currentUser) {
+      state.currentUser.credit = (state.currentUser.credit || 0) + amount
+      localStorage.setItem('currentUser', JSON.stringify(state.currentUser))
     }
+  },
+   deductCredit: (state, action) => {
+    const amount = action.payload
+    if (state.currentUser) {
+      state.currentUser.credit = Math.max(0, (state.currentUser.credit || 0) - amount)
+      localStorage.setItem('currentUser', JSON.stringify(state.currentUser))
+    }
+  }
   }
 });
 
@@ -83,7 +97,9 @@ export const {
   persistUser,
   openAuthModal,
   closeAuthModal,
-  switchAuthMode
+  switchAuthMode,
+  addCredit,
+  deductCredit
 
 } = authSlice.actions;
 

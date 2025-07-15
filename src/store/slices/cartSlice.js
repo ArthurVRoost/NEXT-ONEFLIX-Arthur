@@ -39,44 +39,50 @@ const cartSlice = createSlice({
     },
     
     addAllEpisodes: (state, action) => {
-      const { animeId, animeTitle, animeImage, episodeCount } = action.payload;
-      
-      const randomPrice = Math.floor(Math.random() * 6) + 10;
-      
-      const allEpisodesItem = {
-        id: `all-episodes-${animeId}`,
-        title: `${animeTitle} - All Episodes (${episodeCount} episodes)`,
-        price: randomPrice,
-        image: animeImage,
-        quantity: 1,
-        isFree: false,
-        isAllEpisodes: true,
-        animeId: animeId,
-        episodeCount: episodeCount
-      };
-      
-      const existingItem = state.items.find(item => item.id === allEpisodesItem.id);
-      
-      if (!existingItem) {
-        state.items.push(allEpisodesItem);
-      }
-      
-      state.itemsCount = state.items.reduce((total, item) => total + item.quantity, 0);
+  const { animeId, animeTitle, animeImage, episodeCount } = action.payload;
 
-      if (state.items.length >= 5) {
-        const cheapestItem = state.items.reduce((min, item) => 
-          item.price < min.price ? item : min
-        );
-        state.items = state.items.map(item => ({
-          ...item,
-          isFree: item.id === cheapestItem.id
-        }));
-      }
-      
-      state.total = state.items.reduce((total, item) => 
-        total + (item.isFree ? 0 : item.price * item.quantity), 0
-      );
-    },
+  const itemId = `all-episodes-${animeId}`;
+
+  const existingItem = state.items.find(item => item.id === itemId);
+
+  if (existingItem) {
+    console.warn("Le pack d'épisodes complet est déjà dans le panier.");
+    return; // empêche l'ajout
+  }
+
+  const randomPrice = Math.floor(Math.random() * 6) + 10;
+
+  const allEpisodesItem = {
+    id: itemId,
+    title: `${animeTitle} - All Episodes (${episodeCount} episodes)`,
+    price: randomPrice,
+    image: animeImage,
+    quantity: 1,
+    isFree: false,
+    isAllEpisodes: true,
+    animeId: animeId,
+    episodeCount: episodeCount
+  };
+
+  state.items.push(allEpisodesItem);
+
+  // Mise à jour des totaux
+  state.itemsCount = state.items.reduce((total, item) => total + item.quantity, 0);
+
+  if (state.items.length >= 5) {
+    const cheapestItem = state.items.reduce((min, item) =>
+      item.price < min.price ? item : min
+    );
+    state.items = state.items.map(item => ({
+      ...item,
+      isFree: item.id === cheapestItem.id
+    }));
+  }
+
+  state.total = state.items.reduce((total, item) =>
+    total + (item.isFree ? 0 : item.price * item.quantity), 0
+  );
+},
     
     removeFromCart: (state, action) => {
       const itemId = action.payload;

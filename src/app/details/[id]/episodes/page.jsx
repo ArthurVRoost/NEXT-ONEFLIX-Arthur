@@ -5,16 +5,18 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import axios from 'axios'
 import styleEpisodes from './episodes.module.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../../../store/slices/cartSlice'
 
 export default function Episodes() {
   const params = useParams()
-  const dispatch = useDispatch() 
+  const dispatch = useDispatch()
+  const cartItems = useSelector(state => state.cart.items)
+
   const [episodes, setEpisodes] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  
+
   const defaultImages = [
     "/img/Episode1.jpg",
     "/img/Episode2.jpeg", 
@@ -31,7 +33,6 @@ export default function Episodes() {
         setEpisodes(response.data.data)
         setError(null)
       } catch (err) {
-        console.error('Erreur lors du fetch des épisodes:', err)
         setError('Impossible de charger les épisodes. Veuillez réessayer plus tard.')
       } finally {
         setLoading(false)
@@ -43,48 +44,55 @@ export default function Episodes() {
     }
   }, [params.id])
 
-
   const handleAddToCart = (episode) => {
-  
     const product = {
-      id: `episode-${episode.mal_id}`, 
+      id: `episode-${episode.mal_id}`,
       title: `Episode ${episode.mal_id}: ${episode.title}`,
-      price: 1.99, 
+      price: 1.99,
       image: defaultImages[episode.mal_id % defaultImages.length],
       type: 'episode',
       animeId: params.id,
       episodeNumber: episode.mal_id,
       description: episode.title || `Episode ${episode.mal_id}`
     }
-    
 
     dispatch(addToCart(product))
   }
 
-  if (loading) {
-    return <div className={styleEpisodes.loading}>Loading...</div>
-  }
-
-  if (error) {
-    return <div className={styleEpisodes.error}>{error}</div>
-  }
+  if (loading) return <div className={styleEpisodes.loading}>Loading...</div>
+  if (error) return <div className={styleEpisodes.error}>{error}</div>
 
   return (
     <div className={styleEpisodes.episodesDivP}>
-      {episodes.map((episode) => (
-        <div key={episode.mal_id} className={styleEpisodes.cardWrapper}>
-          <div className={styleEpisodes.card}>
-            <Image className={styleEpisodes.cardImg} src={defaultImages[episode.mal_id % defaultImages.length]} width={280} height={160} alt={`image de l'épisode ${episode.title}`}/>
-            <div className={styleEpisodes.cardOverlay}>
-              <h3 className={styleEpisodes.section1CardH3}>Episode: {episode.mal_id}</h3>
-              <p className={styleEpisodes.section1CardP}> <span>Title:</span> {episode.title}</p>
-              <button  className={styleEpisodes.section1CardBtn} onClick={() => handleAddToCart(episode)}>
-                Ajouter au panier
-              </button>
+      {episodes.map((episode) => {
+        const episodeId = `episode-${episode.mal_id}`
+        const isInCart = cartItems.some(item => item.id === episodeId)
+
+        return (
+          <div key={episode.mal_id} className={styleEpisodes.cardWrapper}>
+            <div className={styleEpisodes.card}>
+              <Image
+                className={styleEpisodes.cardImg}
+                src={defaultImages[episode.mal_id % defaultImages.length]}
+                width={280}
+                height={160}
+                alt={`image de l'épisode ${episode.title}`}
+              />
+              <div className={styleEpisodes.cardOverlay}>
+                <h3 className={styleEpisodes.section1CardH3}>Episode: {episode.mal_id}</h3>
+                <p className={styleEpisodes.section1CardP}><span>Title:</span> {episode.title}</p>
+                <button
+                  className={styleEpisodes.section1CardBtn}
+                  onClick={() => handleAddToCart(episode)}
+                  disabled={isInCart}
+                >
+                  {isInCart ? 'Already Added' : 'Add To Cart'}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
     </div>
   )
 }

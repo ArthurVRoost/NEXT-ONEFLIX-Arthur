@@ -5,7 +5,7 @@ import { completePurchase } from '../../store/slices/cartSlice'
 import { useRouter } from 'next/navigation'
 import stylePaiements from './paiements.module.css'
 import Image from 'next/image'
-
+import { deductCredit } from '../../store/slices/authSlice'
 export default function Paiements() {
   const dispatch = useDispatch()
   const router = useRouter()
@@ -24,49 +24,53 @@ export default function Paiements() {
   }, [items.length, isConfirmed, router])
 
   const handleBuy = () => {
-    // Vérifier si l'utilisateur est connecté
-    if (!isAuthenticated || !currentUser) {
-      alert('Vous devez être connecté pour effectuer un achat')
-      router.push('/') // Ajustez selon votre route de connexion
-      return
-    }
-
-    // Vérifier si le panier n'est pas vide
-    if (items.length === 0) {
-      alert('Votre panier est vide')
-      router.push('/panier')
-      return
-    }
-
-    // Vérifier qu'une méthode de paiement est sélectionnée
-    if (!selectedCard) {
-      alert('Veuillez sélectionner une méthode de paiement')
-      return
-    }
-
-    setIsProcessing(true)
-    
-    // Simuler le délai de traitement du paiement
-    setTimeout(() => {
-      try {
-        // Finaliser l'achat - ajouter à la collection et vider le panier
-        dispatch(completePurchase({ userId: currentUser.id }))
-        
-        setIsProcessing(false)
-        setIsConfirmed(true)
-        
-        // Rediriger vers la collection après 3 secondes
-        setTimeout(() => {
-          router.push('/macollection')
-        }, 3000)
-        
-      } catch (error) {
-        console.error('Erreur lors de l\'achat:', error)
-        setIsProcessing(false)
-        alert('Une erreur est survenue lors de l\'achat. Veuillez réessayer.')
-      }
-    }, 2000)
+  // 1. Vérifie que l'utilisateur est connecté
+  if (!isAuthenticated || !currentUser) {
+    alert('Vous devez être connecté pour effectuer un achat')
+    router.push('/')
+    return
   }
+
+  // 2. Vérifie que le panier contient au moins un article
+  if (items.length === 0) {
+    alert('Votre panier est vide')
+    router.push('/panier')
+    return
+  }
+
+  // 3. Vérifie qu'un mode de paiement a été sélectionné
+  if (!selectedCard) {
+    alert('Veuillez sélectionner une méthode de paiement')
+    return
+  }
+
+  const total = items.reduce((acc, item) => acc + item.price, 0)
+  setIsProcessing(true)
+
+  // 4. Si paiement avec coins → vérifier le crédit et le décrémenter
+  if (selectedCard === 'coins') {
+    const currentCredit = currentUser.credit || 0
+
+    if (currentCredit < total) {
+      alert('Crédits insuffisants pour effectuer cet achat')
+      setIsProcessing(false)
+      return
+    }
+
+    dispatch(deductCredit(total))
+  }
+
+  // 5. Simuler le traitement + finaliser l'achat
+  setTimeout(() => {
+    dispatch(completePurchase(currentUser.id))
+    setIsConfirmed(true)
+    setIsProcessing(false)
+
+    setTimeout(() => {
+      router.push('/macollection')
+    }, 3000)
+  }, 2000)
+}
 
   // Afficher un loader si le panier est vide (pendant la redirection)
   if (items.length === 0 && !isConfirmed) {
@@ -78,6 +82,7 @@ export default function Paiements() {
       </div>
     )
   }
+
 
   return (
     <div className={stylePaiements.payeDivP}>
@@ -150,16 +155,19 @@ export default function Paiements() {
           )}
 
           {selectedCard === 'coins' && (
-            <div className={stylePaiements.divCoins}>
-              <div className={stylePaiements.divCoinsLogo}>
-                <Image src='/img/COINS.png' width={100} height={80} alt='logo coins' className={stylePaiements.LogoCoins}/>
-                <Image src='/img/chip.png' width={60} height={40} alt='chip'/>
-              </div>
-              <div className={stylePaiements.divTextCoins}>
-                <h3>Available Credit</h3>
-              </div>
-            </div>
-          )}
+  <div className={stylePaiements.divCoins}>
+    <div className={stylePaiements.divCoinsLogo}>
+      <Image src='/img/COINS.png' width={100} height={80} alt='logo coins' className={stylePaiements.LogoCoins}/>
+      <Image src='/img/chip.png' width={60} height={40} alt='chip'/>
+    </div>
+    <div className={stylePaiements.divTextCoins}>
+      <h3>Available Credit: {currentUser?.credit?.toFixed(2) || 0}€</h3>
+      {currentUser?.credit < total && (
+        <p style={{ color: 'red' }}>Fonds insuffisants pour cet achat.</p>
+      )}
+    </div>
+  </div>
+)}
           
           <div className={stylePaiements.divBtn}>
             <button 
