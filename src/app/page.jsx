@@ -121,17 +121,17 @@ export default function Home() {
       </Link>
      
       {/* 3 */}
-      <Link className={styles.Link2} href="/bleach">
+      <Link className={styles.Link2} href={`/details/1`}>
         <div className={styles.homeDivColumnDivP}>
         <p className={styles.homeDivColumnNumero}>3.</p>
         <div className={styles.homeDivColumnImg} >
-          <Image  className={styles.cardImg} src="/img/BLEACH.jpg" width={80} height={100} alt="image de l'anime"/>
+          <Image  className={styles.cardImg} src="/img/CB.jpg" width={80} height={100} alt="image de l'anime"/>
         </div>
         
         <div className={styles.homeDivColumnText}>
-          <p className={styles.homeDivColumnP1}>Bleach</p>
+          <p className={styles.homeDivColumnP1}>Cowboy Bepop</p>
           <p className={styles.homeDivColumnP2}>4.7/5<i className="fa-solid fa-star"></i></p>
-          <p className={styles.homeDivColumnP1}>Episodes: 366</p>
+          <p className={styles.homeDivColumnP1}>Episodes: 26</p>
         </div>
         
       </div>
@@ -156,17 +156,17 @@ export default function Home() {
     
 
     {/* 5 */}
-    <Link className={styles.Link2} href="/jjk">
+    <Link className={styles.Link2} href={`/details/47`}>
         <div className={styles.homeDivColumnDivP}>
         <p className={styles.homeDivColumnNumero}>5.</p>
         <div className={styles.homeDivColumnImg} >
-          <Image  className={styles.cardImg} src="/img/JJK.jpg" width={80} height={100} alt="image de l'anime"/>
+          <Image  className={styles.cardImg} src="/img/Akira.jpg" width={80} height={100} alt="image de l'anime"/>
         </div>
         
         <div className={styles.homeDivColumnText}>
-          <p className={styles.homeDivColumnP1}>Jujutsu Kaisen</p>
+          <p className={styles.homeDivColumnP1}>Akira</p>
           <p className={styles.homeDivColumnP2}>4.4/5<i className="fa-solid fa-star"></i></p>
-          <p className={styles.homeDivColumnP1}>Episodes: 47+ <span>still airing</span></p>
+          <p className={styles.homeDivColumnP1}>Episodes: 1 </p>
         </div>
         
       </div>

@@ -7,11 +7,6 @@ export const store = configureStore({
         cart: cartReducer,
         auth: authReducer,
     },
-    middleware: (getDefaultMiddleware)=>
-        getDefaultMiddleware({
-            serializableCheck:{
-                ignoredActions:['persist/PERSIST'],
-            },
-        }),
+    
 })
 
