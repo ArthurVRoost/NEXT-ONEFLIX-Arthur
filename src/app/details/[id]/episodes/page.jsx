@@ -9,9 +9,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../../../store/slices/cartSlice'
 
 export default function Episodes() {
+  const basePrice = 1.99
   const params = useParams()
   const dispatch = useDispatch()
   const cartItems = useSelector(state => state.cart.items)
+  const [discountedAnime, setDiscountedAnime] = useState(null)
 
   const [episodes, setEpisodes] = useState([])
   const [loading, setLoading] = useState(true)
@@ -26,6 +28,14 @@ export default function Episodes() {
   ]
 
   useEffect(() => {
+    // Récupérer les informations de l'anime en réduction
+    try {
+      const discountData = JSON.parse(localStorage.getItem('discountedAnime'))
+      setDiscountedAnime(discountData)
+    } catch (error) {
+      console.error('Erreur lors de la récupération des données de réduction:', error)
+    }
+
     const fetchEpisodes = async () => {
       try {
         setLoading(true)
@@ -44,32 +54,42 @@ export default function Episodes() {
     }
   }, [params.id])
 
-  const handleAddToCart = (episode) => {
-    const product = {
-      id: `episode-${episode.mal_id}`,
-      title: `Episode ${episode.mal_id}: ${episode.title}`,
-      price: 1.99,
-      image: defaultImages[episode.mal_id % defaultImages.length],
-      type: 'episode',
-      animeId: params.id,
-      episodeNumber: episode.mal_id,
-      description: episode.title || `Episode ${episode.mal_id}`
-    }
+const handleAddToCart = (episode) => {
+  const isAnimeDiscounted = discountedAnime && params.id == discountedAnime.id
+  const price = basePrice
 
-    dispatch(addToCart(product))
-  }
+ const product = {
+  id: `episode-${episode.mal_id}`,
+  title: `Episode ${episode.mal_id}: ${episode.title}`,
+  price: Number(price), 
+  image: defaultImages[episode.mal_id % defaultImages.length],
+  type: 'episode',
+  animeId: params.id,
+  episodeNumber: episode.mal_id,
+  description: episode.title || `Episode ${episode.mal_id}`
+}
 
+  dispatch(addToCart(product))
+}
+  const isAnimeDiscounted = discountedAnime && params.id == discountedAnime.id
   if (loading) return <div className={styleEpisodes.loading}>Loading...</div>
   if (error) return <div className={styleEpisodes.error}>{error}</div>
 
   return (
     <div className={styleEpisodes.episodesDivP}>
-      {episodes.map((episode) => {
+      {isAnimeDiscounted && (
+        <div className={styleEpisodes.discountNotice}>
+          Special Offer: 20% OFF on all episodes of this anime!
+        </div>
+      )}
+      <div className={styleEpisodes.DivEpisodes}>
+          {episodes.map((episode) => {
         const episodeId = `episode-${episode.mal_id}`
         const isInCart = cartItems.some(item => item.id === episodeId)
 
         return (
           <div key={episode.mal_id} className={styleEpisodes.cardWrapper}>
+            <br />
             <div className={styleEpisodes.card}>
               <Image
                 className={styleEpisodes.cardImg}
@@ -93,6 +113,8 @@ export default function Episodes() {
           </div>
         )
       })}
+      </div>
+      
     </div>
   )
 }

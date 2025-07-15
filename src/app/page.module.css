@@ -36,6 +36,7 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
+  z-index: 1;
 }
 
 .cardImg {
@@ -165,4 +166,26 @@
   font-size: 14px;
   margin-left: auto;
   margin-right: auto;
+}
+.discountBadge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: rgba(116, 241, 116, 0.9);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  z-index: 2;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none; 
+}
+.discountBadge p {
+  margin: 0;
+  padding: 0;
+  text-decoration: none; 
+}
+.discountText{
+  color:  rgba(116, 241, 116, 0.9);
+  font-weight: bold;
 }

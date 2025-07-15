@@ -23,6 +23,20 @@ export default function Panier() {
     dispatch(clearCart())
   }
   
+  // Calculer le total original (sans réductions)
+  const originalTotal = items.reduce((total, item) => {
+    const originalPrice = item.originalPrice || item.price
+    return total + (item.isFree ? 0 : originalPrice * item.quantity)
+  }, 0)
+  
+  // Calculer le total des réductions
+  const totalDiscounts = items.reduce((total, item) => {
+    if (item.hasDiscount && !item.isFree) {
+      const discount = (item.originalPrice - item.price) * item.quantity
+      return total + discount
+    }
+    return total
+  }, 0)
   
   if (items.length === 0) {
     return (
@@ -37,7 +51,7 @@ export default function Panier() {
   }
   
   return (
-    <div className={stylePanier.divTout} >
+    <div className={stylePanier.divTout}>
       <div className={stylePanier.divTop}>
         <h1 className={stylePanier.titrePanier}>My Cart ({itemsCount} article{itemsCount > 1 ? 's' : ''})</h1>
         <button className={stylePanier.btnVider} onClick={handleClearCart}>
@@ -50,13 +64,21 @@ export default function Panier() {
           {items.map(item => (
             <div className={stylePanier.divCard} key={item.id} 
               style={{ backgroundColor: item.isFree ? '#d7f3d7ff' : 'white'}}>
+              
+              {/* Badge de réduction */}
+              {item.hasDiscount && !item.isFree && (
+                <div className={stylePanier.discountBadge}>
+                  -{item.discountPercentage}%
+                </div>
+              )}
+              
               {/* Image */}
               <div className={stylePanier.divImg}>
-                <Image className={stylePanier.imgAnime} src={item.image} alt={item.title} width={120} height={80}  />
+                <Image className={stylePanier.imgAnime} src={item.image} alt={item.title} width={120} height={80} />
               </div>
               
               {/* Détails */}
-              <div className={stylePanier.divNom} >
+              <div className={stylePanier.divNom}>
                 <h3 className={stylePanier.divTitre}>{item.title}</h3>
               </div>
               
@@ -65,9 +87,17 @@ export default function Panier() {
                 <div className={stylePanier.divGratuit} style={{color: item.isFree ? '#907AD6' : '#333'}}>
                   {item.isFree ? 'GRATUIT' : `${item.price.toFixed(2)}€`}
                 </div>
+                
+                {/* Prix original barré si réduction */}
+                {item.hasDiscount && !item.isFree && (
+                  <div className={stylePanier.originalPrice}>
+                    {item.originalPrice.toFixed(2)}€
+                  </div>
+                )}
+                
                 {item.isFree && (
                   <div className={stylePanier.divGratuit2}>
-                    {item.price.toFixed(2)}€
+                    {(item.originalPrice || item.price).toFixed(2)}€
                   </div>
                 )}
               </div>
@@ -75,7 +105,7 @@ export default function Panier() {
               {/* Quantité */}
               <div className={stylePanier.divQuantite}>
                 <div>Quantity: {item.quantity}</div>
-                <button className={stylePanier.btnQuantite}  onClick={() => handleDecreaseQuantity(item.id)}>
+                <button className={stylePanier.btnQuantite} onClick={() => handleDecreaseQuantity(item.id)}>
                   -
                 </button>
               </div>
@@ -96,9 +126,18 @@ export default function Panier() {
           <div style={{ marginBottom: '1rem' }}>
             <div className={stylePanier.divSousTotal}>
               <span>Subtotal:</span>
-              <span>{(total + (items.find(item => item.isFree)?.price || 0)).toFixed(2)}€</span>
+              <span>{originalTotal.toFixed(2)}€</span>
             </div>
             
+            {/* Affichage des réductions de 20% */}
+            {totalDiscounts > 0 && (
+              <div className={stylePanier.divReduc}>
+                <span className={stylePanier.spanReduc}>Special Discount (20%):</span>
+                <span className={stylePanier.spanReduc}>-{totalDiscounts.toFixed(2)}€</span>
+              </div>
+            )}
+            
+            {/* Réduction existante (4 articles + 1 gratuit) */}
             {items.length >= 5 && (
               <div className={stylePanier.divReduc}>
                 <span className={stylePanier.spanReduc}>Discount (4 and more + 1):</span>
@@ -113,14 +152,14 @@ export default function Panier() {
               <span>{total.toFixed(2)}€</span>
             </div>
           </div>
+          
           <Link href="/paiements">
-          <button  className={stylePanier.btnPaiement}>
-            Proceed to payement
-          </button>
+            <button className={stylePanier.btnPaiement}>
+              Proceed to payment
+            </button>
           </Link>
           
-          
-          <button className={stylePanier.btnContinue}  onClick={() => window.history.back()} >
+          <button className={stylePanier.btnContinue} onClick={() => window.history.back()}>
             Continue Shopping
           </button>
         </div>
