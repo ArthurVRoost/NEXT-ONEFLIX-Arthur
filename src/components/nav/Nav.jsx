@@ -58,7 +58,7 @@ export default function Nav() {
 
       <div className={styleNav.navDiv1}>
         <Link className={styleNav.Link} href="/"><p className={styleNav.navText}>Home</p></Link>
-        <Link className={styleNav.Link} href="/collection"><p className={styleNav.navText}>Collection</p></Link>
+        <Link className={styleNav.Link} href="/macollection"><p className={styleNav.navText}>Collection</p></Link>
         <Link className={styleNav.Link} href="/all"><p className={styleNav.navText}>All</p></Link>
       </div>
 
