@@ -85,8 +85,8 @@ const RegisterForm = () => {
         }));
       }
 
-      // Correction : utiliser un underscore pour indiquer que password est intentionnellement non utilisé
-      const userWithoutPassword = (({ password: _, ...rest }) => rest)(newUser);
+      // Correction : utiliser la destructuration directe
+      const { password, ...userWithoutPassword } = newUser;
       dispatch(registerSuccess(userWithoutPassword));
 
       setFormData({
