@@ -11,6 +11,7 @@ export default function Nav() {
   const { itemsCount } = useSelector(state => state.cart)
   const { currentUser, isAuthenticated } = useSelector(state => state.auth)
   const [showUserMenu, setShowUserMenu] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuRef = useRef(null)
 
   useEffect(() => {
@@ -40,6 +41,11 @@ export default function Nav() {
 
   const handleMenuItemClick = () => {
     setShowUserMenu(false)
+    setIsMenuOpen(false)
+  }
+
+  const toggleBurgerMenu = () => {
+    setIsMenuOpen(prev => !prev)
   }
 
   return (
@@ -54,8 +60,18 @@ export default function Nav() {
             alt="logo oneflix"
           />
         </Link>
+
+        
       </div>
 
+      {/* Menu Mobile */}
+      <div className={`${styleNav.mobileMenu} ${isMenuOpen ? styleNav.show : ''}`}>
+        <Link className={styleNav.Link} href="/" onClick={handleMenuItemClick}><p className={styleNav.navText}>Home</p></Link>
+        <Link className={styleNav.Link} href="/macollection" onClick={handleMenuItemClick}><p className={styleNav.navText}>Collection</p></Link>
+        <Link className={styleNav.Link} href="/all" onClick={handleMenuItemClick}><p className={styleNav.navText}>All</p></Link>
+      </div>
+
+      {/* Menu Desktop/Tablette */}
       <div className={styleNav.navDiv1}>
         <Link className={styleNav.Link} href="/"><p className={styleNav.navText}>Home</p></Link>
         <Link className={styleNav.Link} href="/macollection"><p className={styleNav.navText}>Collection</p></Link>
@@ -67,34 +83,20 @@ export default function Nav() {
           <div className={styleNav.iconWrapper}>
             {isAuthenticated ? (
               <div ref={menuRef}>
-                <i
-                  className="fa-solid fa-user"
-                  onClick={toggleUserMenu}
-                  title="Compte utilisateur"
-                ></i>
+                <i className="fa-solid fa-user" onClick={toggleUserMenu} title="Compte utilisateur"></i>
                 {showUserMenu && (
                   <div className={styleNav.userMenu}>
                     <p>Bonjour {currentUser?.username}</p>
                     <div className={styleNav.menuDivider}></div>
-                    <Link href="/moncompte" onClick={handleMenuItemClick}>
-                      <p>Mon compte</p>
-                    </Link>
-                    <Link href="/macollection" onClick={handleMenuItemClick}>
-                      <p>Ma collection</p>
-                    </Link>
+                    <Link href="/moncompte" onClick={handleMenuItemClick}><p>Mon compte</p></Link>
+                    <Link href="/macollection" onClick={handleMenuItemClick}><p>Ma collection</p></Link>
                     <div className={styleNav.menuDivider}></div>
-                    <p onClick={handleLogout} style={{ color: 'red', cursor: 'pointer' }}>
-                      Se déconnecter
-                    </p>
+                    <p onClick={handleLogout} style={{ color: 'red', cursor: 'pointer' }}>Se déconnecter</p>
                   </div>
                 )}
               </div>
             ) : (
-              <i
-                className="fa-solid fa-user-plus"
-                onClick={handleOpenAuthModal}
-                title="Se connecter / S'inscrire"
-              ></i>
+              <i className="fa-solid fa-user-plus" onClick={handleOpenAuthModal} title="Se connecter / S'inscrire"></i>
             )}
           </div>
 
@@ -106,6 +108,9 @@ export default function Nav() {
               )}
             </Link>
           </div>
+          <div className={styleNav.burgerIcon} onClick={toggleBurgerMenu}>
+          <i className="fa-solid fa-bars"></i>
+        </div>
         </div>
       </div>
     </div>

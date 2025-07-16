@@ -218,3 +218,128 @@
   font-size: 12px;
   opacity: 0.6;
 }
+
+@media (max-width:576px) {
+  body{
+    overflow-x: hidden;
+  }
+  .divRow1{
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .homeSection1Div1 h2{
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .homeDivColumn{
+    display: none;
+  }
+  .divNarutoRow1{
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+  .divRow1 {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .cardWrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .cardImg {
+    height: 200px;
+  }
+
+  .homeDivColumn {
+    position: static;
+    width: 90%;
+    margin: 40px auto;
+  }
+
+  .homeDivColumnDivP {
+    flex-direction: row;
+  }
+
+  .homeDivColumnImg {
+    width: 60px;
+    height: 90px;
+  }
+  .divNarutoRow1{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .TitreNaruto{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cardTopDiv{
+    height: 100px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 950px) {
+  .divRow1 {
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .cardWrapper {
+    width: 260px;
+    height: 160px;
+  }
+
+  .homeDivColumn {
+    width: 350px;
+    top: 2155px;
+    right: 20px;
+  }
+  .homeSection1Div1 h2{
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 951px) and (max-width: 1090px) {
+  .divRow1 {
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .cardWrapper {
+    width: 260px;
+    height: 160px;
+  }
+
+  .homeDivColumn {
+    width: 350px;
+    top: 2155px;
+    right: 20px;
+  }
+  .homeSection1Div1 h2{
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 1090px) {
+  .divRow1 {
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .cardWrapper {
+    width: 280px;
+    height: 160px;
+  }
+
+  .homeDivColumn {
+    width: 380px;
+    position: absolute;
+    right: 20px;
+    top: 1655px;
+  }
+}

@@ -135,3 +135,88 @@
   min-width: 160px;
   padding: 10px;
 }
+
+/* Menu burger visible uniquement en mobile */
+.burgerIcon {
+  display: none;
+  font-size: 24px;
+  color: #4F518C;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* Menu mobile masqué par défaut */
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 100px;
+  right: -100%;
+  width: 60%;
+  height: 100vh;
+  background-color: #2F2A45;
+  padding: 40px 20px;
+  gap: 30px;
+  align-items: flex-start;
+  transition: right 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.show {
+  right: 0;
+}
+
+/* Masquer le menu en mobile par défaut */
+.navDiv1 {
+  display: flex;
+}
+
+/* Cacher le menu complet et montrer burger en mobile */
+@media (max-width: 768px) {
+  .navDiv1 {
+    display: none;
+  }
+
+  .burgerIcon {
+    display: block;
+  }
+
+  .divPNav {
+    padding: 0 10px;
+    justify-content: space-between;
+  }
+
+  .navDiv2 {
+    margin-left: auto;
+  }
+
+  .navImg {
+    width: 150px !important;
+    height: auto !important;
+  }
+}
+
+/* ---------------------- GRAND ÉCRAN ---------------------- */
+@media (min-width: 1091px) {
+  .navDiv1 {
+    gap: 40px;
+    margin-left: 15%;
+  }
+
+  .navDiv2 {
+    margin-left: 20%;
+  }
+
+  .burgerIcon {
+    display: none;
+  }
+
+  .navText {
+    font-size: 20px;
+  }
+
+  .navImg {
+    width: 230px !important;
+    height: auto !important;
+  }
+}

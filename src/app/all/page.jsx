@@ -136,7 +136,7 @@ export default function All() {
           </div>
 
           {/* Bouton reset */}
-          <button onClick={clearFilters} className={styleAll.clearButton}>
+          <button onClick={clearFilters} className={`${styleAll.clearButton}`}>
             Reset Filters
           </button>
         </div>

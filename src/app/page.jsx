@@ -136,7 +136,7 @@ export default function Home() {
           <div className={styles.homeDivColumnDivP}>
             <p className={styles.homeDivColumnNumero}>1.</p>
             <div className={styles.homeDivColumnImg}>
-              <Image className={styles.cardImg} src="/img/FMAB.jpg" width={80} height={100} alt="image de l'anime"/>
+              <Image className={`${styles.cardImg} ${styles.cardTopDiv}`} src="/img/FMAB.jpg" width={80} height={100} alt="image de l'anime"/>
             </div>
             <div className={styles.homeDivColumnText}>
               <p className={styles.homeDivColumnP1}>Full Metal Alchemist Brotherhood</p>
@@ -151,7 +151,7 @@ export default function Home() {
           <div className={styles.homeDivColumnDivP}>
             <p className={styles.homeDivColumnNumero}>2.</p>
             <div className={styles.homeDivColumnImg}>
-              <Image className={styles.cardImg} src="/img/OP.jpg" width={80} height={100} alt="image de l'anime"/>
+              <Image className={`${styles.cardImg} ${styles.cardTopDiv}`} src="/img/OP.jpg" width={80} height={100} alt="image de l'anime"/>
             </div>
             <div className={styles.homeDivColumnText}>
               <p className={styles.homeDivColumnP1}>One Piece</p>
@@ -166,7 +166,7 @@ export default function Home() {
           <div className={styles.homeDivColumnDivP}>
             <p className={styles.homeDivColumnNumero}>3.</p>
             <div className={styles.homeDivColumnImg}>
-              <Image className={styles.cardImg} src="/img/CB.jpg" width={80} height={100} alt="image de l'anime"/>
+              <Image className={`${styles.cardImg} ${styles.cardTopDiv}`} src="/img/CB.jpg" width={80} height={100} alt="image de l'anime"/>
             </div>
             <div className={styles.homeDivColumnText}>
               <p className={styles.homeDivColumnP1}>Cowboy Bepop</p>
@@ -181,7 +181,7 @@ export default function Home() {
           <div className={styles.homeDivColumnDivP}>
             <p className={styles.homeDivColumnNumero}>4.</p>
             <div className={styles.homeDivColumnImg}>
-              <Image className={styles.cardImg} src="/img/SNK.jpg" width={80} height={100} alt="image de l'anime"/>
+              <Image className={`${styles.cardImg} ${styles.cardTopDiv}`} src="/img/SNK.jpg" width={80} height={100} alt="image de l'anime"/>
             </div>
             <div className={styles.homeDivColumnText}>
               <p className={styles.homeDivColumnP1}>Attack On Titans</p>
@@ -196,7 +196,7 @@ export default function Home() {
           <div className={styles.homeDivColumnDivP}>
             <p className={styles.homeDivColumnNumero}>5.</p>
             <div className={styles.homeDivColumnImg}>
-              <Image className={styles.cardImg} src="/img/Akira.jpg" width={80} height={100} alt="image de l'anime"/>
+              <Image className={`${styles.cardImg} ${styles.cardTopDiv}`} src="/img/Akira.jpg" width={80} height={100} alt="image de l'anime"/>
             </div>
             <div className={styles.homeDivColumnText}>
               <p className={styles.homeDivColumnP1}>Akira</p>

@@ -169,7 +169,7 @@
 
 .clearButton, .loadMoreButton {
   padding: 12px 24px;
-  background: linear-gradient(to top, #6c52c4 0%, #b474dc 100%);
+  background: #5f35ea;
   color: white;
   border: none;
   border-radius: 8px;
@@ -212,7 +212,10 @@
 .endMessage {
   color: #28a745;
 }
-
+.btnReset{
+  padding: 10px;
+  background-color: #2F2A45;
+}
 @media (max-width: 768px) {
   .animesGrid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

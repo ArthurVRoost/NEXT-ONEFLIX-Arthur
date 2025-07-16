@@ -85,3 +85,13 @@
   filter: blur(4px);
 }
 
+@media (max-width:576px) {
+  .carouselContainerCustom{
+    display: none;
+  }
+}
+@media (min-width: 577px) and (max-width: 768px){
+  .carouselContainerCustom{
+    display: none;
+  }
+}

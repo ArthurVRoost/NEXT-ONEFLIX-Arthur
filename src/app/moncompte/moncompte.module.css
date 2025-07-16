@@ -293,4 +293,7 @@
   .actionsGrid {
     grid-template-columns: 1fr;
   }
+  .creditSection{
+    flex-direction: column;
+  }
 }

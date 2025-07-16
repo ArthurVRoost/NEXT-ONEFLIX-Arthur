@@ -73,3 +73,190 @@
     gap: 150px;
     margin-top: 8%;
 }
+
+@media screen and (max-width: 1024px) {
+    .fmabDivP {
+        width: 95vw;
+        padding: 3%;
+    }
+    
+    .fmabDivTop {
+        gap: 3%;
+    }
+    
+    .topDivText h2 {
+        font-size: 1.8rem;
+    }
+    
+    .detailsImg {
+        margin-left: 4%;
+        max-width: 250px;
+    }
+    
+    .divBtnDetails {
+        gap: 1.5rem;
+    }
+    
+    .topDivInfo {
+        margin-top: 8%;
+    }
+}
+
+/* RESPONSIVE - TABLETTE PORTRAIT */
+@media screen and (max-width: 768px) {
+    .fmabDivP {
+        width: 95vw;
+        margin: 0;
+    }
+    
+    .fmabDivTop {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .topDivImg {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+    
+    .topImg {
+        max-width: 450px;
+        margin-top: 0;
+        height: 300px;
+        object-fit: cover;
+    }
+    
+    .topDivText {
+        order: 2;
+        margin-left: 0;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .topDivText h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
+    .topDivInfo {
+        margin-top: 5%;
+        text-align: left;
+    }
+    
+    .detailsImg {
+        order: 3;
+        margin-left: 0;
+        margin-top: 2rem;
+        max-width: 200px;
+        height: 250px;
+    }
+    
+    .divBtnDetails {
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 5%;
+    }
+    
+    .button {
+        padding: 12px 18px;
+        font-size: 0.9rem;
+    }
+    
+    .topDivSynop {
+        margin-top: 2rem;
+    }
+    
+    .topDivSynop h3 {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .fmabDivP {
+        width: 98vw;
+        padding: 5%;
+        margin: 1%;
+        border-radius: 15px;
+    }
+    
+    .topImg {
+        max-width: 200px;
+    }
+    
+    .topDivText h2 {
+        font-size: 1.4rem;
+    }
+    
+    .topDivInfo {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .detailsImg {
+        max-width: 150px;
+    }
+    
+    .divBtnDetails {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 4%;
+    }
+    
+    .button {
+        width: 100%;
+        max-width: 280px;
+        padding: 14px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .topDivSynop p {
+        font-size: 0.9rem;
+        text-align: left;
+    }
+    
+    .topDivRating {
+        margin-top: 2%;
+    }
+}
+
+@media screen and (max-width: 1399px) {
+    body{
+        overflow-x: hidden;
+    }
+     .fmabDivP {
+        width: 90vw;
+        margin: 3%;
+    }   
+    .detailsImg {
+        margin-left: -10%;
+        width: 200px;
+        height: 250px;
+        margin-top: 9%;
+    }
+}
+/* RESPONSIVE - GRAND ÉCRAN */
+@media screen and (min-width: 1400px) {
+
+    .fmabDivP {
+        width: 80vw;
+        max-width: 1200px;
+    }
+    
+    .topDivText h2 {
+        font-size: 2.2rem;
+    }
+    
+    .detailsImg {
+        max-width: 320px;
+    }
+    
+    .divBtnDetails {
+        gap: 3rem;
+    }
+    
+    .button {
+        padding: 18px 24px;
+        font-size: 1.1rem;
+    }
+}

@@ -39,7 +39,7 @@ export default function Naruto() {
   return (
     <>
    <div className={styleNaruto.homeSection1Div1}>
-          <h2>NARUTO</h2>
+          <h2 className={styleNaruto.TitreNaruto}>NARUTO</h2>
         </div>
     <div className={styleNaruto.divNarutoRow1}>
         
