@@ -42,12 +42,12 @@ export default function MonComptePage() {
   const handleCredit = () => {
   const amount = parseFloat(creditAmount)
   if (isNaN(amount) || amount <= 0) {
-    setCreditMessage("Veuillez entrer un montant valide.")
+    setCreditMessage("Enter a valid amount.")
     return
   }
 
   dispatch(addCredit(amount))
-  setCreditMessage("Merci d’avoir crédité votre compte !")
+  setCreditMessage("Thanks for crediting your account !")
   setCreditAmount('')
 
   // Masquer le message après 3 secondes
@@ -56,7 +56,6 @@ export default function MonComptePage() {
   const handleSave = () => {
     // Ici vous pourrez ajouter la logique pour sauvegarder les modifications
     // Pour l'instant, on simule juste
-    alert('Informations sauvegardées avec succès!')
     setIsEditing(false)
   }
 
@@ -73,7 +72,7 @@ export default function MonComptePage() {
     return (
       <div className={stylesMonCompte.container}>
         <div className={stylesMonCompte.loadingMessage}>
-          <p>Redirection en cours...</p>
+          <p>Redirecting...</p>
         </div>
       </div>
     )
@@ -82,15 +81,15 @@ export default function MonComptePage() {
   return (
     <div className={stylesMonCompte.container}>
       <div className={stylesMonCompte.pageHeader}>
-        <h1 className={stylesMonCompte.title}>Mon compte</h1>
-        <p className={stylesMonCompte.subtitle}>Gérez vos informations personnelles</p>
+        <h1 className={stylesMonCompte.title}>My Account</h1>
+        <p className={stylesMonCompte.subtitle}>Handle your personal information</p>
       </div>
 
       <div className={stylesMonCompte.accountCard}>
 
         <div className={stylesMonCompte.formGrid}>
           <div className={stylesMonCompte.formGroup}>
-            <label htmlFor="username">Nom d'utilisateur</label>
+            <label htmlFor="username">Name</label>
             {isEditing ? (
               <input
                 type="text"
@@ -106,7 +105,7 @@ export default function MonComptePage() {
           </div>
 
           <div className={stylesMonCompte.formGroup}>
-            <label htmlFor="email">Adresse email</label>
+            <label htmlFor="email">Email Adress</label>
             {isEditing ? (
               <input
                 type="email"
@@ -122,7 +121,7 @@ export default function MonComptePage() {
           </div>
 
           <div className={stylesMonCompte.formGroup}>
-            <label htmlFor="password">Mot de passe</label>
+            <label htmlFor="password">Password</label>
             {isEditing ? (
               <input
                 type="password"
@@ -141,15 +140,15 @@ export default function MonComptePage() {
 
         <div className={stylesMonCompte.accountInfo}>
           <div className={stylesMonCompte.infoItem}>
-            <span className={stylesMonCompte.infoLabel}>Type de compte:</span>
+            <span className={stylesMonCompte.infoLabel}>Type of account:</span>
             <span className={stylesMonCompte.infoValue}>
-              {currentUser?.provider === 'google' ? 'Compte Google' : 'Compte local'}
+              {currentUser?.provider === 'google' ? 'Google Account' : 'Local Account'}
             </span>
           </div>
           
           {currentUser?.createdAt && (
             <div className={stylesMonCompte.infoItem}>
-              <span className={stylesMonCompte.infoLabel}>Membre depuis:</span>
+              <span className={stylesMonCompte.infoLabel}>Membre Since:</span>
               <span className={stylesMonCompte.infoValue}>
                 {new Date(currentUser.createdAt).toLocaleDateString('fr-FR', {
                   year: 'numeric',
@@ -163,35 +162,35 @@ export default function MonComptePage() {
       </div>
 
       <div className={stylesMonCompte.quickActions}>
-  <h3>Actions rapides</h3>
+  <h3>Fast Actions</h3>
   <div className={stylesMonCompte.actionsGrid}>
     <button 
       className={stylesMonCompte.actionButton}
       onClick={() => router.push('/macollection')}
     >
       <i className="fa-solid fa-history"></i>
-      Voir ma collection
+      Look at your Collection
     </button>
     <button 
       className={stylesMonCompte.actionButton}
       onClick={() => router.push('/panier')}
     >
       <i className="fa-solid fa-shopping-cart"></i>
-      Mon panier
+      My Cart
     </button>
   </div>
 
   <div className={stylesMonCompte.creditSection}>
     <div className={stylesMonCompte.creditSectionDiv1}>
-        <h4>Créditer mon compte</h4>
-        <input id="creditAmount" type="number" value={creditAmount} onChange={(e) => setCreditAmount(Number(e.target.value))} className="p-2 border border-gray-300 rounded" placeholder="Entrez un montant"/>
+        <h4>Credit My Account</h4>
+        <input id="creditAmount" type="number" value={creditAmount} onChange={(e) => setCreditAmount(Number(e.target.value))} className="p-2 border border-gray-300 rounded" placeholder="Enter the amount"/>
     </div>
       
     <div className={stylesMonCompte.creditSectionDiv2}>
-      <h4 className="text-sm text-gray-600 mt-2">Nombre de crédits : <strong>{currentUser?.credit ?? 0}</strong></h4>
+      <h4 className="text-sm text-gray-600 mt-2">Number of Credits : <strong>{currentUser?.credit ?? 0}</strong></h4>
       <button className={stylesMonCompte.creditButton} onClick={handleCredit}>
         <i className="fa-solid fa-credit-card"></i>
-        Créditer
+        Credit
       </button>
       {creditMessage && <p className={stylesMonCompte.creditMessage}>{creditMessage}</p>}
     </div>

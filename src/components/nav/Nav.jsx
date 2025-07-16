@@ -88,10 +88,10 @@ export default function Nav() {
                   <div className={styleNav.userMenu}>
                     <p>Bonjour {currentUser?.username}</p>
                     <div className={styleNav.menuDivider}></div>
-                    <Link href="/moncompte" onClick={handleMenuItemClick}><p>Mon compte</p></Link>
-                    <Link href="/macollection" onClick={handleMenuItemClick}><p>Ma collection</p></Link>
+                    <Link href="/moncompte" onClick={handleMenuItemClick}><p>My Account</p></Link>
+                    <Link href="/macollection" onClick={handleMenuItemClick}><p>My Collection</p></Link>
                     <div className={styleNav.menuDivider}></div>
-                    <p onClick={handleLogout} style={{ color: 'red', cursor: 'pointer' }}>Se déconnecter</p>
+                    <p onClick={handleLogout} style={{ color: 'red', cursor: 'pointer' }}>Logout</p>
                   </div>
                 )}
               </div>

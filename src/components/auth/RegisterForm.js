@@ -32,12 +32,12 @@ const RegisterForm = () => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      dispatch(registerFailure('Les mots de passe ne correspondent pas'));
+      dispatch(registerFailure('The password is incorrect'));
       return;
     }
 
     if (formData.password.length < 6) {
-      dispatch(registerFailure('Le mot de passe doit contenir au moins 6 caractères'));
+      dispatch(registerFailure('Password needs at least 6 characters'));
       return;
     }
 
@@ -47,7 +47,7 @@ const RegisterForm = () => {
     const duplicateLocal = storedUsers.find(user => user.email === formData.email);
 
     if (existingUser || duplicateLocal) {
-      dispatch(registerFailure('Cet email est déjà utilisé'));
+      dispatch(registerFailure('Email already used'));
       return;
     }
 
@@ -90,7 +90,7 @@ const RegisterForm = () => {
       dispatch(closeAuthModal());
 
     } catch (error) {
-      dispatch(registerFailure('Erreur lors de l\'inscription'));
+      dispatch(registerFailure('Error during signin in'));
     }
   };
 
@@ -125,7 +125,7 @@ const RegisterForm = () => {
       {error && <div className={styleAuth.errorMessage}>{error}</div>}
 
       <div className={styleAuth.formGroup}>
-        <label htmlFor="username">Nom d'utilisateur</label>
+        <label htmlFor="username">User Name</label>
         <input
           type="text"
           id="username"
@@ -150,7 +150,7 @@ const RegisterForm = () => {
       </div>
 
       <div className={styleAuth.formGroup}>
-        <label htmlFor="password">Mot de passe</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
@@ -163,7 +163,7 @@ const RegisterForm = () => {
       </div>
 
       <div className={styleAuth.formGroup}>
-        <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
+        <label htmlFor="confirmPassword">Confirm password</label>
         <input
           type="password"
           id="confirmPassword"
@@ -176,7 +176,7 @@ const RegisterForm = () => {
       </div>
 
       <button type="submit" disabled={isLoading} className={styleAuth.submitBtn}>
-        {isLoading ? 'Inscription...' : 'S\'inscrire'}
+        {isLoading ? 'Signing In' : 'Sign In'}
       </button>
     </form>
   );

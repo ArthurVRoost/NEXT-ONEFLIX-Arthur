@@ -77,13 +77,20 @@ const handleAddToCart = (episode) => {
 
   return (
     <div className={styleEpisodes.episodesDivP}>
-      {isAnimeDiscounted && (
-        <div className={styleEpisodes.discountNotice}>
-          Special Offer: 20% OFF on all episodes of this anime!
-        </div>
-      )}
-      <div className={styleEpisodes.DivEpisodes}>
-          {episodes.map((episode) => {
+  {isAnimeDiscounted && (
+    <div className={styleEpisodes.discountNotice}>
+      Special Offer: 20% OFF on all episodes of this anime!
+    </div>
+  )}
+
+  {/* ✅ Afficher message si aucun épisode */}
+  {episodes.length === 0 ? (
+    <div className={styleEpisodes.noEpisodes}>
+      No episodes, only the movie.
+    </div>
+  ) : (
+    <div className={styleEpisodes.DivEpisodes}>
+      {episodes.map((episode) => {
         const episodeId = `episode-${episode.mal_id}`
         const isInCart = cartItems.some(item => item.id === episodeId)
 
@@ -113,8 +120,8 @@ const handleAddToCart = (episode) => {
           </div>
         )
       })}
-      </div>
-      
     </div>
+  )}
+</div>
   )
 }

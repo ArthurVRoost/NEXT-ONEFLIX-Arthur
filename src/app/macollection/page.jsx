@@ -55,7 +55,7 @@ export default function MaCollectionPage() {
     return (
       <div className={stylesMaCollection.container}>
         <div className={stylesMaCollection.loadingMessage}>
-          <p>Redirection en cours...</p>
+          <p>Redirecting...</p>
         </div>
       </div>
     )
@@ -64,14 +64,14 @@ export default function MaCollectionPage() {
   return (
     <div className={stylesMaCollection.container}>
       <div className={stylesMaCollection.pageHeader}>
-        <h1 className={stylesMaCollection.title}>Ma collection</h1>
-        <p className={stylesMaCollection.subtitle}>Votre historique d'achats</p>
+        <h1 className={stylesMaCollection.title}>My Collection</h1>
+        <p className={stylesMaCollection.subtitle}>Your History</p>
       </div>
 
       <div className={stylesMaCollection.statsCard}>
         <div className={stylesMaCollection.statItem}>
           <div className={stylesMaCollection.statNumber}>{purchaseHistory.length}</div>
-          <div className={stylesMaCollection.statLabel}>Commandes</div>
+          <div className={stylesMaCollection.statLabel}>Orders</div>
         </div>
         <div className={stylesMaCollection.statItem}>
           <div className={stylesMaCollection.statNumber}>
@@ -81,39 +81,39 @@ export default function MaCollectionPage() {
         </div>
         <div className={stylesMaCollection.statItem}>
           <div className={stylesMaCollection.statNumber}>{formatPrice(calculateTotalSpent())}</div>
-          <div className={stylesMaCollection.statLabel}>Total dépensé</div>
+          <div className={stylesMaCollection.statLabel}>Total Spend</div>
         </div>
       </div>
 
       {isLoading ? (
         <div className={stylesMaCollection.loadingContainer}>
           <div className={stylesMaCollection.loader}></div>
-          <p>Chargement de votre collection...</p>
+          <p>Loading...</p>
         </div>
       ) : purchaseHistory.length === 0 ? (
         <div className={stylesMaCollection.emptyState}>
           <div className={stylesMaCollection.emptyIcon}>
             <i className="fa-solid fa-box-open"></i>
           </div>
-          <h3>Votre collection est vide</h3>
-          <p>Vous n'avez pas encore effectué d'achats.</p>
+          <h3>Your collection is empty</h3>
+          <p>You haven't bought anything.</p>
           <button 
             className={stylesMaCollection.shopButton}
             onClick={() => router.push('/collection')}
           >
             <i className="fa-solid fa-shopping-bag"></i>
-            Découvrir la collection
+            Discover our collection
           </button>
         </div>
       ) : (
         <div className={stylesMaCollection.historyContainer}>
-          <h2 className={stylesMaCollection.historyTitle}>Historique des commandes</h2>
+          <h2 className={stylesMaCollection.historyTitle}>History of Orders</h2>
           
           {purchaseHistory.map((purchase, index) => (
             <div key={index} className={stylesMaCollection.purchaseCard}>
               <div className={stylesMaCollection.purchaseHeader}>
                 <div className={stylesMaCollection.purchaseInfo}>
-                  <h3>Commande #{purchase.id}</h3>
+                  <h3>Order #{purchase.id}</h3>
                   <p className={stylesMaCollection.purchaseDate}>
                     {new Date(purchase.date).toLocaleDateString('fr-FR', {
                       year: 'numeric',

@@ -180,7 +180,7 @@ export default function All() {
       {currentPage < 3 && !loading && (
         <div className={styleAll.loadMoreSection}>
           <button onClick={loadMore} className={styleAll.loadMoreButton}>
-            Charger plus d'animes
+            Load more animes
           </button>
         </div>
       )}
@@ -188,14 +188,14 @@ export default function All() {
       {/* Indicateur de chargement */}
       {loading && (
         <div className={styleAll.loading}>
-          Chargement des animes...
+          Loading...
         </div>
       )}
 
       {/* Message fin de pagination */}
       {currentPage >= 3 && (
         <div className={styleAll.endMessage}>
-          Vous avez vu tous les animes disponibles !
+          You've read all available animes !
         </div>
       )}
     </div>

@@ -38,7 +38,7 @@ const LoginForm = () => {
       dispatch(loginSuccess(userWithoutPassword));
       dispatch(closeAuthModal());
     } else {
-      dispatch(loginFailure('Email ou mot de passe incorrect'));
+      dispatch(loginFailure('Email or password incorrect'));
     }
   };
 
@@ -49,7 +49,7 @@ const LoginForm = () => {
         <input
           id="email"
           type="email"
-          placeholder="Entrez votre email"
+          placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -58,11 +58,11 @@ const LoginForm = () => {
       </div>
 
       <div className={styleAuth.formGroup}>
-        <label htmlFor="password">Mot de passe</label>
+        <label htmlFor="password">Password</label>
         <input
           id="password"
           type="password"
-          placeholder="Entrez votre mot de passe"
+          placeholder="Enter your password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -73,7 +73,7 @@ const LoginForm = () => {
       {error && <p className={styleAuth.error}>{error}</p>}
 
       <button type="submit" disabled={isLoading} className={styleAuth.submitBtn}>
-        {isLoading ? 'Connexion...' : 'Se connecter'}
+        {isLoading ? 'Logging in...' : 'Login'}
       </button>
     </form>
   );

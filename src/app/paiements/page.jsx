@@ -26,21 +26,21 @@ export default function Paiements() {
   const handleBuy = () => {
   // 1. Vérifie que l'utilisateur est connecté
   if (!isAuthenticated || !currentUser) {
-    alert('Vous devez être connecté pour effectuer un achat')
+    alert('Must be connected to buy something')
     router.push('/')
     return
   }
 
   // 2. Vérifie que le panier contient au moins un article
   if (items.length === 0) {
-    alert('Votre panier est vide')
+    alert('Your cart is empty')
     router.push('/panier')
     return
   }
 
   // 3. Vérifie qu'un mode de paiement a été sélectionné
   if (!selectedCard) {
-    alert('Veuillez sélectionner une méthode de paiement')
+    alert('Select a payement method')
     return
   }
 
@@ -52,7 +52,7 @@ export default function Paiements() {
     const currentCredit = currentUser.credit || 0
 
     if (currentCredit < total) {
-      alert('Crédits insuffisants pour effectuer cet achat')
+      alert('Not enough credits')
       setIsProcessing(false)
       return
     }
@@ -77,7 +77,7 @@ export default function Paiements() {
     return (
       <div className={stylePaiements.payeDivP}>
         <div style={{ textAlign: 'center', padding: '2rem' }}>
-          <p>Redirection vers le panier...</p>
+          <p>Redirecting...</p>
         </div>
       </div>
     )
@@ -95,7 +95,7 @@ export default function Paiements() {
 
           {/* Résumé de commande */}
           <div className={stylePaiements.orderSummary} style={{ margin: '1rem 0', padding: '1rem', border: '1px solid #ddd', borderRadius: '8px' }}>
-            <h3>Résumé de votre commande</h3>
+            <h3>Order Summary</h3>
             <div style={{ marginBottom: '0.5rem' }}>
               <strong>Articles: {items.length}</strong>
             </div>
@@ -104,7 +104,7 @@ export default function Paiements() {
             </div>
             {items.some(item => item.isFree) && (
               <div style={{ color: '#907AD6', fontSize: '0.9rem' }}>
-                ✨ Vous bénéficiez d'un article gratuit !
+                ✨ Free Article!
               </div>
             )}
           </div>
@@ -163,7 +163,7 @@ export default function Paiements() {
     <div className={stylePaiements.divTextCoins}>
       <h3>Available Credit: {currentUser?.credit?.toFixed(2) || 0}€</h3>
       {currentUser?.credit < total && (
-        <p style={{ color: 'red' }}>Fonds insuffisants pour cet achat.</p>
+        <p style={{ color: 'red' }}>Not enough funds.</p>
       )}
     </div>
   </div>
@@ -188,10 +188,10 @@ export default function Paiements() {
           <h2>Thanks for your order!</h2>
           <div className={stylePaiements.checkmark}>✔</div>
           <p style={{ marginTop: '1rem', color: '#666' }}>
-            Vos articles ont été ajoutés à votre collection.
+            Your articles have been added to your collections.
           </p>
           <p style={{ marginTop: '0.5rem', color: '#666' }}>
-            Redirection vers votre collection dans 3 secondes...
+            Redirecting towards your collection...
           </p>
         </div>
       )}

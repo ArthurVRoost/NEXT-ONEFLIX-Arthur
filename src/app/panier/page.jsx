@@ -85,7 +85,7 @@ export default function Panier() {
               {/* Prix */}
               <div className={stylePanier.divPrix}>
                 <div className={stylePanier.divGratuit} style={{color: item.isFree ? '#907AD6' : '#333'}}>
-                  {item.isFree ? 'GRATUIT' : `${item.price.toFixed(2)}€`}
+                  {item.isFree ? 'FREE' : `${item.price.toFixed(2)}€`}
                 </div>
                 
                 {/* Prix original barré si réduction */}

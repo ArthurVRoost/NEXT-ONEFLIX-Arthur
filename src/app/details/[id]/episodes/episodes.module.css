@@ -86,3 +86,9 @@
 .section1CardBtn:hover{
   box-shadow: 0px 0px 10px 0px white;
 }
+.noEpisodes {
+  font-size: 1.4rem;
+  text-align: center;
+  color: #ffffff;
+  font-style: italic;
+}

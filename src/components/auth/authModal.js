@@ -22,7 +22,7 @@ return (
   <div className={styleAuth.authModalOverlay} onClick={handleCloseModal}>
     <div className={styleAuth.authModal} onClick={(e) => e.stopPropagation()}>
       <div className={styleAuth.modalHeader}>
-        <h2>{authModalType === 'login' ? 'Connexion' : 'Inscription'}</h2>
+        <h2>{authModalType === 'login' ? 'Login' : 'Sign In'}</h2>
         <button onClick={handleCloseModal} className={styleAuth.closeBtn}>×</button>
       </div>
       <div className={styleAuth.modalContent}>
@@ -35,7 +35,7 @@ return (
             "Déjà un compte ? "
           }
           <button onClick={handleSwitchMode} className={styleAuth.switchBtn}>
-            {authModalType === 'login' ? 'Inscrivez-vous' : 'Connectez-vous'}
+            {authModalType === 'login' ? 'Sign In' : 'Login'}
           </button>
         </p>
       </div>
