@@ -85,7 +85,8 @@ const RegisterForm = () => {
         }));
       }
 
-      // Correction : utiliser la destructuration directe
+      // Correction : désactiver ESLint pour cette ligne car password est intentionnellement non utilisé
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...userWithoutPassword } = newUser;
       dispatch(registerSuccess(userWithoutPassword));
 
