@@ -1,11 +1,11 @@
 'use client';
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   registerStart,
   registerSuccess,
   registerFailure,
-  googleLoginSuccess,
   closeAuthModal
 } from '../../store/slices/authSlice';
 import styleAuth from './authModal.module.css';
@@ -20,6 +20,15 @@ const RegisterForm = () => {
     password: '',
     confirmPassword: ''
   });
+
+  const [storedUsers, setStoredUsers] = useState([]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const local = JSON.parse(localStorage.getItem('users')) || [];
+      setStoredUsers(local);
+    }
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -41,9 +50,7 @@ const RegisterForm = () => {
       return;
     }
 
-    // ✅ Vérifie à la fois dans le state Redux ET dans localStorage
     const existingUser = users.find(user => user.email === formData.email);
-    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
     const duplicateLocal = storedUsers.find(user => user.email === formData.email);
 
     if (existingUser || duplicateLocal) {
@@ -66,19 +73,21 @@ const RegisterForm = () => {
       };
 
       const updatedUsers = [...storedUsers, newUser];
-      localStorage.setItem('users', JSON.stringify(updatedUsers));
-      localStorage.setItem('currentUser', JSON.stringify({
-        id: newUser.id,
-        username: newUser.username,
-        email: newUser.email,
-        provider: newUser.provider,
-        createdAt: newUser.createdAt
-      }));
 
-      const { password, ...userWithoutPassword } = newUser;
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('users', JSON.stringify(updatedUsers));
+        localStorage.setItem('currentUser', JSON.stringify({
+          id: newUser.id,
+          username: newUser.username,
+          email: newUser.email,
+          provider: newUser.provider,
+          createdAt: newUser.createdAt
+        }));
+      }
+
+      const { password: _, ...userWithoutPassword } = newUser;
       dispatch(registerSuccess(userWithoutPassword));
 
-      // ✅ Vide les champs du formulaire
       setFormData({
         username: '',
         email: '',
@@ -86,37 +95,9 @@ const RegisterForm = () => {
         confirmPassword: ''
       });
 
-      // ✅ Ferme le modal
       dispatch(closeAuthModal());
-
-    } catch (error) {
-      dispatch(registerFailure('Error during signin in'));
-    }
-  };
-
-  const handleGoogleLogin = async () => {
-    dispatch(registerStart());
-
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    try {
-      const googleUser = {
-        id: 'google_' + Date.now(),
-        username: 'Utilisateur Google',
-        email: 'user@gmail.com',
-        provider: 'google',
-        avatar: 'https://via.placeholder.com/40'
-      };
-
-      localStorage.setItem('currentUser', JSON.stringify(googleUser));
-
-      dispatch(googleLoginSuccess(googleUser));
-
-      // ✅ Ferme le modal après login Google aussi
-      dispatch(closeAuthModal());
-
-    } catch (error) {
-      dispatch(registerFailure('Erreur de connexion Google'));
+    } catch {
+      dispatch(registerFailure('Error during signing in'));
     }
   };
 
