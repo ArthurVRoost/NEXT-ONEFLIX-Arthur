@@ -189,3 +189,32 @@
   color:  rgba(116, 241, 116, 0.9);
   font-weight: bold;
 }
+.priceTag {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  z-index: 3;
+}
+
+.priceNormal {
+  color: #ffffff;
+}
+
+.priceDiscounted {
+  color: #74f174;
+}
+
+.originalPrice {
+  text-decoration: line-through;
+  font-size: 12px;
+  opacity: 0.6;
+}

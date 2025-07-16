@@ -81,3 +81,7 @@
 .rightArrow {
   right: 10px;
 }
+.backgroundImage{
+  filter: blur(4px);
+}
+

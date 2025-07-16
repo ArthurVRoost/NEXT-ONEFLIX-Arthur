@@ -3,6 +3,7 @@ import stylesLast from '../../app/page.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import axios from 'axios'
+import { getAnimePrice } from '../../utils/pricing'
 
 export default function Last() {
     const [episodes, setEpisodes] = useState([])
@@ -15,8 +16,16 @@ export default function Last() {
         setLoading(true)
         const response = await axios.get('https://api.jikan.moe/v4/watch/episodes')
         
-        const topEpisodes = response.data.data.slice(0, 8)
-        setEpisodes(topEpisodes)
+        // Ajouter les prix aux épisodes
+        const topEpisodesWithPrice = response.data.data.slice(0, 8).map(episode => {
+          const priceInfo = getAnimePrice(episode.entry.mal_id);
+          return {
+            ...episode,
+            basePrice: priceInfo.basePrice
+          };
+        });
+        
+        setEpisodes(topEpisodesWithPrice)
         setError(null)
       } catch (err) {
         console.error('Erreur lors du fetch des épisodes:', err)
@@ -47,7 +56,19 @@ export default function Last() {
           <Link href={`/details/${episode.entry.mal_id}`}>
             <div className={stylesLast.cardWrapper}>
               <div className={stylesLast.card}>
-                <Image   className={stylesLast.cardImg}  src={episode.entry.images.jpg.large_image_url }  width={280}  height={160}  alt={`image de l'anime ${episode.entry.title}`}/>
+                <Image   
+                  className={stylesLast.cardImg}  
+                  src={episode.entry.images.jpg.large_image_url}  
+                  width={280}  
+                  height={160}  
+                  alt={`image de l'anime ${episode.entry.title}`}
+                />
+                
+                {/* Affichage du prix */}
+                <div className={stylesLast.priceTag}>
+                  <span className={stylesLast.priceNormal}>{episode.basePrice}€</span>
+                </div>
+                
                 <div className={stylesLast.cardOverlay}>
                   <h3 className={stylesLast.section12CardH3}>{episode.entry.title}</h3>
                 </div>

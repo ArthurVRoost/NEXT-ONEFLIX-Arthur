@@ -8,7 +8,7 @@ import Naruto from '../components/naruto/Naruto'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import LoadUserFromStorage from '../components/LoadUserFromStorage'
-
+import { getAnimePrice } from '../utils/pricing';
 export default function Home() {
   const [animes, setAnimes] = useState([])
   const [loading, setLoading] = useState(true)
@@ -16,38 +16,47 @@ export default function Home() {
   const [discountedAnimeId, setDiscountedAnimeId] = useState(null)
 
   useEffect(() => {
-    const fetchAnimes = async () => {
-      try {
-        setLoading(true)
-        const response = await axios.get('https://api.jikan.moe/v4/top/anime')
-        
-        const topAnimes = response.data.data.slice(0, 8)
-        setAnimes(topAnimes)
-        
-        // Sélectionner un anime aléatoire pour la réduction
-        const randomIndex = Math.floor(Math.random() * topAnimes.length)
-        const selectedAnime = topAnimes[randomIndex]
-        setDiscountedAnimeId(selectedAnime.mal_id)
-        
-        // Sauvegarder l'anime en réduction dans localStorage pour le panier
-        localStorage.setItem('discountedAnime', JSON.stringify({
-          id: selectedAnime.mal_id,
-          title: selectedAnime.title,
-          image: selectedAnime.images.jpg.large_image_url,
-          discount: 20
-        }))
-        
-        setError(null)
-      } catch (err) {
-        console.error('Erreur lors du fetch des animes:', err)
-        setError('Impossible de charger les animes. Veuillez réessayer plus tard.')
-      } finally {
-        setLoading(false)
-      }
+  const fetchAnimes = async () => {
+    try {
+      setLoading(true)
+      const response = await axios.get('https://api.jikan.moe/v4/top/anime')
+      
+      // Utiliser les prix déterministes depuis les utils
+      const topAnimesWithPrice = response.data.data.slice(0, 8).map(anime => {
+        const priceInfo = getAnimePrice(anime.mal_id);
+        return {
+          ...anime,
+          basePrice: priceInfo.basePrice,
+          finalPrice: priceInfo.finalPrice,
+        };
+      });
+      
+      setAnimes(topAnimesWithPrice)
+      
+      // Sélectionner un anime aléatoire pour la réduction
+      const randomIndex = Math.floor(Math.random() * topAnimesWithPrice.length) // Correction ici
+      const selectedAnime = topAnimesWithPrice[randomIndex]
+      setDiscountedAnimeId(selectedAnime.mal_id)
+      
+      // Sauvegarder l'anime en réduction dans localStorage pour le panier
+      localStorage.setItem('discountedAnime', JSON.stringify({
+        id: selectedAnime.mal_id,
+        title: selectedAnime.title,
+        image: selectedAnime.images.jpg.large_image_url,
+        discount: 20
+      }))
+      
+      setError(null)
+    } catch (err) {
+      console.error('Erreur lors du fetch des animes:', err)
+      setError('Impossible de charger les animes. Veuillez réessayer plus tard.')
+    } finally {
+      setLoading(false)
     }
+  }
 
-    fetchAnimes()
-  }, [])
+  fetchAnimes()
+}, [])
 
   if (loading) {
     return <div className={styles.loading}>Chargement des animes...</div>
@@ -83,6 +92,20 @@ export default function Home() {
                       height={160} 
                       alt={`Image de l'anime ${anime.title}`}
                     />
+                    <div className={styles.priceTag}>
+                      {discountedAnimeId === anime.mal_id ? (
+                        <>
+                          <span className={styles.priceDiscounted}>
+                            {Math.floor(anime.basePrice * 0.8)}€
+                          </span>
+                          <span className={styles.originalPrice}>
+                            {anime.basePrice}€
+                          </span>
+                        </>
+                      ) : (
+                        <span className={styles.priceNormal}>{anime.basePrice}€</span>
+                      )}
+                  </div>
                     <div className={styles.cardOverlay}>
                       <h3 className={styles.section1CardH3}>{anime.title}</h3>
                       <p className={styles.section1CardP}>

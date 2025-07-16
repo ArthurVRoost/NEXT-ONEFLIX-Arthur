@@ -58,49 +58,34 @@ const cartSlice = createSlice({
     },
     
     addAllEpisodes: (state, action) => {
-      const { animeId, animeTitle, animeImage, episodeCount } = action.payload;
+  const { animeId, animeTitle, animeImage, episodeCount } = action.payload;
+  const itemId = `all-episodes-${animeId}`;
 
-      const itemId = `all-episodes-${animeId}`;
+  const existingItem = state.items.find(item => item.id === itemId);
+  if (existingItem) {
+    console.warn("Le pack d'épisodes complet est déjà dans le panier.");
+    return;
+  }
 
-      const existingItem = state.items.find(item => item.id === itemId);
+  // Utilisez les prix du payload qui viennent des utils
+  const { price, originalPrice, hasDiscount, discountPercentage } = action.payload;
 
-      if (existingItem) {
-        console.warn("Le pack d'épisodes complet est déjà dans le panier.");
-        return;
-      }
+  const allEpisodesItem = {
+    id: itemId,
+    title: `${animeTitle} - All Episodes (${episodeCount} episodes)`,
+    price: price,
+    originalPrice: originalPrice,
+    hasDiscount: hasDiscount,
+    discountPercentage: discountPercentage,
+    image: animeImage,
+    quantity: 1,
+    isFree: false,
+    isAllEpisodes: true,
+    animeId: animeId,
+    episodeCount: episodeCount
+  };
 
-      const randomPrice = Math.floor(Math.random() * 6) + 10;
-      let finalPrice = randomPrice;
-      let hasDiscount = false;
-      let originalPrice = randomPrice;
-      
-      // Vérifier si l'anime est en réduction
-      try {
-        const discountedAnime = JSON.parse(localStorage.getItem('discountedAnime'));
-        if (discountedAnime && animeId == discountedAnime.id) {
-          finalPrice = randomPrice * 0.8; // 20% de réduction
-          hasDiscount = true;
-        }
-      } catch (error) {
-        console.error('Erreur lors de la récupération de la réduction:', error);
-      }
-
-      const allEpisodesItem = {
-        id: itemId,
-        title: `${animeTitle} - All Episodes (${episodeCount} episodes)`,
-        price: finalPrice,
-        originalPrice: originalPrice,
-        hasDiscount: hasDiscount,
-        discountPercentage: hasDiscount ? 20 : 0,
-        image: animeImage,
-        quantity: 1,
-        isFree: false,
-        isAllEpisodes: true,
-        animeId: animeId,
-        episodeCount: episodeCount
-      };
-
-      state.items.push(allEpisodesItem);
+  state.items.push(allEpisodesItem);
 
       state.itemsCount = state.items.reduce((total, item) => total + item.quantity, 0);
 

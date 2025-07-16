@@ -45,22 +45,25 @@ export default function Naruto() {
         
           {episodes.map((episode) => (
         <div key={episode.mal_id} className={styleNaruto.cardWrapper}>
-          <Link href="/details/20">
-            <div className={styleNaruto.card}>
-              <Image  
-                className={styleNaruto.cardImg} 
-                src="/img/NarutoImg.jpg" 
-                width={280} 
-                height={160} 
-                alt={`image de l'épisode ${episode.title}`}
-              />
-              <div className={styleNaruto.cardOverlay}>
-                <h3 className={styleNaruto.section3CardH3}>{episode.title}</h3>
-                <p className={styleNaruto.section3CardP}>Episodes: {episode.mal_id}</p>
-              </div>
-            </div>
-          </Link>
-        </div>
+  <Link href="/details/20">
+    <div className={styleNaruto.card}>
+      <Image  
+        className={styleNaruto.cardImg} 
+        src="/img/NarutoImg.jpg" 
+        width={280} 
+        height={160} 
+        alt={`image de l'épisode ${episode.title}`}
+      />
+      <div className={styleNaruto.cardOverlay}>
+        <h3 className={styleNaruto.section3CardH3}>{episode.title}</h3>
+        <p className={styleNaruto.section3CardP}>Épisode : {episode.mal_id}</p>
+      </div>
+      <div className={styleNaruto.priceTag}>
+        <span className={styleNaruto.priceNormal}>1,99€</span>
+      </div>
+    </div>
+  </Link>
+</div>
       ))}
      </div>
          </>

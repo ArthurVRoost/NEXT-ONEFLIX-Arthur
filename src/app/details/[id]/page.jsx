@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addAllEpisodes } from '../../../store/slices/cartSlice'
 import axios from 'axios'
 import Link from 'next/link'
-
+import { generateBasePrice, getFinalPrice, getAnimePrice } from "../../../utils/pricing";
 export default function Details() {
   const params = useParams()
   const dispatch = useDispatch()
@@ -38,15 +38,21 @@ export default function Details() {
   }, [params.id])
 
   const handleBuyAll = () => {
-    if (anime) {
-      dispatch(addAllEpisodes({
-        animeId: anime.mal_id,
-        animeTitle: anime.title,
-        animeImage: anime.images.jpg.large_image_url,
-        episodeCount: anime.episodes || 1
-      }))
-    }
+  if (anime) {
+    const priceInfo = getAnimePrice(anime.mal_id);
+    
+    dispatch(addAllEpisodes({
+      animeId: anime.mal_id,
+      animeTitle: anime.title,
+      animeImage: anime.images.jpg.large_image_url,
+      episodeCount: anime.episodes || 1,
+      price: priceInfo.finalPrice,
+      originalPrice: priceInfo.basePrice,
+      hasDiscount: priceInfo.isDiscounted,
+      discountPercentage: priceInfo.discountPercentage
+    }))
   }
+}
 
   const isAlreadyBought = () => {
   if (!anime) return false;
