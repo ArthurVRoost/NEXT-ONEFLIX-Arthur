@@ -85,7 +85,7 @@ const RegisterForm = () => {
         }));
       }
 
-      const { password, ...userWithoutPassword } = newUser;
+      const userWithoutPassword = (({ password, ...rest }) => rest)(newUser);
       dispatch(registerSuccess(userWithoutPassword));
 
       setFormData({
