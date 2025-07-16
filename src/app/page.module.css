@@ -220,9 +220,7 @@
 }
 
 @media (max-width:576px) {
-  body{
-    overflow-x: hidden;
-  }
+
   .divRow1{
     margin-right: auto;
     margin-left: auto;
