@@ -87,35 +87,6 @@ export default function MonComptePage() {
       </div>
 
       <div className={stylesMonCompte.accountCard}>
-        <div className={stylesMonCompte.cardHeader}>
-          <h2>Informations personnelles</h2>
-          {!isEditing ? (
-            <button 
-              className={stylesMonCompte.editButton}
-              onClick={() => setIsEditing(true)}
-            >
-              <i className="fa-solid fa-edit"></i>
-              Modifier
-            </button>
-          ) : (
-            <div className={stylesMonCompte.editButtons}>
-              <button 
-                className={stylesMonCompte.saveButton}
-                onClick={handleSave}
-              >
-                <i className="fa-solid fa-save"></i>
-                Sauvegarder
-              </button>
-              <button 
-                className={stylesMonCompte.cancelButton}
-                onClick={handleCancel}
-              >
-                <i className="fa-solid fa-times"></i>
-                Annuler
-              </button>
-            </div>
-          )}
-        </div>
 
         <div className={stylesMonCompte.formGrid}>
           <div className={stylesMonCompte.formGroup}>
@@ -196,7 +167,7 @@ export default function MonComptePage() {
   <div className={stylesMonCompte.actionsGrid}>
     <button 
       className={stylesMonCompte.actionButton}
-      onClick={() => router.push('/ma-collection')}
+      onClick={() => router.push('/macollection')}
     >
       <i className="fa-solid fa-history"></i>
       Voir ma collection
@@ -211,21 +182,19 @@ export default function MonComptePage() {
   </div>
 
   <div className={stylesMonCompte.creditSection}>
-    <h4>Créditer mon compte</h4>
-   <input
-    id="creditAmount"
-    type="number"
-    value={creditAmount}
-    onChange={(e) => setCreditAmount(Number(e.target.value))}
-    className="p-2 border border-gray-300 rounded"
-    placeholder="Entrez un montant"
-  />
-  <p className="text-sm text-gray-600 mt-2">Nombre de crédits : <strong>{currentUser?.credit ?? 0}</strong></p>
-    
-    <button className={stylesMonCompte.creditButton} onClick={handleCredit}>
-      Créditer
-    </button>
-    {creditMessage && <p className={stylesMonCompte.creditMessage}>{creditMessage}</p>}
+    <div className={stylesMonCompte.creditSectionDiv1}>
+        <h4>Créditer mon compte</h4>
+        <input id="creditAmount" type="number" value={creditAmount} onChange={(e) => setCreditAmount(Number(e.target.value))} className="p-2 border border-gray-300 rounded" placeholder="Entrez un montant"/>
+    </div>
+      
+    <div className={stylesMonCompte.creditSectionDiv2}>
+      <h4 className="text-sm text-gray-600 mt-2">Nombre de crédits : <strong>{currentUser?.credit ?? 0}</strong></h4>
+      <button className={stylesMonCompte.creditButton} onClick={handleCredit}>
+        <i className="fa-solid fa-credit-card"></i>
+        Créditer
+      </button>
+      {creditMessage && <p className={stylesMonCompte.creditMessage}>{creditMessage}</p>}
+    </div>
   </div>
 </div>
     </div>

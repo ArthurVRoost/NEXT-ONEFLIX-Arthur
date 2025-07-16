@@ -6,8 +6,10 @@ import Nav from '../components/nav/Nav';
 import Footer from '../components/footer/Footer';
 import AuthModal from '../components/auth/authModal';
 import styleNav from '../components/nav/nav.module.css';
-import { ReduxProvider } from './ReduxProvider';
-import AuthInitProvider from '../app/provider/AuthProvider'
+
+import GlobalProvider from './provider/GlobalProvider';
+import AuthInitProvider from './provider/AuthProvider';
+
 const geistOpen_Sans = Open_Sans({
   variable: "--font-open-Sans",
   subsets: ["latin"],
@@ -34,15 +36,15 @@ export default function RootLayout({
         <Script src="https://kit.fontawesome.com/0241eb844d.js" crossOrigin="anonymous" />
       </head>
       <body className={`${geistOpen_Sans.variable} ${geistRoboto.variable}`}>
-        <ReduxProvider>
-          <AuthInitProvider/>
+        <GlobalProvider>
+          <AuthInitProvider />
           <Nav />
           <main className={styleNav.mainContent}>
             {children}
           </main>
           <Footer />
           <AuthModal />
-        </ReduxProvider>
+        </GlobalProvider>
       </body>
     </html>
   );

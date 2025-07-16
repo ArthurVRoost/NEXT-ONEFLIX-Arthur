@@ -131,7 +131,7 @@ export default function MaCollectionPage() {
                   </span>
                 </div>
               </div>
-
+                
               <div className={stylesMaCollection.itemsList}>
                 {purchase.items.map((item, itemIndex) => (
                   <div key={itemIndex} className={stylesMaCollection.purchaseItem}>
@@ -148,13 +148,13 @@ export default function MaCollectionPage() {
                       <h4 className={stylesMaCollection.itemName}>{item.name}</h4>
                       <p className={stylesMaCollection.itemCategory}>{item.category}</p>
                       <div className={stylesMaCollection.itemMeta}>
-                        <span className={stylesMaCollection.itemQuantity}>Qté: {item.quantity}</span>
                         <span className={stylesMaCollection.itemPrice}>{formatPrice(item.price)}</span>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
+              <hr />
             </div>
           ))}
         </div>

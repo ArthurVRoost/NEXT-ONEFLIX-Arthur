@@ -178,22 +178,6 @@ const RegisterForm = () => {
       <button type="submit" disabled={isLoading} className={styleAuth.submitBtn}>
         {isLoading ? 'Inscription...' : 'S\'inscrire'}
       </button>
-
-      <div className={styleAuth.divider}>
-        <span>ou</span>
-      </div>
-
-      <button
-        type="button"
-        onClick={handleGoogleLogin}
-        disabled={isLoading}
-        className={styleAuth.googleBtn}
-      >
-        <svg width="20" height="20" viewBox="0 0 24 24">
-          <path fill="currentColor" d="..."/>
-        </svg>
-        {isLoading ? 'Inscription...' : 'Continuer avec Google'}
-      </button>
     </form>
   );
 };

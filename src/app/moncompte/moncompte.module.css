@@ -3,7 +3,8 @@
   margin: 0 auto;
   padding: 2rem;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #907AD6;
+  border-radius: 20px;
 }
 
 .pageHeader {
@@ -204,7 +205,7 @@
 }
 
 .actionButton {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #907AD6;
   color: white;
   border: none;
   padding: 1.5rem;
@@ -233,7 +234,37 @@
   color: white;
   font-size: 1.2rem;
 }
-
+.creditSection{
+  display: flex;
+  margin-top: 3%;
+  align-items: center;
+}
+.creditSectionDiv2{
+  margin-left: 5%;
+}
+.creditSectionDiv1 input{
+  border-radius: 10px;
+  border: 2px solid #907AD6;
+  padding: 20px 70px;
+  color: #907AD6;
+}
+.creditButton{
+  background-color: #907AD6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 1.5rem 4rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: start;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  gap: 10px;
+}
+.creditButton:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
 /* Responsive */
 @media (max-width: 768px) {
   .container {
