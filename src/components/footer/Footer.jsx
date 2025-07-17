@@ -25,7 +25,6 @@ export default function Footer() {
     const handleCollectionClick = (e) => {
         if (!isAuthenticated) {
             e.preventDefault()
-            alert("Vous n'êtes pas connecté. Veuillez vous connecter pour accéder à votre collection.")
             dispatch(openAuthModal('login'))
         }
     }
