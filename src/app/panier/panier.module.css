@@ -186,6 +186,7 @@
 @media screen and (min-width: 577px) and (max-width: 768px) {
   .divP {
     flex-direction: column;
+    overflow-x: hidden;
   }
 
   .divCard {
@@ -209,6 +210,7 @@
   .divP {
     flex-direction: column;
     padding: 1rem;
+    overflow-x: hidden;
   }
 
   .divTop {

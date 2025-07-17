@@ -259,6 +259,7 @@
     padding: 2%;
     flex-direction: column;
     margin-left: 3%;
+    overflow-x: hidden;
   }
 
   .payeDiv1Box {
@@ -286,6 +287,7 @@
     padding: 2%;
     flex-direction: column;
     margin-left: 4%;
+    overflow-x: hidden;
   }
 
   .payeDiv1Box {
