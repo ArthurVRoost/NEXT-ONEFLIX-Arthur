@@ -28,7 +28,8 @@ const authSlice = createSlice({
     },
     openAuthModal(state, action) {
       state.isAuthModalOpen = true;
-      state.authModalType = action.payload; // ex: 'login' ou 'register'
+      // ex: 'login' ou 'register'
+      state.authModalType = action.payload; 
     },
     closeAuthModal(state) {
       state.isAuthModalOpen = false;
