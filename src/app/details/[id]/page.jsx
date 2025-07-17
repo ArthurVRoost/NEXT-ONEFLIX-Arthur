@@ -26,7 +26,7 @@ export default function Details() {
         setAnime(response.data.data)
         setError(null)
       } catch (err) {
-        setError('Impossible de charger les détails de l\'anime.')
+        setError('Can t load the details of the anime.')
       } finally {
         setLoading(false)
       }
@@ -68,13 +68,7 @@ export default function Details() {
     <div className={styleDetails.fmabDivP}>
       <div className={styleDetails.fmabDivTop}>
         <div className={styleDetails.topDivImg}>
-          <Image  
-            className={styleDetails.topImg} 
-            src={anime.images.jpg.large_image_url} 
-            width={300} 
-            height={500} 
-            alt={`image de l'anime ${anime.title}`}
-          />
+          <Image   className={styleDetails.topImg}  src={anime.images.jpg.large_image_url}  width={300}  height={500}  alt={`image de l'anime ${anime.title}`}/>
         </div>
         <div className={styleDetails.topDivText}>
           <h2>{anime.title}</h2>
@@ -98,11 +92,7 @@ export default function Details() {
               </button>
             </Link>
 
-            <button
-              className={styleDetails.button}
-              onClick={handleBuyAll}
-              disabled={isAlreadyBought()}
-            >
+            <button className={styleDetails.button} onClick={handleBuyAll} disabled={isAlreadyBought()}>
               {isAlreadyBought()
                 ? 'Already Bought'
                 : `Buy all (${anime.episodes || 1} episodes)`}

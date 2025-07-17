@@ -2,12 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  registerStart,
-  registerSuccess,
-  registerFailure,
-  closeAuthModal
-} from '../../store/slices/authSlice';
+import {registerStart, registerSuccess, registerFailure, closeAuthModal} from '../../store/slices/authSlice';
 import styleAuth from './authModal.module.css';
 
 const RegisterForm = () => {
@@ -109,52 +104,22 @@ const RegisterForm = () => {
 
       <div className={styleAuth.formGroup}>
         <label htmlFor="username">User Name</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-          required
-          minLength="3"
-        />
+        <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required minLength="3"/>
       </div>
 
       <div className={styleAuth.formGroup}>
         <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
+        <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required/>
       </div>
 
       <div className={styleAuth.formGroup}>
         <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-          minLength="6"
-        />
+        <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required minLength="6"/>
       </div>
 
       <div className={styleAuth.formGroup}>
         <label htmlFor="confirmPassword">Confirm password</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          value={formData.confirmPassword}
-          onChange={handleChange}
-          required
-          minLength="6"
+        <input type="password" id="confirmPassword" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required minLength="6"
         />
       </div>
 

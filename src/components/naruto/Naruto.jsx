@@ -19,8 +19,8 @@ export default function Naruto() {
             setEpisodes(topEpisodes)
             setError(null)
         } catch (err) {
-            console.error('Erreur lors du fetch des épisodes Naruto:', err)
-            setError('Impossible de charger les épisodes Naruto. Veuillez réessayer plus tard.')
+            console.error('Error durring fetching of Naruto episodes:', err)
+            setError('Can t load animes, try later.')
         } finally {
             setLoading(false)
         }
@@ -30,7 +30,7 @@ export default function Naruto() {
     }, [])
 
     if (loading) {
-        return <div className={styleNaruto.loading}>Chargement des épisodes Naruto...</div>
+        return <div className={styleNaruto.loading}>Loading...</div>
     }
 
     if (error) {
@@ -43,29 +43,23 @@ export default function Naruto() {
         </div>
     <div className={styleNaruto.divNarutoRow1}>
         
-          {episodes.map((episode) => (
-        <div key={episode.mal_id} className={styleNaruto.cardWrapper}>
-  <Link href="/details/20">
-    <div className={styleNaruto.card}>
-      <Image  
-        className={styleNaruto.cardImg} 
-        src="/img/NarutoImg.jpg" 
-        width={280} 
-        height={160} 
-        alt={`image de l'épisode ${episode.title}`}
-      />
-      <div className={styleNaruto.cardOverlay}>
-        <h3 className={styleNaruto.section3CardH3}>{episode.title}</h3>
-        <p className={styleNaruto.section3CardP}>Épisode : {episode.mal_id}</p>
-      </div>
-      <div className={styleNaruto.priceTag}>
-        <span className={styleNaruto.priceNormal}>1,99€</span>
-      </div>
-    </div>
-  </Link>
-</div>
-      ))}
+    {episodes.map((episode) => (
+      <div key={episode.mal_id} className={styleNaruto.cardWrapper}>
+        <Link href="/details/20">
+          <div className={styleNaruto.card}>
+            <Image   className={styleNaruto.cardImg}  src="/img/NarutoImg.jpg"  width={280}  height={160}  alt={`image de l'épisode ${episode.title}`}/>
+            <div className={styleNaruto.cardOverlay}>
+              <h3 className={styleNaruto.section3CardH3}>{episode.title}</h3>
+              <p className={styleNaruto.section3CardP}>Épisode : {episode.mal_id}</p>
+            </div>
+            <div className={styleNaruto.priceTag}>
+              <span className={styleNaruto.priceNormal}>1,99€</span>
+            </div>
+          </div>
+        </Link>
      </div>
+    ))}
+  </div>
          </>
   )
 }

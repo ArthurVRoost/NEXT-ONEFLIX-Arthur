@@ -214,7 +214,7 @@
     transform: translateY(0);
   }
 }
-/* Grand écran (déjà adapté) */
+
 @media screen and (min-width: 1091px) {
   .payeDivP {
     flex-direction: column;
@@ -231,7 +231,7 @@
   }
 }
 
-/* Écran intermédiaire (stack des éléments) */
+
 @media screen and (min-width: 769px) and (max-width: 1090px) {
   .payeDivP {
     width: 95%;
@@ -252,7 +252,7 @@
   }
 }
 
-/* Tablette */
+
 @media screen and (min-width: 577px) and (max-width: 768px) {
   .payeDivP {
     width: 90%;
@@ -280,7 +280,7 @@
   }
 }
 
-/* Mobile */
+
 @media screen and (max-width: 576px) {
   .payeDivP {
     width: 85%;

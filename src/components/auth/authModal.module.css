@@ -1,4 +1,4 @@
-/* AuthModal.module.css */
+
 .authModalOverlay {
   position: fixed;
   top: 0;
@@ -104,7 +104,7 @@
   color: #3a3c7a;
 }
 
-/* Styles pour les formulaires */
+
 .authForm {
   display: flex;
   flex-direction: column;
@@ -168,31 +168,7 @@
   margin-bottom: 16px;
 }
 
-.googleBtn {
-  background: #db4437;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
 
-.googleBtn:hover:not(:disabled) {
-  background: #c23321;
-}
-
-.googleBtn:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
 
 .divider {
   text-align: center;

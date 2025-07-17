@@ -43,7 +43,7 @@ export default function Episodes() {
         setEpisodes(response.data.data)
         setError(null)
       } catch (err) {
-        setError('Impossible de charger les épisodes. Veuillez réessayer plus tard.')
+        setError('Can t load the episodes, try later.')
       } finally {
         setLoading(false)
       }
@@ -83,7 +83,7 @@ const handleAddToCart = (episode) => {
     </div>
   )}
 
-  {/* ✅ Afficher message si aucun épisode */}
+  
   {episodes.length === 0 ? (
     <div className={styleEpisodes.noEpisodes}>
       No episodes, only the movie.
@@ -98,21 +98,11 @@ const handleAddToCart = (episode) => {
           <div key={episode.mal_id} className={styleEpisodes.cardWrapper}>
             <br />
             <div className={styleEpisodes.card}>
-              <Image
-                className={styleEpisodes.cardImg}
-                src={defaultImages[episode.mal_id % defaultImages.length]}
-                width={280}
-                height={160}
-                alt={`image de l'épisode ${episode.title}`}
-              />
+              <Image className={styleEpisodes.cardImg} src={defaultImages[episode.mal_id % defaultImages.length]} width={280} height={160} alt={`image de l'épisode ${episode.title}`}/>
               <div className={styleEpisodes.cardOverlay}>
                 <h3 className={styleEpisodes.section1CardH3}>Episode: {episode.mal_id}</h3>
                 <p className={styleEpisodes.section1CardP}><span>Title:</span> {episode.title}</p>
-                <button
-                  className={styleEpisodes.section1CardBtn}
-                  onClick={() => handleAddToCart(episode)}
-                  disabled={isInCart}
-                >
+                <button className={styleEpisodes.section1CardBtn} onClick={() => handleAddToCart(episode)} disabled={isInCart}>
                   {isInCart ? 'Already Added' : 'Add To Cart'}
                 </button>
               </div>

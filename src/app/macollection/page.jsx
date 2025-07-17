@@ -29,7 +29,7 @@ export default function MaCollectionPage() {
     // Récupérer l'historique depuis localStorage
     const history = JSON.parse(localStorage.getItem(`purchaseHistory_${userId}`)) || []
     
-    // Trier par date (plus récent en premier)
+    // Trier par date 
     const sortedHistory = history.sort((a, b) => new Date(b.date) - new Date(a.date))
     
     setPurchaseHistory(sortedHistory)
@@ -97,10 +97,7 @@ export default function MaCollectionPage() {
           </div>
           <h3>Your collection is empty</h3>
           <p>You haven't bought anything.</p>
-          <button 
-            className={stylesMaCollection.shopButton}
-            onClick={() => router.push('/all')}
-          >
+          <button  className={stylesMaCollection.shopButton} onClick={() => router.push('/all')}>
             <i className="fa-solid fa-shopping-bag"></i>
             Discover our collection
           </button>
@@ -136,13 +133,7 @@ export default function MaCollectionPage() {
                 {purchase.items.map((item, itemIndex) => (
                   <div key={itemIndex} className={stylesMaCollection.purchaseItem}>
                     <div className={stylesMaCollection.itemImage}>
-                      <Image
-                        src={item.image || '/img/placeholder.jpg'}
-                        alt={item.name}
-                        width={60}
-                        height={80}
-                        className={stylesMaCollection.itemImg}
-                      />
+                      <Image src={item.image || '/img/placeholder.jpg'} alt={item.name} width={60} height={80} className={stylesMaCollection.itemImg}/>
                     </div>
                     <div className={stylesMaCollection.itemDetails}>
                       <h4 className={stylesMaCollection.itemName}>{item.name}</h4>

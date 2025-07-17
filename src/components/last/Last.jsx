@@ -6,7 +6,7 @@ import axios from 'axios'
 import { getAnimePrice } from '../../utils/pricing'
 
 export default function Last() {
-    const [episodes, setEpisodes] = useState([])
+  const [episodes, setEpisodes] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
@@ -16,7 +16,7 @@ export default function Last() {
         setLoading(true)
         const response = await axios.get('https://api.jikan.moe/v4/watch/episodes')
         
-        // Ajouter les prix aux épisodes
+        
         const topEpisodesWithPrice = response.data.data.slice(0, 8).map(episode => {
           const priceInfo = getAnimePrice(episode.entry.mal_id);
           return {
@@ -28,8 +28,8 @@ export default function Last() {
         setEpisodes(topEpisodesWithPrice)
         setError(null)
       } catch (err) {
-        console.error('Erreur lors du fetch des épisodes:', err)
-        setError('Impossible de charger les épisodes. Veuillez réessayer plus tard.')
+        console.error('Error durging fetching:', err)
+        setError('Can t load animes, try later.')
       } finally {
         setLoading(false)
       }
@@ -39,7 +39,7 @@ export default function Last() {
   }, [])
 
   if (loading) {
-    return <div className={stylesLast.loading}>Chargement des épisodes...</div>
+    return <div className={stylesLast.loading}>Loading...</div>
   }
 
   if (error) {
@@ -56,15 +56,7 @@ export default function Last() {
           <Link href={`/details/${episode.entry.mal_id}`}>
             <div className={stylesLast.cardWrapper}>
               <div className={stylesLast.card}>
-                <Image   
-                  className={stylesLast.cardImg}  
-                  src={episode.entry.images.jpg.large_image_url}  
-                  width={280}  
-                  height={160}  
-                  alt={`image de l'anime ${episode.entry.title}`}
-                />
-                
-                {/* Affichage du prix */}
+                <Image    className={stylesLast.cardImg}   src={episode.entry.images.jpg.large_image_url}   width={280}  height={160}   alt={`image de l'anime ${episode.entry.title}`}/>
                 <div className={stylesLast.priceTag}>
                   <span className={stylesLast.priceNormal}>{episode.basePrice}€</span>
                 </div>

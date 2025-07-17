@@ -62,17 +62,11 @@ export default function Nav() {
     <div className={styleNav.divPNav}>
       <div className={styleNav.navDiv0}>
         <Link className={styleNav.Link} href="/">
-          <Image
-            className={styleNav.navImg}
-            src="/img/ONEFLIX.png"
-            width={230}
-            height={80}
-            alt="logo oneflix"
-          />
+          <Image className={styleNav.navImg} src="/img/ONEFLIX.png" width={230} height={80} alt="logo oneflix"/>
         </Link>
       </div>
 
-      {/* Menu Mobile */}
+      
       <div className={`${styleNav.mobileMenu} ${isMenuOpen ? styleNav.show : ''}`}>
         <Link className={styleNav.Link} href="/" onClick={handleMenuItemClick}>
           <p className={styleNav.navText}>Home</p>
@@ -85,7 +79,7 @@ export default function Nav() {
         </Link>
       </div>
 
-      {/* Menu Desktop/Tablette */}
+      
       <div className={styleNav.navDiv1}>
         <Link className={styleNav.Link} href="/">
           <p className={styleNav.navText}>Home</p>

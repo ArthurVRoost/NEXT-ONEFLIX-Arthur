@@ -26,7 +26,7 @@ const cartSlice = createSlice({
             hasDiscount = true;
           }
         } catch (error) {
-          console.error('Erreur lors de la récupération de la réduction:', error);
+          console.error('Error:', error);
         }
         
         state.items.push({
@@ -63,7 +63,7 @@ const cartSlice = createSlice({
 
   const existingItem = state.items.find(item => item.id === itemId);
   if (existingItem) {
-    console.warn("Le pack d'épisodes complet est déjà dans le panier.");
+    console.warn("All episodes already in cart.");
     return;
   }
 

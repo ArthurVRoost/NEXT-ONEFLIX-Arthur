@@ -54,8 +54,6 @@ export default function MonComptePage() {
   setTimeout(() => setCreditMessage(''), 3000)
 }
   const handleSave = () => {
-    // Ici vous pourrez ajouter la logique pour sauvegarder les modifications
-    // Pour l'instant, on simule juste
     setIsEditing(false)
   }
 
@@ -130,7 +128,7 @@ export default function MonComptePage() {
                 value={formData.password}
                 onChange={handleInputChange}
                 className={stylesMonCompte.input}
-                placeholder="Nouveau mot de passe"
+                placeholder="New Password"
               />
             ) : (
               <div className={stylesMonCompte.displayValue}>••••••••</div>
@@ -161,41 +159,35 @@ export default function MonComptePage() {
         </div>
       </div>
 
-      <div className={stylesMonCompte.quickActions}>
-  <h3>Fast Actions</h3>
-  <div className={stylesMonCompte.actionsGrid}>
-    <button 
-      className={stylesMonCompte.actionButton}
-      onClick={() => router.push('/macollection')}
-    >
-      <i className="fa-solid fa-history"></i>
-      Look at your Collection
-    </button>
-    <button 
-      className={stylesMonCompte.actionButton}
-      onClick={() => router.push('/panier')}
-    >
-      <i className="fa-solid fa-shopping-cart"></i>
-      My Cart
-    </button>
-  </div>
+        <div className={stylesMonCompte.quickActions}>
+            <h3>Fast Actions</h3>
+            <div className={stylesMonCompte.actionsGrid}>
+                <button  className={stylesMonCompte.actionButton} onClick={() => router.push('/macollection')}>
+                  <i className="fa-solid fa-history"></i>
+                  Look at your Collection
+                </button>
+                <button className={stylesMonCompte.actionButton} onClick={() => router.push('/panier')}>
+                  <i className="fa-solid fa-shopping-cart"></i>
+                  My Cart
+                </button>
+            </div>
 
-  <div className={stylesMonCompte.creditSection}>
-    <div className={stylesMonCompte.creditSectionDiv1}>
-        <h4>Credit My Account</h4>
-        <input id="creditAmount" type="number" value={creditAmount} onChange={(e) => setCreditAmount(Number(e.target.value))} className="p-2 border border-gray-300 rounded" placeholder="Enter the amount"/>
-    </div>
-      
-    <div className={stylesMonCompte.creditSectionDiv2}>
-      <h4 className="text-sm text-gray-600 mt-2">Number of Credits : <strong>{currentUser?.credit ?? 0}</strong></h4>
-      <button className={stylesMonCompte.creditButton} onClick={handleCredit}>
-        <i className="fa-solid fa-credit-card"></i>
-        Credit
-      </button>
-      {creditMessage && <p className={stylesMonCompte.creditMessage}>{creditMessage}</p>}
-    </div>
-  </div>
-</div>
+            <div className={stylesMonCompte.creditSection}>
+              <div className={stylesMonCompte.creditSectionDiv1}>
+                  <h4>Credit My Account</h4>
+                  <input id="creditAmount" type="number" value={creditAmount} onChange={(e) => setCreditAmount(Number(e.target.value))} className="p-2 border border-gray-300 rounded" placeholder="Enter the amount"/>
+              </div>
+                
+              <div className={stylesMonCompte.creditSectionDiv2}>
+                <h4 className="text-sm text-gray-600 mt-2">Number of Credits : <strong>{currentUser?.credit ?? 0}</strong></h4>
+                <button className={stylesMonCompte.creditButton} onClick={handleCredit}>
+                  <i className="fa-solid fa-credit-card"></i>
+                  Credit
+                </button>
+                {creditMessage && <p className={stylesMonCompte.creditMessage}>{creditMessage}</p>}
+              </div>
+            </div>
+        </div>
     </div>
   )
 }

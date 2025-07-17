@@ -1,4 +1,4 @@
-// app/provider/GlobalProvider.tsx
+
 "use client";
 
 import { SessionProvider } from "next-auth/react";

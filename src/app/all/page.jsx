@@ -48,7 +48,7 @@ export default function All() {
       
       setError(null)
     } catch (err) {
-      setError('Impossible de charger les animes. Veuillez réessayer plus tard.')
+      setError('Can t load animes, try later.')
     } finally {
       setLoading(false)
     }
@@ -101,31 +101,21 @@ export default function All() {
 
   return (
     <div className={styleAll.container}>
-      {/* Section des filtres */}
+      
       <div className={styleAll.filtersSection}>
         <h2 className={styleAll.title}>All Animes</h2>
         
         <div className={styleAll.filters}>
-          {/* Recherche par nom */}
+          
           <div className={styleAll.filterGroup}>
             <label className={styleAll.filterLabel}>Search by name:</label>
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={handleSearchChange}
-              placeholder="Name of anime..."
-              className={styleAll.searchInput}
-            />
+            <input type="text" value={searchTerm} onChange={handleSearchChange} placeholder="Name of anime..." className={styleAll.searchInput}/>
           </div>
 
-          {/* Filtre par genre */}
+          
           <div className={styleAll.filterGroup}>
             <label className={styleAll.filterLabel}>Filter by genre:</label>
-            <select
-              value={selectedGenre}
-              onChange={handleGenreChange}
-              className={styleAll.genreSelect}
-            >
+            <select value={selectedGenre} onChange={handleGenreChange} className={styleAll.genreSelect}>
               <option value="">All genres</option>
               {genres.map(genre => (
                 <option key={genre.id} value={genre.name}>
@@ -135,31 +125,23 @@ export default function All() {
             </select>
           </div>
 
-          {/* Bouton reset */}
+          
           <button onClick={clearFilters} className={`${styleAll.clearButton}`}>
             Reset Filters
           </button>
         </div>
 
-        {/* Compteur de résultats */}
-        <p className={styleAll.resultsCount}>
-          {filteredAnimes.length} Anime(s) found
-        </p>
+        
+        <p className={styleAll.resultsCount}>{filteredAnimes.length} Anime(s) found</p>
       </div>
 
-      {/* Grille des animes */}
+      
       <div className={styleAll.animesGrid}>
         {filteredAnimes.map((anime) => (
           <div key={anime.mal_id} className={styleAll.cardWrapper}>
             <Link href={`/details/${anime.mal_id}`}>
               <div className={styleAll.card}>
-                <Image
-                  className={styleAll.cardImg}
-                  src={anime.images.jpg.large_image_url || "/img/CAROU1.webp"}
-                  width={250}
-                  height={180}
-                  alt={`Image de l'anime ${anime.title}`}
-                />
+                <Image className={styleAll.cardImg} src={anime.images.jpg.large_image_url || "/img/CAROU1.webp"} width={250} height={180} alt={`Image de l'anime ${anime.title}`}/>
                 <div className={styleAll.cardOverlay}>
                   <h3 className={styleAll.cardTitle}>{anime.title}</h3>
                   <p className={styleAll.cardInfo}>Score: {anime.score || 'N/A'}/10</p>
@@ -176,7 +158,7 @@ export default function All() {
         ))}
       </div>
 
-      {/* Bouton Charger plus */}
+      
       {currentPage < 3 && !loading && (
         <div className={styleAll.loadMoreSection}>
           <button onClick={loadMore} className={styleAll.loadMoreButton}>
@@ -185,14 +167,14 @@ export default function All() {
         </div>
       )}
 
-      {/* Indicateur de chargement */}
+      
       {loading && (
         <div className={styleAll.loading}>
           Loading...
         </div>
       )}
 
-      {/* Message fin de pagination */}
+      
       {currentPage >= 3 && (
         <div className={styleAll.endMessage}>
           You've read all available animes !

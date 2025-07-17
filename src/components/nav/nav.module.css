@@ -136,7 +136,7 @@
   padding: 10px;
 }
 
-/* Menu burger visible uniquement en mobile */
+
 .burgerIcon {
   display: none;
   font-size: 24px;
@@ -145,7 +145,7 @@
   margin-left: auto;
 }
 
-/* Menu mobile masqué par défaut */
+
 .mobileMenu {
   display: flex;
   flex-direction: column;
@@ -166,12 +166,12 @@
   right: 0;
 }
 
-/* Masquer le menu en mobile par défaut */
+
 .navDiv1 {
   display: flex;
 }
 
-/* Cacher le menu complet et montrer burger en mobile */
+
 @media (max-width: 576px) {
   .navDiv1 {
     display: none;
@@ -226,7 +226,7 @@
   }
 }
 
-/* ---------------------- GRAND ÉCRAN ---------------------- */
+
 @media (min-width: 1091px) {
   .navDiv1 {
     gap: 40px;

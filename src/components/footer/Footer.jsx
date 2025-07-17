@@ -21,7 +21,7 @@ export default function Footer() {
         }, 5000)
     }
 
-    // Fonction pour gérer le clic sur Collection
+    
     const handleCollectionClick = (e) => {
         if (!isAuthenticated) {
             e.preventDefault()
@@ -66,13 +66,7 @@ export default function Footer() {
                                 Thanks for subscribing to our newsletter!
                             </p>
                         )}
-                        <input
-                            className={styleFooter.footerDiv2Div2Input}
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Your e-mail..."
-                        />
+                        <input className={styleFooter.footerDiv2Div2Input} type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your e-mail..."/>
                         <button className={styleFooter.footerDiv2Div2Btn} onClick={handleSubscribe}>SEND</button>
                     </div>
                 </div>

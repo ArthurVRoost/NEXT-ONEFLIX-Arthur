@@ -33,8 +33,8 @@ export default function Home() {
       
       setAnimes(topAnimesWithPrice)
       
-      // Sélectionner un anime aléatoire pour la réduction
-      const randomIndex = Math.floor(Math.random() * topAnimesWithPrice.length) // Correction ici
+   
+      const randomIndex = Math.floor(Math.random() * topAnimesWithPrice.length) 
       const selectedAnime = topAnimesWithPrice[randomIndex]
       setDiscountedAnimeId(selectedAnime.mal_id)
       
@@ -48,8 +48,7 @@ export default function Home() {
       
       setError(null)
     } catch (err) {
-      console.error('Erreur lors du fetch des animes:', err)
-      setError('Impossible de charger les animes. Veuillez réessayer plus tard.')
+      setError('Can t load animes, try later.')
     } finally {
       setLoading(false)
     }
@@ -59,7 +58,7 @@ export default function Home() {
 }, [])
 
   if (loading) {
-    return <div className={styles.loading}>Chargement des animes...</div>
+    return <div className={styles.loading}>Loading...</div>
   }
 
   if (error) {
@@ -85,13 +84,7 @@ export default function Home() {
                         <p>-20%</p>
                       </div>
                     )}
-                    <Image 
-                      className={styles.cardImg} 
-                      src={anime.images.jpg.large_image_url || "/img/CAROU1.webp"} 
-                      width={280} 
-                      height={160} 
-                      alt={`Image de l'anime ${anime.title}`}
-                    />
+                    <Image  className={styles.cardImg}  src={anime.images.jpg.large_image_url || "/img/CAROU1.webp"}  width={280}  height={160}  alt={`Image de l'anime ${anime.title}`}/>
                     <div className={styles.priceTag}>
                       {discountedAnimeId === anime.mal_id ? (
                         <>
