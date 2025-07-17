@@ -31,8 +31,8 @@ return (
       <div className={styleAuth.modalFooter}>
         <p>
           {authModalType === 'login' ? 
-            "Pas encore de compte ? " : 
-            "Déjà un compte ? "
+            "No account yet ? " : 
+            "Already an account ? "
           }
           <button onClick={handleSwitchMode} className={styleAuth.switchBtn}>
             {authModalType === 'login' ? 'Sign In' : 'Login'}
