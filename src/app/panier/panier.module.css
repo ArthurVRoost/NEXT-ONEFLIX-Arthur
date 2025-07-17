@@ -163,3 +163,91 @@
 .divRienBtn:hover{
     box-shadow: 0px 0px 10px 0px white;
 }
+
+/* Grand écran (déjà bien géré, mais au cas où) */
+@media screen and (min-width: 1091px) {
+  .divP {
+    flex-direction: row;
+  }
+}
+
+/* Intermédiaire (alignement optimisé si besoin) */
+@media screen and (min-width: 769px) and (max-width: 1090px) {
+  .divP {
+    flex-direction: column;
+  }
+
+  .divResumeCommande {
+    margin-top: 2rem;
+  }
+}
+
+/* Tablette */
+@media screen and (min-width: 577px) and (max-width: 768px) {
+  .divP {
+    flex-direction: column;
+  }
+
+  .divCard {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .divImg img {
+    width: 100px;
+    height: auto;
+  }
+
+  .divResumeCommande {
+    margin-top: 2rem;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 576px) {
+  .divP {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .divTop {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .titrePanier {
+    font-size: 1.5rem;
+  }
+
+  .divCard {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .divImg img {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+  }
+
+  .divNom,
+  .divPrix,
+  .divQuantite,
+  .divSupp {
+    width: 100%;
+    text-align: center;
+  }
+
+  .divResumeCommande {
+    width: 90%;
+    margin-top: 2rem;
+  }
+
+  .btnVider {
+    width: 100%;
+  }
+}

@@ -214,3 +214,123 @@
     transform: translateY(0);
   }
 }
+/* Grand écran (déjà adapté) */
+@media screen and (min-width: 1091px) {
+  .payeDivP {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .payeDiv1Box {
+    width: 500px;
+  }
+
+  .divMC, .divVisa, .divCoins {
+    width: 400px;
+    margin-left: 10%;
+  }
+}
+
+/* Écran intermédiaire (stack des éléments) */
+@media screen and (min-width: 769px) and (max-width: 1090px) {
+  .payeDivP {
+    width: 95%;
+    margin: 2% auto;
+    flex-direction: column;
+  }
+
+  .payeDiv1Box {
+    width: 100%;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .divMC, .divVisa, .divCoins {
+    width: 90%;
+    margin-left: 0;
+  }
+}
+
+/* Tablette */
+@media screen and (min-width: 577px) and (max-width: 768px) {
+  .payeDivP {
+    width: 95%;
+    padding: 2%;
+    flex-direction: column;
+  }
+
+  .payeDiv1Box {
+    width: 100%;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .divMC, .divVisa, .divCoins {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .btnBuy {
+    width: 100%;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 576px) {
+  .payeDivP {
+    width: 85%;
+    padding: 2%;
+    flex-direction: column;
+    margin-left: 4%;
+  }
+
+  .payeDiv1Box {
+    width: 90%;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .payeDiv1Btn1,
+  .payeDiv1Btn2,
+  .payeDiv1Btn3 {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+  }
+
+  .divMC, .divVisa, .divCoins {
+    width: 85%;
+    margin-left: 2%;
+    padding: 1rem;
+  }
+
+  .divMC input,
+  .divVisa input {
+    font-size: 14px;
+  }
+
+  .LogoCoins {
+    margin-left: 0;
+  }
+
+  .divBtn {
+    margin-top: 2rem;
+  }
+
+  .btnBuy {
+    width: 100%;
+    font-size: 20px;
+  }
+
+  .confirmation h2 {
+    font-size: 1.5rem;
+  }
+
+  .checkmark {
+    font-size: 3rem;
+  }
+}
