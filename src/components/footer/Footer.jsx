@@ -37,8 +37,6 @@ export default function Footer() {
                     <Link href="/all" className={`${styleFooter.footerDiv2Div1Li} ${styleFooter.Link}`}>Comedy</Link>
                 </ul>
             </div>
-            <Image className={styleFooter.footerImg} src='/img/luffy.png'width={120} height={180} alt='luffy'/>
-            <Image className={styleFooter.footerImg2} src='/img/naruto.png'width={180} height={140} alt='luffy'/>
             <div className={styleFooter.footerDiv2Div2}>
                 <h2 className={styleFooter.footerDiv2Div2H2}>Newsletter</h2>
                 {isSubscribed && (
