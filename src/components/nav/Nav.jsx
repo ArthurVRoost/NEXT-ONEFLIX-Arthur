@@ -48,6 +48,16 @@ export default function Nav() {
     setIsMenuOpen(prev => !prev)
   }
 
+  // Fonction pour gérer le clic sur Collection
+  const handleCollectionClick = (e) => {
+    if (!isAuthenticated) {
+      e.preventDefault()
+      dispatch(openAuthModal('login'))
+    } else {
+      handleMenuItemClick()
+    }
+  }
+
   return (
     <div className={styleNav.divPNav}>
       <div className={styleNav.navDiv0}>
@@ -60,22 +70,32 @@ export default function Nav() {
             alt="logo oneflix"
           />
         </Link>
-
-        
       </div>
 
       {/* Menu Mobile */}
       <div className={`${styleNav.mobileMenu} ${isMenuOpen ? styleNav.show : ''}`}>
-        <Link className={styleNav.Link} href="/" onClick={handleMenuItemClick}><p className={styleNav.navText}>Home</p></Link>
-        <Link className={styleNav.Link} href="/macollection" onClick={handleMenuItemClick}><p className={styleNav.navText}>Collection</p></Link>
-        <Link className={styleNav.Link} href="/all" onClick={handleMenuItemClick}><p className={styleNav.navText}>All</p></Link>
+        <Link className={styleNav.Link} href="/" onClick={handleMenuItemClick}>
+          <p className={styleNav.navText}>Home</p>
+        </Link>
+        <Link className={styleNav.Link} href="/macollection" onClick={handleCollectionClick}>
+          <p className={styleNav.navText}>Collection</p>
+        </Link>
+        <Link className={styleNav.Link} href="/all" onClick={handleMenuItemClick}>
+          <p className={styleNav.navText}>All</p>
+        </Link>
       </div>
 
       {/* Menu Desktop/Tablette */}
       <div className={styleNav.navDiv1}>
-        <Link className={styleNav.Link} href="/"><p className={styleNav.navText}>Home</p></Link>
-        <Link className={styleNav.Link} href="/macollection"><p className={styleNav.navText}>Collection</p></Link>
-        <Link className={styleNav.Link} href="/all"><p className={styleNav.navText}>All</p></Link>
+        <Link className={styleNav.Link} href="/">
+          <p className={styleNav.navText}>Home</p>
+        </Link>
+        <Link className={styleNav.Link} href="/macollection" onClick={handleCollectionClick}>
+          <p className={styleNav.navText}>Collection</p>
+        </Link>
+        <Link className={styleNav.Link} href="/all">
+          <p className={styleNav.navText}>All</p>
+        </Link>
       </div>
 
       <div className={styleNav.navDiv2}>
@@ -109,8 +129,8 @@ export default function Nav() {
             </Link>
           </div>
           <div className={styleNav.burgerIcon} onClick={toggleBurgerMenu}>
-          <i className="fa-solid fa-bars"></i>
-        </div>
+            <i className="fa-solid fa-bars"></i>
+          </div>
         </div>
       </div>
     </div>
