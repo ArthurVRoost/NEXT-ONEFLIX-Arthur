@@ -62,7 +62,7 @@ export default function Paiements() {
 
   // 5. Simuler le traitement + finaliser l'achat
   setTimeout(() => {
-    dispatch(completePurchase(currentUser.id))
+    dispatch(completePurchase({ userId: currentUser.id }))
     setIsConfirmed(true)
     setIsProcessing(false)
 

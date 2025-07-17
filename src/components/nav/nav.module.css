@@ -172,13 +172,43 @@
 }
 
 /* Cacher le menu complet et montrer burger en mobile */
-@media (max-width: 768px) {
+@media (max-width: 576px) {
   .navDiv1 {
     display: none;
   }
 
   .burgerIcon {
     display: block;
+    position: absolute;
+    top: 41px;
+    right: 85px;
+  }
+
+  .divPNav {
+    padding: 0 10px;
+    justify-content: space-between;
+  }
+
+  .navDiv2 {
+    margin-right: auto;
+    margin-left: 170px;
+  }
+
+  .navImg {
+    width: 150px !important;
+    height: auto !important;
+  }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+  .navDiv1 {
+    display: none;
+  }
+
+  .burgerIcon {
+    display: block;
+    position: absolute;
+    top: 42px;
+    right: 100px;
   }
 
   .divPNav {

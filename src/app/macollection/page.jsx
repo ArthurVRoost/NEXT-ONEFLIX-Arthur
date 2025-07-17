@@ -99,7 +99,7 @@ export default function MaCollectionPage() {
           <p>You haven't bought anything.</p>
           <button 
             className={stylesMaCollection.shopButton}
-            onClick={() => router.push('/collection')}
+            onClick={() => router.push('/all')}
           >
             <i className="fa-solid fa-shopping-bag"></i>
             Discover our collection
