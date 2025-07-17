@@ -6,7 +6,7 @@ import Nav from '../components/nav/Nav';
 import Footer from '../components/footer/Footer';
 import AuthModal from '../components/auth/authModal';
 import styleNav from '../components/nav/nav.module.css';
-
+import Scroll from '../components/scrolltop/Scroll';
 import GlobalProvider from './provider/GlobalProvider';
 import AuthInitProvider from './provider/AuthProvider';
 
@@ -40,6 +40,7 @@ export default function RootLayout({
           <AuthInitProvider />
           <Nav />
           <main className={styleNav.mainContent}>
+            <Scroll/>
             {children}
           </main>
           <Footer />
