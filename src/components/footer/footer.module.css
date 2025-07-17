@@ -156,6 +156,7 @@
 @media (max-width: 768px) {
     .footerDivP{
         padding-top: 9%;
+        width: 100%;
     }
     .footerImg{
         display: none;

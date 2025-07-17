@@ -107,6 +107,7 @@
     .fmabDivP {
         width: 95vw;
         margin: 0;
+        overflow-x: hidden;
     }
     
     .fmabDivTop {
@@ -173,10 +174,11 @@
 
 @media screen and (max-width: 480px) {
     .fmabDivP {
-        width: 98vw;
-        padding: 5%;
+        width: 95vw;
+        padding: 3%;
         margin: 1%;
         border-radius: 15px;
+        overflow-x: hidden;
     }
     
     .topImg {
