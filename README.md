@@ -1,19 +1,19 @@
 # Anime Store - Next.js E-commerce Application
 
-A modern e-commerce application built with Next.js for anime episodes and merchandise, featuring user authentication, shopping cart, and credit system.
+A modern e-commerce application built with Next.js for anime episodes, featuring user authentication, shopping cart, and credit system.
 
 ## 🚀 Features
 
 ### Core Features
 - **Responsive Design**: Mobile-first approach with hamburger menu for mobile devices
 - **Product Catalog**: Browse anime episodes and complete season packages
-- **Product Details**: Detailed view for each anime episode with episodes listing
+- **Product Details**: Detailed view for each anime with episodes listing
 - **Shopping Cart**: Add, remove, and manage items with automatic discount calculation
-- **User Authentication**: Register/Login with form validation and session management
+- **User Authentication**: Register/Login with form validation 
 - **Credit System**: Add credits to account and pay using credits
-- **User Account**: Personal account management with purchase history
-- **User Collection**: View and manage your anime collection
-- **Payment System**: Secure payment processing with credit integration
+- **User Account**: Personal account info with purchase history
+- **User Collection**: View your anime collection
+- **Payment System**: Payment processing with credit integration
 
 ### Navigation & Pages
 - **Home Page**: Featured anime and recommendations
@@ -22,7 +22,7 @@ A modern e-commerce application built with Next.js for anime episodes and mercha
 - **Shopping Cart**: Full cart management with checkout
 - **User Account**: Profile management and settings
 - **My Collection**: Personal anime collection viewer
-- **Payment**: Secure checkout and payment processing
+- **Payment**: Checkout and payment processing
 
 ### Special Features
 - **Bulk Discount**: Get the cheapest item free when purchasing 5+ items
@@ -36,7 +36,7 @@ A modern e-commerce application built with Next.js for anime episodes and mercha
 - **Language**: JavaScript/TypeScript
 - **State Management**: Redux Toolkit
 - **Styling**: CSS Modules
-- **Authentication**: Custom auth system with session management
+- **Authentication**: Auth system 
 - **Storage**: Local Storage for persistence
 - **Routing**: Next.js App Router
 - **Configuration**: TypeScript, ESLint
@@ -151,7 +151,7 @@ NEXT_PUBLIC_API_URL=http://localhost:3000/api
 - Add individual episodes or complete anime seasons
 - Automatic discount calculation (20% off on selected items)
 - Free item promotion when cart contains 5+ items
-- Real-time price updates
+
 
 ### Credit System
 - Add credits to your account
@@ -163,7 +163,7 @@ NEXT_PUBLIC_API_URL=http://localhost:3000/api
 - Browse all available anime episodes
 - Filter and search functionality
 - Detailed product information
-- Bulk purchase options
+
 
 ## 🔐 Authentication Flow
 
