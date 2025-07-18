@@ -1,6 +1,6 @@
 import { SessionProvider } from 'next-auth/react';
 import { Provider } from 'react-redux';
-import { store } from '../store/store'; // Ajustez le chemin selon votre structure
+import { store } from '../store/store'; 
 
 export default function App({
   Component,
